@@ -35,10 +35,11 @@ Your task is to show them that your TDD-fu and your new-age programming language
 * Don’t abbreviate
 * Keep all entities small (50 lines)
 * No classes with more than two instance variables
-* BONUS: No getters/setters/properties
+* **BONUS**: No getters/setters/properties
 
 ### Spotlight: Grace Hopper
 
 COBOL was designed in 1959, by CODASYL and was partly based on previous programming language design work by Grace Hopper, commonly referred to as "the (grand)mother of COBOL".
 “United States Navy Admiral Grace Hopper (1906–1992) was one of the first programmers in the history of computers. Her belief that programming languages should be as easily understood as English was highly influential on the development of one of the first programming languages called COBOL. It is largely due to Grace Hopper’s influence that programmers use “if/thens” instead of 1s and 0s today.”
+
 Source: http://www.amazingwomeninhistory.com/amazing-grace-hopper-computer-programmer/
