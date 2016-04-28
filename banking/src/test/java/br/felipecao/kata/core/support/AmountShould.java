@@ -16,6 +16,11 @@ public class AmountShould {
         assertEquals(amountValue, amount.getValue());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void throw_an_exception_if_input_value_is_null() {
+        Amount.of(null);
+    }
+
     @Test
     public void satisfy_equals() {
         Integer amountValue = new Random().nextInt(500);
@@ -115,5 +120,15 @@ public class AmountShould {
         Amount anotherAmount = firstAmount.minus(Amount.of(-500));
 
         assertEquals(Amount.of(100), anotherAmount);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throw_an_exception_if_plus_argument_is_null() {
+        Amount.ZERO.plus(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throw_an_exception_if_minus_argument_is_null() {
+        Amount.ZERO.minus(null);
     }
 }

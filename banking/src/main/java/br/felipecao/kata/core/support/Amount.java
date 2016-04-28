@@ -14,7 +14,14 @@ public class Amount {
     }
 
     public static Amount of(Integer value) {
+        throwExceptionOnNullObject(value);
         return new Amount(value);
+    }
+
+    private static void throwExceptionOnNullObject(Object value) {
+        if(null == value) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Integer getValue() {
@@ -22,11 +29,13 @@ public class Amount {
     }
 
     public Amount plus(Amount increment) {
-        return new Amount(value + increment.getValue());
+        throwExceptionOnNullObject(increment);
+        return of(value + increment.getValue());
     }
 
     public Amount minus(Amount decrement) {
-        return new Amount(value - decrement.getValue());
+        throwExceptionOnNullObject(decrement);
+        return of(value - decrement.getValue());
     }
 
     @Override
@@ -46,5 +55,10 @@ public class Amount {
         return new HashCodeBuilder()
                 .append(this.value)
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }
