@@ -11,6 +11,9 @@
 * github.com/swkBerlin/kata-bootstraps (Java, JS, Ruby, Python, Scala)
 * github.com/coreyhaines/coderetreat/tree/master/starting_points (9 more languages)
 
+## Calisthenics
+* https://www.cs.helsinki.fi/u/luontola/tdd-2009/ext/ObjectCalisthenics.pdf
+
 ##  Your Task
 Your bank is tired of its mainframe COBOL accounting software and they hired both of you for a greenfield project in - what a happy coincidence - your favorite programming language!
 

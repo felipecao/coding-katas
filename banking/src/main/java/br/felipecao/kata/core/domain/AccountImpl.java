@@ -3,12 +3,10 @@ package br.felipecao.kata.core.domain;
 import br.felipecao.kata.core.support.Amount;
 
 import java.util.SortedSet;
-import java.util.TreeSet;
 
 class AccountImpl implements Account {
 
-    // TODO should be in its own class!
-    private SortedSet<Transaction> transactions = new TreeSet<>();
+    private Transactions transactions = new Transactions();
     private Amount balance = Amount.ZERO;
 
     @Override
@@ -33,6 +31,6 @@ class AccountImpl implements Account {
 
     @Override
     public SortedSet<Transaction> getTransactions() {
-        return transactions;
+        return transactions.getAll();
     }
 }
