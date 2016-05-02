@@ -4,6 +4,30 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * My approach to the problem:
+ *
+ * Hey, Tobias! Hope we have fun doing this kata!
+ *
+ * So, as per the problem description, we're supposed to print a sequence of numbers from 1 to 100, replacing some
+ * of the numbers for "Fizz", "Buzz" or "FizzBuzz" whenever applicable, as you already know.
+ *
+ * My idea here is to do something incremental. In other words, instead of writing tests for a class that prints the
+ * entire sequence from 1 to 100 (which would be quite hard to test), I propose we the concept of an 'upper boundary'.
+ *
+ * By 'upper boundary' I mean the maximum number we want to check for fizz's & buzz's.
+ *
+ * For instance:
+ * * if our 'upper boundary' is 1, the output should be "1".
+ * * if our 'upper boundary' is 2, the output should be "1 2".
+ * * if our 'upper boundary' is 3, the output should be "1 2 Fizz".
+ * * so on, so forth...
+ *
+ * This way, we can easily start testing individual cases and incrementally take care of the others. I hope you agree
+ * with this approach. If not, let me know and let's figure out a better approach together! If you want to get a hold
+ * of myself, my e-mail is felipe.carvalho@gmail.com and my Skype handle is felipecao.
+ *
+ */
 public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
