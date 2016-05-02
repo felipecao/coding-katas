@@ -40,7 +40,7 @@ public class FizzBuzzShould {
     }
 
     @Test
-    public void say_1_when_upper_boundary_is_one() {
+    public void say_1_when_upper_boundary_is_1() {
         Integer upperBoundary = 1;
         String expected = "1";
         String actual = fizzBuzz(upperBoundary);
@@ -49,7 +49,7 @@ public class FizzBuzzShould {
     }
 
     @Test
-    public void say_1_2_when_upper_boundary_is_two() {
+    public void say_1_2_when_upper_boundary_is_2() {
         Integer upperBoundary = 2;
         String expected = "1 2";
         String actual = fizzBuzz(upperBoundary);
