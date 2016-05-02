@@ -31,13 +31,22 @@ import static org.junit.Assert.assertEquals;
 public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
-        return null;
+        return "1";
     }
 
     @Test
     public void say_1_when_upper_boundary_is_one() {
         Integer upperBoundary = 1;
         String expected = "1";
+        String actual = fizzBuzz(upperBoundary);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void say_1_2_when_upper_boundary_is_two() {
+        Integer upperBoundary = 2;
+        String expected = "1 2";
         String actual = fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
