@@ -32,3 +32,16 @@ FizzBuzz
 Fizz
 19
 Buzz
+
+## Rules
+
+Let's use the rules defined by Jeff Bay in [Object Calisthenics](https://www.cs.helsinki.fi/u/luontola/tdd-2009/ext/ObjectCalisthenics.pdf), whenever applicable:
+* One level of indentation per method
+* Don’t use the ELSE keyword
+* Wrap all primitives and Strings
+* First class collections
+* One dot per line
+* Don’t abbreviate
+* Keep all entities small (50 lines)
+* No classes with more than two instance variables
+* BONUS: No getters/setters/properties
