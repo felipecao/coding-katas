@@ -56,4 +56,13 @@ public class FizzBuzzShould {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void say_1_2_Fizz_when_upper_boundary_is_3() {
+        Integer upperBoundary = 2;
+        String expected = "1 2 Fizz";
+        String actual = fizzBuzz(upperBoundary);
+
+        assertEquals(expected, actual);
+    }
 }
