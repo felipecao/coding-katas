@@ -43,6 +43,12 @@ public class FizzBuzzShould {
         return result;
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void throwException_when_upper_boundary_is_0() {
+        Integer upperBoundary = 0;
+        fizzBuzz(upperBoundary);
+    }
+
     @Test
     public void say_1_when_upper_boundary_is_1() {
         Integer upperBoundary = 1;
