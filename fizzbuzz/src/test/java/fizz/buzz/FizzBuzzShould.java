@@ -31,6 +31,11 @@ import static org.junit.Assert.assertEquals;
 public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
+
+        if(0 == upperBoundary) {
+            throw new IllegalArgumentException();
+        }
+
         String result = "1";
 
         if (2 <= upperBoundary) {
