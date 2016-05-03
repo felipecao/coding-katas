@@ -35,6 +35,9 @@ public class FizzBuzzShould {
         if (2 == upperBoundary) {
             return "1 2";
         }
+        if (3 == upperBoundary) {
+            return "1 2 Fizz";
+        }
 
         return "1";
     }
@@ -59,7 +62,7 @@ public class FizzBuzzShould {
 
     @Test
     public void say_1_2_Fizz_when_upper_boundary_is_3() {
-        Integer upperBoundary = 2;
+        Integer upperBoundary = 3;
         String expected = "1 2 Fizz";
         String actual = fizzBuzz(upperBoundary);
 
