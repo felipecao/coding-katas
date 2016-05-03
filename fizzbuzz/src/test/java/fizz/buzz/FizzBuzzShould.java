@@ -31,15 +31,16 @@ import static org.junit.Assert.assertEquals;
 public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
+        String result = "1";
 
-        if (2 == upperBoundary) {
-            return "1 2";
+        if (2 <= upperBoundary) {
+            result += " 2";
         }
         if (3 == upperBoundary) {
-            return "1 2 Fizz";
+            result += " Fizz";
         }
 
-        return "1";
+        return result;
     }
 
     @Test
