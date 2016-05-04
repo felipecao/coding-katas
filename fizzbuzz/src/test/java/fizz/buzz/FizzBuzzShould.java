@@ -1,8 +1,9 @@
 package fizz.buzz;
 
+import org.hamcrest.core.StringEndsWith;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * My approach to the problem:
@@ -88,5 +89,14 @@ public class FizzBuzzShould {
         String actual = fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void last_part_is_Buzz_when_upper_boundary_is_5() {
+        Integer upperBoundary = 5;
+        String expectedEndsWith = "Buzz";
+        String actual = fizzBuzz(upperBoundary);
+
+        assertThat(actual, StringEndsWith.endsWith(expectedEndsWith));
     }
 }
