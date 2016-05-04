@@ -48,9 +48,14 @@ public class FizzBuzzShould {
             result += " 2";
         }
 
-        if (3 == upperBoundary) {
+        if (3 <= upperBoundary) {
             result += " Fizz";
         }
+
+        if (4 <= upperBoundary) {
+            result += " 4";
+        }
+
 
         if (5 == upperBoundary) {
             result += " Buzz";
