@@ -92,7 +92,7 @@ public class FizzBuzzShould {
     }
 
     @Test
-    public void last_part_is_Buzz_when_upper_boundary_is_5() {
+    public void have_Buzz_as_last_word_when_upper_boundary_is_5() {
         Integer upperBoundary = 5;
         String expectedEndsWith = "Buzz";
         String actual = fizzBuzz(upperBoundary);
