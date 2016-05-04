@@ -36,6 +36,7 @@ public class FizzBuzzShould {
         if(null == upperBoundary) {
             throw new IllegalArgumentException();
         }
+
         if(0 == upperBoundary) {
             throw new IllegalArgumentException();
         }
@@ -45,6 +46,7 @@ public class FizzBuzzShould {
         if (2 <= upperBoundary) {
             result += " 2";
         }
+
         if (3 == upperBoundary) {
             result += " Fizz";
         }
