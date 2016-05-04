@@ -106,4 +106,13 @@ public class FizzBuzzShould {
 
         assertThat(actual, StringEndsWith.endsWith(expectedEnd));
     }
+
+    @Test
+    public void say_1_2_Fizz_4_Buzz_when_upper_boundary_is_5() {
+        Integer upperBoundary = 5;
+        String expected = "1 2 Fizz 4 Buzz";
+        String actual = fizzBuzz(upperBoundary);
+
+        assertEquals(expected, actual);
+    }
 }
