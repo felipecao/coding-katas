@@ -44,21 +44,16 @@ public class FizzBuzzShould {
 
         String result = "1";
 
-        if (2 <= upperBoundary) {
-            result += " 2";
-        }
-
-        if (3 <= upperBoundary) {
-            result += " Fizz";
-        }
-
-        if (4 <= upperBoundary) {
-            result += " 4";
-        }
-
-
-        if (5 == upperBoundary) {
-            result += " Buzz";
+        for(int i = 2; i <= upperBoundary; i++) {
+            if (3 == i) {
+                result += " Fizz";
+                continue;
+            }
+            if (5 == i) {
+                result += " Buzz";
+                continue;
+            }
+            result += " " + i;
         }
 
         return result;
