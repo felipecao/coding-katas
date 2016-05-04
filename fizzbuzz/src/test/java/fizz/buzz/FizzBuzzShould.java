@@ -2,8 +2,9 @@ package fizz.buzz;
 
 import org.hamcrest.core.StringEndsWith;
 import org.junit.Test;
+
+import static org.hamcrest.MatcherAssert.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 /**
  * My approach to the problem:
@@ -51,6 +52,10 @@ public class FizzBuzzShould {
             result += " Fizz";
         }
 
+        if (5 == upperBoundary) {
+            result += " Buzz";
+        }
+
         return result;
     }
 
@@ -96,9 +101,9 @@ public class FizzBuzzShould {
     @Test
     public void have_Buzz_as_last_word_when_upper_boundary_is_5() {
         Integer upperBoundary = 5;
-        String expectedEndsWith = "Buzz";
+        String expectedEnd = "Buzz";
         String actual = fizzBuzz(upperBoundary);
 
-        assertThat(actual, StringEndsWith.endsWith(expectedEndsWith));
+        assertThat(actual, StringEndsWith.endsWith(expectedEnd));
     }
 }
