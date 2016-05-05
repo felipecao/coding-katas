@@ -34,11 +34,7 @@ public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
 
-        if(null == upperBoundary) {
-            throw new IllegalArgumentException();
-        }
-
-        if(0 == upperBoundary) {
+        if(null == upperBoundary || 0 == upperBoundary) {
             throw new IllegalArgumentException();
         }
 
