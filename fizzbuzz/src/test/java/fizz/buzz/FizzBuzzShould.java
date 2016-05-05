@@ -34,7 +34,7 @@ public class FizzBuzzShould {
 
     private String fizzBuzz(Integer upperBoundary) {
 
-        if(null == upperBoundary || 0 == upperBoundary) {
+        if(isIllegalArgument(upperBoundary)) {
             throw new IllegalArgumentException();
         }
 
@@ -53,6 +53,10 @@ public class FizzBuzzShould {
         }
 
         return result;
+    }
+
+    private boolean isIllegalArgument(Integer upperBoundary) {
+        return null == upperBoundary || 0 == upperBoundary;
     }
 
     @Test(expected = IllegalArgumentException.class)
