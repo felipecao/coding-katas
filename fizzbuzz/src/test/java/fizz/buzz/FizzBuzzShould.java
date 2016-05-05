@@ -133,4 +133,14 @@ public class FizzBuzzShould {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void have_Buzz_as_last_word_when_upper_boundary_is_10() {
+        Integer upperBoundary = 10;
+        String expectedEnd = "Buzz";
+        String actual = fizzBuzz(upperBoundary);
+
+        assertThat(actual, StringEndsWith.endsWith(expectedEnd));
+    }
+
 }
