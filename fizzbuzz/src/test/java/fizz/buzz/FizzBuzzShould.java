@@ -41,7 +41,7 @@ public class FizzBuzzShould {
         String result = "1";
 
         for(int i = 2; i <= upperBoundary; i++) {
-            if (3 == i || 6 == i) {
+            if (0 == (i % 3)) {
                 result += " Fizz";
                 continue;
             }
@@ -123,7 +123,7 @@ public class FizzBuzzShould {
 
     @Test
     public void say_1_2_Fizz_4_Buzz_Fizz_7_8_Fizz_when_upper_boundary_is_9() {
-        Integer upperBoundary = 6;
+        Integer upperBoundary = 9;
         String expected = "1 2 Fizz 4 Buzz Fizz 7 8 Fizz";
         String actual = fizzBuzz(upperBoundary);
 
