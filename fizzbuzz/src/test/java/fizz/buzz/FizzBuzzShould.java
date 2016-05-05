@@ -45,7 +45,7 @@ public class FizzBuzzShould {
                 result += " Fizz";
                 continue;
             }
-            if (5 == i) {
+            if (0 == (i % 5)) {
                 result += " Buzz";
                 continue;
             }
