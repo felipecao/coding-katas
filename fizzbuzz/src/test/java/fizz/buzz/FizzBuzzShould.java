@@ -41,6 +41,10 @@ public class FizzBuzzShould {
         String result = "1";
 
         for(int i = 2; i <= upperBoundary; i++) {
+            if ((0 == (i % 3)) && (0 == (i % 5))) {
+                result += " FizzBuzz";
+                continue;
+            }
             if (0 == (i % 3)) {
                 result += " Fizz";
                 continue;
