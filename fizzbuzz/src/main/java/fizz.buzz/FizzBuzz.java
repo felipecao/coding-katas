@@ -1,35 +1,29 @@
 package fizz.buzz;
 
+import fizz.buzz.number.NumberFactory;
+import fizz.buzz.number.Numbers;
+import fizz.buzz.number.Number;
+
+import java.util.SortedSet;
+
 public class FizzBuzz {
+
+    private Numbers numbers;
+
+    public FizzBuzz() {
+        NumberFactory factory = new NumberFactory();
+        numbers = new Numbers(factory);
+    }
 
     public String fizzBuzz(Integer upperBoundary) {
 
-        if (isIllegalArgument(upperBoundary)) {
-            throw new IllegalArgumentException();
+        String result = "";
+        SortedSet<Number> allNumbers = numbers.fetch(upperBoundary);
+
+        for (Number number: allNumbers) {
+            result += number.toString() + " ";
         }
 
-        String result = "1";
-
-        for (int i = 2; i <= upperBoundary; i++) {
-            if ((0 == (i % 3)) && (0 == (i % 5))) {
-                result += " FizzBuzz";
-                continue;
-            }
-            if (0 == (i % 3)) {
-                result += " Fizz";
-                continue;
-            }
-            if (0 == (i % 5)) {
-                result += " Buzz";
-                continue;
-            }
-            result += " " + i;
-        }
-
-        return result;
-    }
-
-    private boolean isIllegalArgument(Integer upperBoundary) {
-        return null == upperBoundary || 0 == upperBoundary;
+        return result.trim();
     }
 }
