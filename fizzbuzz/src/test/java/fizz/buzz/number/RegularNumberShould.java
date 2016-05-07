@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class RegularNumberShould {
 
@@ -39,6 +40,33 @@ public class RegularNumberShould {
         RegularNumber other = new RegularNumber(value);
 
         assertEquals(one, other);
+    }
+
+    @Test
+    public void not_be_equal_to_fizz_number_with_same_internal_value() {
+        Integer value = 1;
+        RegularNumber one = new RegularNumber(value);
+        FizzNumber other = new FizzNumber(value);
+
+        assertNotEquals(one, other);
+    }
+
+    @Test
+    public void not_be_equal_to_buzz_number_with_same_internal_value() {
+        Integer value = 1;
+        RegularNumber one = new RegularNumber(value);
+        BuzzNumber other = new BuzzNumber(value);
+
+        assertNotEquals(one, other);
+    }
+
+    @Test
+    public void not_be_equal_to_fizz_buzz_number_with_same_internal_value() {
+        Integer value = 1;
+        RegularNumber one = new RegularNumber(value);
+        FizzBuzzNumber other = new FizzBuzzNumber(value);
+
+        assertNotEquals(one, other);
     }
 
     private SortedSet<Number> asSortedSet(Number... numbers) {

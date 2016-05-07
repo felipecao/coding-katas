@@ -4,13 +4,20 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Numbers {
+
+    private NumberFactory factory;
+
+    public Numbers(NumberFactory factory) {
+        this.factory = factory;
+    }
+
     public SortedSet<Number> fetch(Integer upperBoundary) {
         haltIfUpperBoundaryIsNullOrZero(upperBoundary);
 
         SortedSet<Number> numbers = new TreeSet<Number>();
 
         for (int i=1; i <= upperBoundary; i++) {
-            numbers.add(new RegularNumber(i));
+            numbers.add(factory.build(i));
         }
 
         return numbers;

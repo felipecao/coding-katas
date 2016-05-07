@@ -33,7 +33,6 @@ public abstract class AbstractNumber implements Number {
         AbstractNumber that = (AbstractNumber) o;
 
         return value.equals(that.value);
-
     }
 
     @Override
