@@ -14,7 +14,7 @@ public class Numbers {
     public SortedSet<Number> fetch(Integer upperBoundary) {
         haltIfUpperBoundaryIsNullOrZero(upperBoundary);
 
-        SortedSet<Number> numbers = new TreeSet<Number>();
+        SortedSet<Number> numbers = new TreeSet<>();
 
         for (int i=1; i <= upperBoundary; i++) {
             numbers.add(factory.build(i));
