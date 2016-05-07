@@ -133,6 +133,24 @@ public class FizzBuzzShould {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void say_Fizz_Buzz_when_upper_boundary_is_30() {
+        Integer upperBoundary = 30;
+        String expected = expectedOutputForUpperBoundary(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void say_Fizz_Buzz_when_upper_boundary_is_100() {
+        Integer upperBoundary = 100;
+        String expected = expectedOutputForUpperBoundary(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
+
+        assertEquals(expected, actual);
+    }
+
     private String expectedOutputForUpperBoundary(Integer upperBoundary) {
         String expected = "";
 
