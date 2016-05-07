@@ -3,6 +3,13 @@ package fizz.buzz.number;
 public abstract class AbstractNumber implements Number {
     protected Integer value;
 
+    protected void initializeValueIfValid(Integer initialValue) {
+        if (null == initialValue) {
+            throw new IllegalArgumentException();
+        }
+        this.value = initialValue;
+    }
+
     @Override
     public Integer getValue() {
         return value;
