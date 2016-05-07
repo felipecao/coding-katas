@@ -1,13 +1,13 @@
 package fizz.buzz.number;
 
-public class BuzzNumber extends AbstractNumber {
+public class FizzBuzzNumber extends AbstractNumber {
 
-    public BuzzNumber(Integer value) {
+    public FizzBuzzNumber(Integer value) {
         initializeValueIfValid(value);
     }
 
     @Override
     public String toString() {
-        return "Buzz";
+        return "FizzBuzz";
     }
 }
