@@ -1,8 +1,6 @@
 package fizz.buzz;
 
 public class FizzBuzz {
-    public FizzBuzz() {
-    }
 
     public String fizzBuzz(Integer upperBoundary) {
 
