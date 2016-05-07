@@ -32,6 +32,15 @@ public class RegularNumberShould {
         assertEquals(two, sortedNumbers.last());
     }
 
+    @Test
+    public void be_equal_to_another_instance_with_same_value() {
+        Integer value = 1;
+        RegularNumber one = new RegularNumber(value);
+        RegularNumber other = new RegularNumber(value);
+
+        assertEquals(one, other);
+    }
+
     private SortedSet<Number> asSortedSet(Number... numbers) {
         return new TreeSet<Number>(Arrays.asList(numbers));
     }

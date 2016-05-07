@@ -12,4 +12,25 @@ public abstract class AbstractNumber implements Number {
     public int compareTo(Number o) {
         return value.compareTo(o.getValue());
     }
+
+    @Override
+    public String toString() {
+        return value.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AbstractNumber that = (AbstractNumber) o;
+
+        return value.equals(that.value);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 }

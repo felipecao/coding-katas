@@ -8,9 +8,4 @@ public class RegularNumber extends AbstractNumber {
         }
         this.value = value;
     }
-
-    @Override
-    public String toString() {
-        return value.toString();
-    }
 }
