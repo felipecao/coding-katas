@@ -1,6 +1,7 @@
 package fizz.buzz;
 
 import org.hamcrest.core.StringEndsWith;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.*;
@@ -32,54 +33,30 @@ import static org.junit.Assert.assertEquals;
  */
 public class FizzBuzzShould {
 
-    private String fizzBuzz(Integer upperBoundary) {
+    private FizzBuzz fizzBuzz;
 
-        if(isIllegalArgument(upperBoundary)) {
-            throw new IllegalArgumentException();
-        }
-
-        String result = "1";
-
-        for(int i = 2; i <= upperBoundary; i++) {
-            if ((0 == (i % 3)) && (0 == (i % 5))) {
-                result += " FizzBuzz";
-                continue;
-            }
-            if (0 == (i % 3)) {
-                result += " Fizz";
-                continue;
-            }
-            if (0 == (i % 5)) {
-                result += " Buzz";
-                continue;
-            }
-            result += " " + i;
-        }
-
-        return result;
-    }
-
-    private boolean isIllegalArgument(Integer upperBoundary) {
-        return null == upperBoundary || 0 == upperBoundary;
+    @Before
+    public void setUp() throws Exception {
+        fizzBuzz = new FizzBuzz();
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_upper_boundary_is_0() {
         Integer upperBoundary = 0;
-        fizzBuzz(upperBoundary);
+        fizzBuzz.fizzBuzz(upperBoundary);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throw_exception_when_upper_boundary_is_not_provided() {
         Integer upperBoundary = null;
-        fizzBuzz(upperBoundary);
+        fizzBuzz.fizzBuzz(upperBoundary);
     }
 
     @Test
     public void say_1_when_upper_boundary_is_1() {
         Integer upperBoundary = 1;
         String expected = "1";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
@@ -88,7 +65,7 @@ public class FizzBuzzShould {
     public void say_1_2_when_upper_boundary_is_2() {
         Integer upperBoundary = 2;
         String expected = "1 2";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
@@ -97,7 +74,7 @@ public class FizzBuzzShould {
     public void say_1_2_Fizz_when_upper_boundary_is_3() {
         Integer upperBoundary = 3;
         String expected = "1 2 Fizz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
@@ -106,7 +83,7 @@ public class FizzBuzzShould {
     public void have_Buzz_as_last_word_when_upper_boundary_is_5() {
         Integer upperBoundary = 5;
         String expectedEnd = "Buzz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertThat(actual, StringEndsWith.endsWith(expectedEnd));
     }
@@ -115,7 +92,7 @@ public class FizzBuzzShould {
     public void say_1_2_Fizz_4_Buzz_when_upper_boundary_is_5() {
         Integer upperBoundary = 5;
         String expected = "1 2 Fizz 4 Buzz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
@@ -124,7 +101,7 @@ public class FizzBuzzShould {
     public void have_Fizz_as_last_word_when_upper_boundary_is_6() {
         Integer upperBoundary = 6;
         String expectedEnd = "Fizz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertThat(actual, StringEndsWith.endsWith(expectedEnd));
     }
@@ -133,7 +110,7 @@ public class FizzBuzzShould {
     public void say_1_2_Fizz_4_Buzz_Fizz_7_8_Fizz_when_upper_boundary_is_9() {
         Integer upperBoundary = 9;
         String expected = "1 2 Fizz 4 Buzz Fizz 7 8 Fizz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
@@ -142,7 +119,7 @@ public class FizzBuzzShould {
     public void have_Buzz_as_last_word_when_upper_boundary_is_10() {
         Integer upperBoundary = 10;
         String expectedEnd = "Buzz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertThat(actual, StringEndsWith.endsWith(expectedEnd));
     }
@@ -151,7 +128,7 @@ public class FizzBuzzShould {
     public void say_Fizz_Buzz_when_upper_boundary_is_15() {
         Integer upperBoundary = 15;
         String expected = "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz";
-        String actual = fizzBuzz(upperBoundary);
+        String actual = fizzBuzz.fizzBuzz(upperBoundary);
 
         assertEquals(expected, actual);
     }
