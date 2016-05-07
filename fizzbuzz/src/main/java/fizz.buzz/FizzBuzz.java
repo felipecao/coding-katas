@@ -1,13 +1,14 @@
 package fizz.buzz;
 
+import fizz.buzz.number.Number;
 import fizz.buzz.number.NumberFactory;
 import fizz.buzz.number.Numbers;
-import fizz.buzz.number.Number;
 
 import java.util.SortedSet;
 
 public class FizzBuzz {
 
+    private static final String SPACE = " ";
     private Numbers numbers;
 
     public FizzBuzz() {
@@ -17,13 +18,11 @@ public class FizzBuzz {
 
     public String fizzBuzz(Integer upperBoundary) {
 
-        String result = "";
         SortedSet<Number> allNumbers = numbers.fetch(upperBoundary);
 
-        for (Number number: allNumbers) {
-            result += number.toString() + " ";
-        }
-
-        return result.trim();
+        return allNumbers.stream()
+                .map(Number::toString)
+                .reduce((n, u) -> n.toString() + SPACE + u.toString())
+                .get();
     }
 }
