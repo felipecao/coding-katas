@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
 
 public class NumbersShould {
 
-    Numbers numbers;
+    NumbersImpl numbers;
 
     @Before
     public void setup() {
-        numbers = new Numbers(new NumberFactoryImpl());
+        numbers = new NumbersImpl(new NumberFactoryImpl());
     }
 
     @Test(expected = IllegalArgumentException.class)

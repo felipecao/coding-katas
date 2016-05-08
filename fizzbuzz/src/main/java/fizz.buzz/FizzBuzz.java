@@ -3,7 +3,7 @@ package fizz.buzz;
 import fizz.buzz.number.Number;
 import fizz.buzz.number.NumberFactory;
 import fizz.buzz.number.factory.NumberFactoryImpl;
-import fizz.buzz.number.Numbers;
+import fizz.buzz.number.NumbersImpl;
 
 import java.util.SortedSet;
 
@@ -14,7 +14,7 @@ public class FizzBuzz {
 
     public FizzBuzz() {
         NumberFactory factory = new NumberFactoryImpl();
-        numbers = new Numbers(factory);
+        numbers = new NumbersImpl(factory);
     }
 
     public String fizzBuzz(Integer upperBoundary) {

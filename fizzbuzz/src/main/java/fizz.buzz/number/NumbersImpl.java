@@ -1,13 +1,15 @@
 package fizz.buzz.number;
 
+import fizz.buzz.Numbers;
+
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Numbers {
+public class NumbersImpl implements Numbers {
 
     private NumberFactory factory;
 
-    public Numbers(NumberFactory factory) {
+    public NumbersImpl(NumberFactory factory) {
         this.factory = factory;
     }
 
