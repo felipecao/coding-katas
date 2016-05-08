@@ -1,21 +1,23 @@
-package fizz.buzz.number;
+package fizz.buzz.number.factory;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import fizz.buzz.number.*;
+import fizz.buzz.number.Number;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(DataProviderRunner.class)
 public class NumberFactoryShould {
 
-    NumberFactory factory;
+    NumberFactoryImpl factory;
 
     @Before
     public void setup() {
-        factory = new NumberFactory();
+        factory = new NumberFactoryImpl();
     }
 
     @Test

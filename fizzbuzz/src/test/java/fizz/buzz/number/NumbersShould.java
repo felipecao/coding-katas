@@ -1,11 +1,8 @@
 package fizz.buzz.number;
 
+import fizz.buzz.number.factory.NumberFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.*;
 
@@ -17,7 +14,7 @@ public class NumbersShould {
 
     @Before
     public void setup() {
-        numbers = new Numbers(new NumberFactory());
+        numbers = new Numbers(new NumberFactoryImpl());
     }
 
     @Test(expected = IllegalArgumentException.class)
