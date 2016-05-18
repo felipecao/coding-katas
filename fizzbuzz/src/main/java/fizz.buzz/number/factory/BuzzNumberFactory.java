@@ -11,10 +11,9 @@ class BuzzNumberFactory implements NumberFactory{
      * @return null if integer input is not supported
      */
     public Number build(Integer input) {
-        Number result = null;
-        if (input % 5 == 0) {
-            result = new BuzzNumber(input);
+        if (input % 5 != 0) {
+            return null;
         }
-        return result;
+        return new BuzzNumber(input);
     }
 }
