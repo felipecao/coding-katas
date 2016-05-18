@@ -14,10 +14,23 @@ public class NumberFactoryImpl implements NumberFactory {
             return new FizzNumber(input);
         }
 
-        if (input % 5 == 0) {
-            return new BuzzNumber(input);
+        Number result = buildBuzzNumber(input);
+        if (null != result) {
+            return result;
         }
 
         return new RegularNumber(input);
+    }
+
+    /**
+     * @param input integer to build the number from
+     * @return null if integer input is not supported
+     */
+    private Number buildBuzzNumber(Integer input) {
+        Number result = null;
+        if (input % 5 == 0) {
+            result = new BuzzNumber(input);
+        }
+        return result;
     }
 }
