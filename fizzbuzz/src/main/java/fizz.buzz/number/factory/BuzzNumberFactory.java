@@ -1,26 +1,16 @@
 package fizz.buzz.number.factory;
 
-import fizz.buzz.number.*;
-import fizz.buzz.number.Number;
+import fizz.buzz.number.BuzzNumber;
 
-/**
- * Created by felipe on 5/20/16.
- */
-public class BuzzNumberFactory implements NumberFactory, NumberProcessor {
-
-    private NumberFactory successor;
+public class BuzzNumberFactory extends AbstractNumberFactory {
 
     @Override
-    public Number build(Integer input) {
-        if (input % 5 == 0) {
-            return new BuzzNumber(input);
-        }
-
-        return successor.build(input);
+    public Integer getDivisor() {
+        return 5;
     }
 
     @Override
-    public void setSuccessor(NumberFactory nextFactory) {
-        successor = nextFactory;
+    public Class getNumberClass() {
+        return BuzzNumber.class;
     }
 }
