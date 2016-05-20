@@ -1,7 +1,7 @@
 package fizz.buzz.number.factory;
 
-import fizz.buzz.number.*;
 import fizz.buzz.number.Number;
+import fizz.buzz.number.NumberFactory;
 
 public class NumberFactoryImpl implements NumberFactory {
 

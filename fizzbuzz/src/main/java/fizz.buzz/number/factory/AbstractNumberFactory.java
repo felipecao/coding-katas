@@ -1,8 +1,7 @@
 package fizz.buzz.number.factory;
 
-import fizz.buzz.number.BuzzNumber;
-import fizz.buzz.number.NumberFactory;
 import fizz.buzz.number.Number;
+import fizz.buzz.number.NumberFactory;
 
 import java.lang.reflect.InvocationTargetException;
 
