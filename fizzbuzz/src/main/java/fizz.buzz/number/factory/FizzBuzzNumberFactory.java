@@ -9,7 +9,7 @@ public class FizzBuzzNumberFactory implements NumberFactory, NumberProcessor {
 
     @Override
     public Number build(Integer input) {
-        if (input % 3 == 0 && input % 5 == 0) {
+        if (input % 15 == 0) {
             return new FizzBuzzNumber(input);
         }
 
