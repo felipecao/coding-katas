@@ -4,20 +4,22 @@ import fizz.buzz.number.*;
 import fizz.buzz.number.Number;
 
 public class NumberFactoryImpl implements NumberFactory {
+
+    private FizzBuzzNumberFactory numberFactory;
+
+    public NumberFactoryImpl() {
+        RegularNumberFactory regularFactory = new RegularNumberFactory();
+        BuzzNumberFactory buzzFactory = new BuzzNumberFactory();
+        FizzNumberFactory fizzFactory = new FizzNumberFactory();
+
+        numberFactory = new FizzBuzzNumberFactory();
+
+        buzzFactory.setSuccessor(regularFactory);
+        fizzFactory.setSuccessor(buzzFactory);
+        numberFactory.setSuccessor(fizzFactory);
+    }
+
     public Number build(Integer input) {
-
-        if (input % 3 == 0 && input % 5 == 0) {
-            return new FizzBuzzNumber(input);
-        }
-
-        if (input % 3 == 0) {
-            return new FizzNumber(input);
-        }
-
-        if (input % 5 == 0) {
-            return new BuzzNumber(input);
-        }
-
-        return new RegularNumber(input);
+        return numberFactory.build(input);
     }
 }
