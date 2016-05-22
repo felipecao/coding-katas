@@ -18,7 +18,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure because input is empty"() {
@@ -29,7 +29,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure because input is empty string"() {
@@ -40,7 +40,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to invalid price"() {
@@ -51,7 +51,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to invalid type"() {
@@ -62,7 +62,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to type with more than one char"() {
@@ -73,7 +73,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to absent type"() {
@@ -84,7 +84,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to floating quantity"() {
@@ -95,7 +95,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "return original input and say status failure due to absent quote"() {
@@ -106,7 +106,7 @@ class OrderStringParserShould extends Specification {
         def result = parser.parse(input)
 
         then:
-        [status: "failure", originalInput: input] == result
+        [status: "failure"] == result
     }
 
     def "say status success and return an order amount of 3500"() {

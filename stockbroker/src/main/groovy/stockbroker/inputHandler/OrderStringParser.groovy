@@ -10,12 +10,12 @@ class OrderStringParser implements OrderParser {
     def parse(String userInput) {
 
         if (inputIsInvalid(userInput)) {
-            return [status: "failure", originalInput: userInput]
+            return [status: "failure"] // FIXME do not use map
         }
 
         Integer totalOrderAmount = calculateTotalOrderAmountFromInput(userInput)
 
-        return [status: "success", totalOrderAmount: totalOrderAmount]
+        return [status: "success", totalOrderAmount: totalOrderAmount] // FIXME do not use map
     }
 
     private Boolean inputIsInvalid(String userInput) {
