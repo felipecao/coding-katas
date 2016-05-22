@@ -1,0 +1,28 @@
+
+apply plugin: 'groovy'
+
+jar {
+	baseName = 'stockbroker'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.codehaus.groovy:groovy-all:2.4.6'
+
+	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:1.10.19'
+	testCompile 'com.tngtech.java:junit-dataprovider:1.10.0'
+	testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.12'
+}
