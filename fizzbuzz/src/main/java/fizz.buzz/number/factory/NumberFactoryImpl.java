@@ -8,19 +8,18 @@ public class NumberFactoryImpl implements NumberFactory {
     private FizzBuzzNumberFactory numberFactory;
 
     public NumberFactoryImpl() {
-        numberFactory = new FizzBuzzNumberFactory();
-
-        setupProcessingChain();
+        chainFactories();
     }
 
-    private void setupProcessingChain() {
-        RegularNumberFactory regularFactory = new RegularNumberFactory();
-        BuzzNumberFactory buzzFactory = new BuzzNumberFactory();
+    private void chainFactories() {
         FizzNumberFactory fizzFactory = new FizzNumberFactory();
+        BuzzNumberFactory buzzFactory = new BuzzNumberFactory();
+        RegularNumberFactory regularFactory = new RegularNumberFactory();
 
-        buzzFactory.setSuccessor(regularFactory);
-        fizzFactory.setSuccessor(buzzFactory);
+        numberFactory = new FizzBuzzNumberFactory();
         numberFactory.setSuccessor(fizzFactory);
+        fizzFactory.setSuccessor(buzzFactory);
+        buzzFactory.setSuccessor(regularFactory);
     }
 
     public Number build(Integer input) {
