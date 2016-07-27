@@ -9,11 +9,11 @@ class SubsetsFinder {
         makeSureInputsAreValid()
 
         def subsets = []
+        List sortedIntegers = reverseSort(positiveIntegers)
 
-        positiveIntegers = reverseSort(positiveIntegers)
-        positiveIntegers = removeElementsThatAreGreaterThanX(positiveIntegers, upperBoundary)
+        sortedIntegers = removeElementsThatAreGreaterThanX(sortedIntegers, upperBoundary)
 
-        positiveIntegers.each {
+        sortedIntegers.each {
             // subsets << combinationsBasedOnX(positiveIntegers, upperBoundary)
         }
 
@@ -37,13 +37,13 @@ class SubsetsFinder {
         }
     }
 
-    private int[] reverseSort(int[] arr) {
+    private List reverseSort(int[] arr) {
         return (arr as List).sort { a, b ->
             b <=> a
         }
     }
 
-    private int[] removeElementsThatAreGreaterThanX(int[] a, int x) {
+    private List removeElementsThatAreGreaterThanX(List<Integer> a, int x) {
         return a.findAll {
             it <= x
         }.collect()
