@@ -37,11 +37,15 @@ class SubsetsFinder {
         }
     }
 
-    private int[] reverseSort(int[] a) {
-        return a
+    private int[] reverseSort(int[] arr) {
+        return (arr as List).sort { a, b ->
+            b <=> a
+        }
     }
 
     private int[] removeElementsThatAreGreaterThanX(int[] a, int x) {
-        return a
+        return a.findAll {
+            it <= x
+        }.collect()
     }
 }
