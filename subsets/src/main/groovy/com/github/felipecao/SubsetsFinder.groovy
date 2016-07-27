@@ -9,7 +9,7 @@ class SubsetsFinder {
         makeSureInputsAreValid()
 
         def subsets = []
-        List sortedIntegers = reverseSort(positiveIntegers)
+        List<Integer> sortedIntegers = reverseSort(positiveIntegers)
 
         sortedIntegers = removeElementsThatAreGreaterThanX(sortedIntegers, upperBoundary)
 
@@ -37,7 +37,7 @@ class SubsetsFinder {
         }
     }
 
-    private List reverseSort(int[] arr) {
+    private List<Integer> reverseSort(int[] arr) {
         return (arr as List).sort { a, b ->
             b <=> a
         }
