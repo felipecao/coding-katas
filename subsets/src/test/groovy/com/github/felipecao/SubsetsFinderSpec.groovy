@@ -126,4 +126,19 @@ class SubsetsFinderSpec extends Specification {
         [[11, 9, 8]] == subsets
     }
 
+    def "x = 28, a = [2, 8, 3, 9, 11, 6] ==> [[8, 9, 11]] is returned"() {
+        given:
+        int x = 28
+        int[] a = [2, 8, 3, 9, 11, 6]
+
+        and:
+        finder = new SubsetsFinder(x, a)
+
+        when:
+        List subsets = finder.find()
+
+        then:
+        [[11, 9, 8], [9, 8, 6, 3, 2]] == subsets
+    }
+
 }
