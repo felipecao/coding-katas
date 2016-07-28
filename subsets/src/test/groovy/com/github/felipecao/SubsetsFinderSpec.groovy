@@ -36,7 +36,7 @@ class SubsetsFinderSpec extends Specification {
         [[2]] == subsets
     }
 
-    def "x = 3, a = [1, 2] ==> [[2, 1]] is returned"() {
+    def "x = 3, a = [1, 2] ==> [[1, 2]] is returned"() {
         given:
         int x = 3
         int[] a = [1, 2]
@@ -48,10 +48,10 @@ class SubsetsFinderSpec extends Specification {
         List subsets = finder.find()
 
         then:
-        [[2, 1]] == subsets
+        [[1, 2]] == subsets
     }
 
-    def "x = 3, a = [1, 1, 2] ==> [2, 1] is returned"() {
+    def "x = 3, a = [1, 1, 2] ==> [1, 2] is returned"() {
         given:
         int x = 3
         int[] a = [1, 1, 2]
@@ -63,7 +63,7 @@ class SubsetsFinderSpec extends Specification {
         List subsets = finder.find()
 
         then:
-        [[2, 1]] == subsets
+        [[1, 2]] == subsets
     }
 
     def "x = 3, a = [1, 1, 1] ==> [[1, 1, 1]] is returned"() {
@@ -108,7 +108,7 @@ class SubsetsFinderSpec extends Specification {
         List subsets = finder.find()
 
         then:
-        [[3, 2], [2, 2, 1]] == subsets
+        [[2, 2, 1], [3, 2]] == subsets
     }
 
     def "x = 29, a = [2, 8, 3, 9, 11] ==> [[8, 9, 11]] is returned"() {
@@ -123,7 +123,7 @@ class SubsetsFinderSpec extends Specification {
         List subsets = finder.find()
 
         then:
-        [[11, 9, 8]] == subsets
+        [[8, 9, 11]] == subsets
     }
 
     def "x = 28, a = [2, 8, 3, 9, 11, 6] ==> [[8, 9, 11]] is returned"() {
@@ -138,7 +138,7 @@ class SubsetsFinderSpec extends Specification {
         List subsets = finder.find()
 
         then:
-        [[11, 9, 8], [9, 8, 6, 3, 2]] == subsets
+        [[8, 3, 11, 6], [8, 9, 11], [2, 8, 3, 9, 6], [2, 9, 11, 6]] == subsets
     }
 
 }

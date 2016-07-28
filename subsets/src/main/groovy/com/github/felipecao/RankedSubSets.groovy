@@ -3,29 +3,19 @@ package com.github.felipecao
 class RankedSubSets {
 
     private List<RankedSubSet> rankedSubsets = []
-    private int upperBoundary
 
     private RankedSubSets() {
 
     }
 
-    static RankedSubSets buildPossibleSubsetsRankedByDistanceToUpperBoundary(int[] numbers, int upperBoundary) {
+    static RankedSubSets buildPossibleSubsetsRankedByDistanceToUpperBoundary(List<Integer> numbers, int upperBoundary) {
 
         RankedSubSets instance = new RankedSubSets()
 
-        instance.upperBoundary = upperBoundary
-
-        for (int i = 0; i < numbers.size(); i++) {
-
-            def subset = [numbers[i]]
-
-            for (int j = i; j < numbers.size(); j++) {
-                if (i != j && (numbers[j] + subset.sum() <= upperBoundary)) {
-                    subset << numbers[j]
-                }
-            }
-
-            instance.rankedSubsets << new RankedSubSet(subset, upperBoundary)
+        numbers.subsequences().findAll {
+            it.sum() <= upperBoundary
+        }.each {
+            instance.rankedSubsets << new RankedSubSet(it, upperBoundary)
         }
 
         return instance

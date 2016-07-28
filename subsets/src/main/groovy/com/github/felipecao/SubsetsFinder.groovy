@@ -11,9 +11,8 @@ class SubsetsFinder {
     }
 
     List find() {
-        int[] sortedIntegersThatMatter = positiveIntegers
+        List<Integer> sortedIntegersThatMatter = positiveIntegers
                 .removeElementsThatAreGreaterThan(upperBoundary)
-                .reverseSort()
                 .get()
 
         if (!sortedIntegersThatMatter || sortedIntegersThatMatter.size() == 1) {
