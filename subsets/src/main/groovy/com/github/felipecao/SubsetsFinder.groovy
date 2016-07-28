@@ -14,22 +14,23 @@ class SubsetsFinder {
         int[] sortedIntegersThatMatter = positiveIntegers
                 .removeElementsThatAreGreaterThan(upperBoundary)
                 .reverseSort()
-                .getArray()
+                .get()
 
         if (!sortedIntegersThatMatter || sortedIntegersThatMatter.size() == 1) {
             return [sortedIntegersThatMatter]
         }
 
         List<RankedSubset> rankedSubsets = buildPossibleSubsetsAndRankByDistanceToUpperBoundary(sortedIntegersThatMatter)
-        int smallestDistance = extractSmallestDistance(rankedSubsets)
 
-        return rankedSubsets.findAll {
-            it.distanceToUpperBoundary == smallestDistance
-        }.collect().numbers
+        return rankedSubsetsClosestToUpperBoundary(rankedSubsets)
     }
 
-    int extractSmallestDistance(List<RankedSubset> rankedSubsets) {
-        return rankedSubsets.distanceToUpperBoundary.min()
+    private Collection<List> rankedSubsetsClosestToUpperBoundary(List<RankedSubset> rankedSubsets) {
+        int smallestDistance = smallestDistanceToUpperBoundary(rankedSubsets)
+        
+        rankedSubsets.findAll {
+            it.distanceToUpperBoundary == smallestDistance
+        }.collect().numbers
     }
 
     private List<RankedSubset> buildPossibleSubsetsAndRankByDistanceToUpperBoundary(int[] numbers) {
@@ -46,22 +47,14 @@ class SubsetsFinder {
                 }
             }
 
-            rankedSubsets << new RankedSubset(
-                    distanceToUpperBoundary: calculateDistanceToUpperBoundary(subset),
-                    numbers: subset
-            )
+            rankedSubsets << new RankedSubset(subset, upperBoundary)
         }
 
         return rankedSubsets
     }
 
-    private int calculateDistanceToUpperBoundary(List<Integer> subset) {
-        return upperBoundary - subset.sum()
-    }
-
-    private static class RankedSubset {
-        int distanceToUpperBoundary
-        List numbers
+    private int smallestDistanceToUpperBoundary(List<RankedSubset> rankedSubsets) {
+        return rankedSubsets.distanceToUpperBoundary.min()
     }
 
 }

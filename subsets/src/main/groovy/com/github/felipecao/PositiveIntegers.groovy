@@ -12,11 +12,9 @@ class PositiveIntegers {
     }
 
     PositiveIntegers reverseSort() {
-        List reverseSortedNumbers = numbers.sort { a, b ->
+        return new PositiveIntegers(numbers.sort { a, b ->
             b <=> a
-        }
-
-        return new PositiveIntegers(reverseSortedNumbers)
+        })
     }
 
     PositiveIntegers removeElementsThatAreGreaterThan(int upperBoundary) {
@@ -25,11 +23,7 @@ class PositiveIntegers {
         }.collect())
     }
 
-    List<Integer> get() {
-        return new ArrayList<Integer>(numbers)
-    }
-
-    int[] getArray() {
+    int[] get() {
         return numbers as int[]
     }
 }
