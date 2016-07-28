@@ -24,6 +24,6 @@ class PositiveIntegers {
     }
 
     int[] get() {
-        return numbers as int[]
+        return new ArrayList<>(numbers) as int[]
     }
 }

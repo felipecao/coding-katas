@@ -11,7 +11,6 @@ class RankedSubset {
         this.upperBoundary = upperBoundary
     }
 
-
     private int calculateDistanceToUpperBoundary(List<Integer> subset) {
         return upperBoundary - subset.sum()
     }
