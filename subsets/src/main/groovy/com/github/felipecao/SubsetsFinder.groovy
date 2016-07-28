@@ -11,15 +11,15 @@ class SubsetsFinder {
     }
 
     List find() {
-        List<Integer> sortedIntegersThatMatter = positiveIntegers
+        List<Integer> numbersThatMatter = positiveIntegers
                 .removeElementsThatAreGreaterThan(upperBoundary)
                 .get()
 
-        if (!sortedIntegersThatMatter || sortedIntegersThatMatter.size() == 1) {
-            return [sortedIntegersThatMatter]
+        if (!numbersThatMatter || numbersThatMatter.size() == 1) {
+            return [numbersThatMatter]
         }
 
-        RankedSubSets rankedSubSets = RankedSubSets.buildPossibleSubsetsRankedByDistanceToUpperBoundary(sortedIntegersThatMatter, upperBoundary)
+        RankedSubSets rankedSubSets = RankedSubSets.buildPossibleSubsetsRankedByDistanceToUpperBoundary(numbersThatMatter, upperBoundary)
 
         return rankedSubSets.fetchClosestToUpperBoundary()
     }
