@@ -1,11 +1,11 @@
 package com.github.felipecao
 
-class RankedSubset {
+class RankedSubSet {
     private int distanceToUpperBoundary
     private List numbers
     private int upperBoundary
 
-    RankedSubset(List numbers, int upperBoundary) {
+    RankedSubSet(List numbers, int upperBoundary) {
         this.distanceToUpperBoundary = calculateDistanceToUpperBoundary(numbers)
         this.numbers = numbers
         this.upperBoundary = upperBoundary

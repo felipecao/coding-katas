@@ -2,7 +2,7 @@ package com.github.felipecao
 
 class RankedSubSets {
 
-    private List<RankedSubset> rankedSubsets = []
+    private List<RankedSubSet> rankedSubsets = []
     private int upperBoundary
 
     private RankedSubSets() {
@@ -25,7 +25,7 @@ class RankedSubSets {
                 }
             }
 
-            instance.rankedSubsets << new RankedSubset(subset, upperBoundary)
+            instance.rankedSubsets << new RankedSubSet(subset, upperBoundary)
         }
 
         return instance
@@ -39,7 +39,7 @@ class RankedSubSets {
         }.collect().numbers
     }
 
-    private int smallestDistanceToUpperBoundary(List<RankedSubset> rankedSubsets) {
+    private int smallestDistanceToUpperBoundary(List<RankedSubSet> rankedSubsets) {
         return rankedSubsets.distanceToUpperBoundary.min()
     }
 }

@@ -20,9 +20,9 @@ class SubsetsFinder {
             return [sortedIntegersThatMatter]
         }
 
-        RankedSubSets rankedSubsets = RankedSubSets.buildPossibleSubsetsRankedByDistanceToUpperBoundary(sortedIntegersThatMatter, upperBoundary)
+        RankedSubSets rankedSubSets = RankedSubSets.buildPossibleSubsetsRankedByDistanceToUpperBoundary(sortedIntegersThatMatter, upperBoundary)
 
-        return rankedSubsets.fetchClosestToUpperBoundary()
+        return rankedSubSets.fetchClosestToUpperBoundary()
     }
 
 }
