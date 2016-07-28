@@ -6,128 +6,109 @@ class SubsetsFinderSpec extends Specification {
 
     SubsetsFinder finder
 
-	def "x < 0 ==> an exception is thrown"(){
-        given:
-        int x = (randomPositiveInteger() * -1)
-        Integer[] a = [1, 2]
-
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
-        when:
-        finder.find()
-
-        then:
-        thrown(IllegalArgumentException)
-    }
-
-	def "x = 0 ==> an exception is thrown"(){
-        given:
-        int x = 0
-        Integer[] a = [1, 2]
-
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
-        when:
-        finder.find()
-
-        then:
-        thrown(IllegalArgumentException)
-    }
-
-	def "x > 0, 'a' is empty ==> an exception is thrown"(){
-        given:
-        int x = randomPositiveInteger()
-        Integer[] a = []
-
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
-        when:
-        finder.find()
-
-        then:
-        thrown(IllegalArgumentException)
-    }
-
-    def "x = 1 a = [1] ==> a single subset is returned"(){
+    def "x = 1 a = [1] ==> a single subset is returned"() {
         given:
         int x = 1
-        Integer[] a = [1]
+        int[] a = [1]
 
         and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
+        finder = new SubsetsFinder(x, a)
 
         when:
         List subsets = finder.find()
 
         then:
-        a as List == subsets
+        [[1]] == subsets
     }
 
-    def "x = 2, a = [1, 2] ==> empty list is returned"(){
+    def "x = 2, a = [1, 2] ==> [[2]] is returned"() {
         given:
         int x = 2
-        Integer[] a = [1, 2]
+        int[] a = [1, 2]
+
+        and:
+        finder = new SubsetsFinder(x, a)
 
         when:
         List subsets = finder.find()
 
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
         then:
-        [] == subsets
+        [[2]] == subsets
     }
 
-    def "x = 3, a = [1, 2] ==> a is returned"(){
+    def "x = 3, a = [1, 2] ==> [[2, 1]] is returned"() {
         given:
         int x = 3
-        Integer[] a = [1, 2]
+        int[] a = [1, 2]
+
+        and:
+        finder = new SubsetsFinder(x, a)
 
         when:
         List subsets = finder.find()
 
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
         then:
-        a as List == subsets
+        [[2, 1]] == subsets
     }
 
-    def "x = 3, a = [1, 1, 2] ==> [1, 2] is returned"(){
+    def "x = 3, a = [1, 1, 2] ==> [2, 1] is returned"() {
         given:
         int x = 3
-        Integer[] a = [1, 1, 2]
+        int[] a = [1, 1, 2]
+
+        and:
+        finder = new SubsetsFinder(x, a)
 
         when:
         List subsets = finder.find()
 
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
         then:
-        [1, 2] == subsets
+        [[2, 1]] == subsets
     }
 
-    def "x = 3, a = [1, 1, 1] ==> [1, 1, 1] is returned"(){
+    def "x = 3, a = [1, 1, 1] ==> [[1, 1, 1]] is returned"() {
         given:
         int x = 3
-        Integer[] a = [1, 1, 1]
+        int[] a = [1, 1, 1]
+
+        and:
+        finder = new SubsetsFinder(x, a)
 
         when:
         List subsets = finder.find()
 
-        and:
-        finder = new SubsetsFinder(upperBoundary: x, positiveIntegers: a)
-
         then:
-        a == subsets
+        [[1, 1, 1]] == subsets
     }
 
-    private int randomPositiveInteger() {
-        new Random().nextInt(50)
+    def "x = 4, a = [8, 3, 2] ==> [[3]] is returned"() {
+        given:
+        int x = 4
+        int[] a = [8, 3, 2]
+
+        and:
+        finder = new SubsetsFinder(x, a)
+
+        when:
+        List subsets = finder.find()
+
+        then:
+        [[3]] == subsets
+    }
+
+    def "x = 29, a = [2, 8, 3, 9, 11] ==> [[8, 9, 11]] is returned"() {
+        given:
+        int x = 29
+        int[] a = [2, 8, 3, 9, 11]
+
+        and:
+        finder = new SubsetsFinder(x, a)
+
+        when:
+        List subsets = finder.find()
+
+        then:
+        [[11, 9, 8]] == subsets
     }
 
 }
