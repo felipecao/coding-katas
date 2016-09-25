@@ -2,8 +2,8 @@ package fizz.buzz;
 
 import fizz.buzz.number.Number;
 import fizz.buzz.number.NumberFactory;
-import fizz.buzz.number.factory.NumberFactoryImpl;
 import fizz.buzz.number.NumbersImpl;
+import fizz.buzz.number.factory.NumberFactoryImpl;
 
 import java.util.SortedSet;
 
