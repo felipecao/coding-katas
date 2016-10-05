@@ -4,7 +4,9 @@ class Solution {
 
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
 
-    if (routesCollection.length == 1) {
+    val drivers = DriverFactory.buildFromRoutesCollection(routesCollection)
+
+    if (drivers.count == 1) {
       return Solution.NEVER
     }
 
