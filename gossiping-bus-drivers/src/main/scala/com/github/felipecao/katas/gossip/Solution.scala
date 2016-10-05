@@ -19,7 +19,7 @@ class Solution {
       return "1"
     }
 
-    if (routesCollection(0).last == routesCollection(1).last) {
+    if (drivers.first.get.lastStop == drivers.get(1).get.lastStop) {
       return "2"
     }
 
