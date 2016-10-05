@@ -1,8 +1,6 @@
 package com.github.felipecao.katas.gossip
 
 class Drivers (collection: Seq[Driver]) {
-  def first = ???
-
   var allDrivers: Seq[Driver] = collection
 
   val count: Int = {
@@ -17,5 +15,7 @@ class Drivers (collection: Seq[Driver]) {
 
     Some(allDrivers(index))
   }
+
+  def first = get(0)
 
 }
