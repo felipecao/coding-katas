@@ -7,7 +7,7 @@ import scala.util.Random
 class AcceptanceTests extends FlatSpec with Matchers {
 
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
-    if (routesCollection.length > 1) {
+    if (routesCollection.length > 1 && (routesCollection(0) == routesCollection(1))) {
       return "1"
     }
     "never"
