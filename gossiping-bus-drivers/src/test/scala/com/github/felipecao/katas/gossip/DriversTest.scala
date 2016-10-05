@@ -28,4 +28,10 @@ class DriversTest extends FlatSpec with Matchers {
     Option.empty[Driver] shouldBe (drivers.get(3))
   }
 
+  "Drivers#first" should "return empty for an empty collection" in {
+    val drivers = new Drivers(Seq())
+
+    Option.empty[Driver] shouldBe (drivers.first)
+  }
+
 }
