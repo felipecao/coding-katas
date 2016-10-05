@@ -101,4 +101,15 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe NEVER
   }
 
+  "A collection of routes with 3 drivers with different route sizes where the first meets the second again" should "output '3'" in {
+    def routesCollection = Seq(
+      Seq(5, 2, 4),
+      Seq(5, 6, 4),
+      Seq(8, 6, 3, 8)
+    )
+    def output = getOutputForRoutesCollection(routesCollection)
+
+    output shouldBe "3"
+  }
+
 }
