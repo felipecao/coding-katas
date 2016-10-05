@@ -58,4 +58,16 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe NEVER
   }
 
+  "A collection of routes with 3 drivers with two stops where they have the last stop in common" should "output '2'" in {
+    val lastStop = 2
+    def routesCollection = Seq(
+      Seq(1, lastStop),
+      Seq(3, lastStop),
+      Seq(5, lastStop)
+    )
+    def output = getOutputForRoutesCollection(routesCollection)
+
+    output shouldBe "2"
+  }
+
 }
