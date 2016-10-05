@@ -14,7 +14,8 @@ class Solution {
       return "3"
     }
 
-    if (routesCollection(0).head == routesCollection(1).head && routesCollection(0).length == routesCollection(1).length) {
+    if (drivers.first.get.firstStop == drivers.get(1).get.firstStop
+      && drivers.first.get.totalStops == drivers.get(1).get.totalStops) {
       return "1"
     }
 
