@@ -28,7 +28,7 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe NEVER
   }
 
-  "A collection of routes with two drivers with one stop and both have the same stop" should "output '1'" in {
+  "A collection of routes with two drivers with one stop where both have the same stop" should "output '1'" in {
     val busStop = 1
     def routesCollection = Seq(Seq(busStop), Seq(busStop))
     def output = getOutputForRoutesCollection(routesCollection)
@@ -36,14 +36,14 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe "1"
   }
 
-  "A collection of routes with two drivers with one stop and they don't have the same stop" should "output 'never'" in {
+  "A collection of routes with two drivers with one stop where they don't have the same stop" should "output 'never'" in {
     def routesCollection = Seq(Seq(1), Seq(2))
     def output = getOutputForRoutesCollection(routesCollection)
 
     output shouldBe NEVER
   }
 
-  "A collection of routes with two drivers with two stops and both start at the same stop" should "output '1'" in {
+  "A collection of routes with two drivers with two stops where both start at the same stop" should "output '1'" in {
     val busStop = 1
     def routesCollection = Seq(Seq(busStop, Random.nextInt()), Seq(busStop, Random.nextInt()))
     def output = getOutputForRoutesCollection(routesCollection)
@@ -51,7 +51,7 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe "1"
   }
 
-  "A collection of routes with two drivers with two stops and they don't have a stop in common" should "output 'never'" in {
+  "A collection of routes with two drivers with two stops where they don't have a stop in common" should "output 'never'" in {
     def routesCollection = Seq(Seq(1, 2), Seq(3, 4))
     def output = getOutputForRoutesCollection(routesCollection)
 
