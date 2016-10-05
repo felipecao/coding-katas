@@ -9,9 +9,15 @@ class AcceptanceTests extends FlatSpec with Matchers {
   private val NEVER: String = "never"
 
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
-    if (routesCollection.length > 1 && (routesCollection(0) == routesCollection(1))) {
+
+    if (routesCollection.length == 1) {
+      return NEVER
+    }
+
+    if (routesCollection(0).head == routesCollection(1).head) {
       return "1"
     }
+
     NEVER
   }
 
