@@ -16,4 +16,16 @@ class DriversTest extends FlatSpec with Matchers {
     collection(0) shouldBe (drivers.get(0))
   }
 
+  "Drivers#get" should "return empty for a non-existing index" in {
+    val collection = Seq(
+      new Driver(Route(Seq(1))),
+      new Driver(Route(Seq(1, 2))),
+      new Driver(Route(Seq(1, 3)))
+    )
+
+    val drivers = new Drivers(collection)
+
+    collection(4) shouldBe (Option.empty[Driver])
+  }
+
 }
