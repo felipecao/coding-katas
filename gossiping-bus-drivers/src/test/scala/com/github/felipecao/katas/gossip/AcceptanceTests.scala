@@ -12,10 +12,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     solution = Some(new Solution)
   }
 
-  private val NEVER: String = "never"
-
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
-
     solution.get.getOutputForRoutesCollection(routesCollection)
   }
 
@@ -23,7 +20,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     def routesCollection = Seq(Seq.fill(Random.nextInt(100))(Random.nextInt(100)))
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe NEVER
+    output shouldBe Solution.NEVER
   }
 
   "A collection of routes with two drivers with one stop where both have the same stop" should "output '1'" in {
@@ -38,7 +35,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     def routesCollection = Seq(Seq(1), Seq(2))
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe NEVER
+    output shouldBe Solution.NEVER
   }
 
   "A collection of routes with two drivers with two stops where both start at the same stop" should "output '1'" in {
@@ -53,7 +50,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     def routesCollection = Seq(Seq(1, 2), Seq(3, 4))
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe NEVER
+    output shouldBe Solution.NEVER
   }
 
   "A collection of routes with 3 drivers with two stops where they have the last stop in common" should "output '2'" in {
@@ -77,7 +74,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     )
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe NEVER
+    output shouldBe Solution.NEVER
   }
 
   "A collection of routes with 3 drivers with different route sizes where the first never meets the third" should "output 'never'" in {
@@ -88,7 +85,7 @@ class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
     )
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe NEVER
+    output shouldBe Solution.NEVER
   }
 
   "A collection of routes with 3 drivers with different route sizes where the first meets the second again" should "output '3'" in {
