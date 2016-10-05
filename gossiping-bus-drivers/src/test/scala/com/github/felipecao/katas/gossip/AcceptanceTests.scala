@@ -14,7 +14,7 @@ class AcceptanceTests extends FlatSpec with Matchers {
       return NEVER
     }
 
-    if (routesCollection(0).head == routesCollection(1).head) {
+    if (routesCollection(0).head == routesCollection(1).head && routesCollection(0).length == routesCollection(1).length) {
       return "1"
     }
 
