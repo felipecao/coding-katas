@@ -4,4 +4,8 @@ case class Driver (route: Route) {
   def firstStop = route.firstStop
   def lastStop = route.lastStop
   def totalStops = route.totalStops
+
+  def clockHasTicked(): Unit = {
+
+  }
 }
