@@ -6,18 +6,20 @@ import scala.util.Random
 
 class AcceptanceTests extends FlatSpec with Matchers {
 
+  private val NEVER: String = "never"
+
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
     if (routesCollection.length > 1 && (routesCollection(0) == routesCollection(1))) {
       return "1"
     }
-    "never"
+    NEVER
   }
 
   "A collection of routes with just one driver" should "output 'never' regardless of the number of stops" in {
     def routesCollection = Seq(Seq.fill(Random.nextInt(100))(Random.nextInt(100)))
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output should be ("never")
+    output should be (NEVER)
   }
 
   "A collection of routes with two drivers with one stop and both have the same stop" should "output '1'" in {
@@ -32,7 +34,7 @@ class AcceptanceTests extends FlatSpec with Matchers {
     def routesCollection = Seq(Seq(1), Seq(2))
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output should be ("never")
+    output should be (NEVER)
   }
 
 }
