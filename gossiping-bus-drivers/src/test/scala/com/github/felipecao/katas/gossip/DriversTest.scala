@@ -13,7 +13,7 @@ class DriversTest extends FlatSpec with Matchers {
 
     val drivers = new Drivers(collection)
 
-    collection(0) shouldBe (drivers.get(0))
+    Some(collection(0)) shouldBe (drivers.get(0))
   }
 
   "Drivers#get" should "return empty for a non-existing index" in {
@@ -25,7 +25,7 @@ class DriversTest extends FlatSpec with Matchers {
 
     val drivers = new Drivers(collection)
 
-    collection(4) shouldBe (Option.empty[Driver])
+    Option.empty[Driver] shouldBe (drivers.get(3))
   }
 
 }

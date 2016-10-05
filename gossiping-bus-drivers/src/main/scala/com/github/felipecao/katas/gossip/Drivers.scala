@@ -8,7 +8,13 @@ class Drivers (collection: Seq[Driver]) {
     allDrivers.length
   }
 
-  def get(index: Int) = {
-    allDrivers(index)
+  def get(index: Int): Option[Driver] = {
+
+    if(index < 0 || index >= count) {
+      return Option.empty[Driver]
+    }
+
+    Some(allDrivers(index))
   }
+
 }
