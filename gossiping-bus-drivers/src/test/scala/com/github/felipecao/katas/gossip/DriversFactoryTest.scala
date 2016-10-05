@@ -18,8 +18,10 @@ class DriversFactoryTest extends FlatSpec with Matchers {
 
     drivers.count should be (2)
     drivers.allDrivers should be (
-      Seq(Driver(Route(Seq(1)))),
-      Seq(Driver(Route(Seq(2))))
+      Seq(
+        Driver(Route(Seq(1))),
+        Driver(Route(Seq(2)))
+      )
     )
   }
 }
