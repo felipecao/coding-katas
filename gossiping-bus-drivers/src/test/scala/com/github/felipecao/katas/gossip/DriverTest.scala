@@ -16,4 +16,10 @@ class DriverTest extends FlatSpec with Matchers {
     driver.lastStop should be (3)
   }
 
+  "Driver#firstStop" should "return the first stop driver's route" in {
+    val driver = new Driver(Route(Seq(1, 2, 3)))
+
+    driver.firstStop should be (1)
+  }
+
 }
