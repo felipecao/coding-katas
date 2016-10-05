@@ -6,7 +6,9 @@ import scala.util.Random
 
 class AcceptanceTests extends FlatSpec with Matchers {
 
-  def getOutputForRoutesCollection(routesCollection: Seq[Int]): String = ???
+  def getOutputForRoutesCollection(routesCollection: Seq[Int]): String = {
+    "never"
+  }
 
   "A collection of routes with just one driver" should "output 'never' regardless of the number of stops" in {
     def routesCollection = Seq.fill(Random.nextInt(100))(Random.nextInt(100))
