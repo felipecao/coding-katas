@@ -10,7 +10,7 @@ class Solution {
       return Solution.NEVER
     }
 
-    if (drivers.first.get.totalStops == 3 && routesCollection(0).last == routesCollection(1).last) {
+    if (drivers.first.get.totalStops == 3 && drivers.first.get.lastStop == drivers.get(1).get.lastStop) {
       return "3"
     }
 
