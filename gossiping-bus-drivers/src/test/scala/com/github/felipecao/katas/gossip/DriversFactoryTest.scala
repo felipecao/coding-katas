@@ -11,4 +11,15 @@ class DriversFactoryTest extends FlatSpec with Matchers {
     drivers.count should be (1)
     drivers.allDrivers should be (Seq(Driver(Route(Seq(1)))))
   }
+
+  "DriversFactory" should "build a collection of two drivers with one route each" in {
+    def routesCollection = Seq(Seq(1), Seq(2))
+    def drivers = DriverFactory.buildFromRoutesCollection(routesCollection)
+
+    drivers.count should be (2)
+    drivers.allDrivers should be (
+      Seq(Driver(Route(Seq(1)))),
+      Seq(Driver(Route(Seq(2))))
+    )
+  }
 }
