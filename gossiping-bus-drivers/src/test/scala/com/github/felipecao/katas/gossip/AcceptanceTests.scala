@@ -28,4 +28,11 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output should be ("1")
   }
 
+  "A collection of routes with two drivers with one stop and they don't have the same stop" should "output 'never'" in {
+    def routesCollection = Seq(Seq(1), Seq(2))
+    def output = getOutputForRoutesCollection(routesCollection)
+
+    output should be ("never")
+  }
+
 }
