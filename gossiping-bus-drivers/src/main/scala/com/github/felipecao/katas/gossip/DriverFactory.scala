@@ -1,15 +1,17 @@
 package com.github.felipecao.katas.gossip
 
+import scala.collection.mutable.ListBuffer
+
 object DriverFactory {
-  def buildFromRoutesCollection(routes: Seq[Seq[Int]]): Drivers = {
+  def buildFromRoutesCollection(routesOfEachDriver: Seq[Seq[Int]]): Drivers = {
 
-    if(routes.length > 1) {
-      return new Drivers(Seq(
-        Driver(Route(Seq(1))),
-        Driver(Route(Seq(2)))
-      ))
-    }
+    var drivers = new ListBuffer[Driver]()
+    
+    routesOfEachDriver.foreach( routesOfOneDriver =>
+      drivers += new Driver(Route(routesOfOneDriver))
+    )
 
-    new Drivers(Seq(Driver(Route(Seq(1)))))
+    return new Drivers(drivers)
   }
+  
 }
