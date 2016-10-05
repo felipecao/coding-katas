@@ -90,16 +90,15 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output shouldBe NEVER
   }
 
-  "A collection of routes with 3 drivers with three stops where they only have the last stop in common" should "output '3'" in {
-    val stopInCommon = 5
+  "A collection of routes with 3 drivers with different route sizes where the first never meets the third" should "output 'never'" in {
     def routesCollection = Seq(
-      Seq(1, 2, stopInCommon),
-      Seq(4, 3, stopInCommon),
-      Seq(6, 2, stopInCommon)
+      Seq(5, 2),
+      Seq(5, 6, 4),
+      Seq(8, 6, 3, 8)
     )
     def output = getOutputForRoutesCollection(routesCollection)
 
-    output shouldBe "3"
+    output shouldBe NEVER
   }
 
 }
