@@ -18,6 +18,10 @@ class AcceptanceTests extends FlatSpec with Matchers {
       return "1"
     }
 
+    if (routesCollection(0).last == routesCollection(1).last) {
+      return "2"
+    }
+
     NEVER
   }
 
