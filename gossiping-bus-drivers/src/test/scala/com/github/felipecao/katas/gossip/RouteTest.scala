@@ -10,9 +10,15 @@ class RouteTest extends FlatSpec with Matchers {
     route.totalStops should be (3)
   }
 
-  "Route#lastStop" should "return the last stops contained in the route" in {
+  "Route#lastStop" should "return the last stop contained in the route" in {
     val route = Route(Seq(1, 2, 3))
 
     route.lastStop should be (3)
+  }
+
+  "Route#firstStop" should "return the first stop contained in the route" in {
+    val route = Route(Seq(1, 2, 3))
+
+    route.firstStop should be (1)
   }
 }
