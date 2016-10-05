@@ -37,4 +37,12 @@ class AcceptanceTests extends FlatSpec with Matchers {
     output should be (NEVER)
   }
 
+  "A collection of routes with two drivers with two stops and both start at the same stop" should "output '1'" in {
+    def busStop = 1
+    def routesCollection = Seq(Seq(busStop, Random.nextInt()), Seq(busStop, Random.nextInt()))
+    def output = getOutputForRoutesCollection(routesCollection)
+
+    output should be ("1")
+  }
+
 }
