@@ -1,32 +1,22 @@
 package com.github.felipecao.katas.gossip
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{BeforeAndAfter, Matchers, FlatSpec}
 
 import scala.util.Random
 
-class AcceptanceTests extends FlatSpec with Matchers {
+class AcceptanceTests extends FlatSpec with Matchers with BeforeAndAfter {
+
+  private var solution = Option.empty[Solution]
+
+  before {
+    solution = Some(new Solution)
+  }
 
   private val NEVER: String = "never"
 
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
 
-    if (routesCollection.length == 1) {
-      return NEVER
-    }
-
-    if (routesCollection(0).length == 3 && routesCollection(0).last == routesCollection(1).last) {
-      return "3"
-    }
-
-    if (routesCollection(0).head == routesCollection(1).head && routesCollection(0).length == routesCollection(1).length) {
-      return "1"
-    }
-
-    if (routesCollection(0).last == routesCollection(1).last) {
-      return "2"
-    }
-
-    NEVER
+    solution.get.getOutputForRoutesCollection(routesCollection)
   }
 
   "A collection of routes with just one driver" should "output 'never' regardless of the number of stops" in {
