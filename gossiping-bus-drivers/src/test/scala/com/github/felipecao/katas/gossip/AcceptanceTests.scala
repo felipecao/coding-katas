@@ -14,12 +14,12 @@ class AcceptanceTests extends FlatSpec with Matchers {
       return NEVER
     }
 
-    if (routesCollection(0).head == routesCollection(1).head && routesCollection(0).length == routesCollection(1).length) {
-      return "1"
+    if (routesCollection(0).length == 3 && routesCollection(0).last == routesCollection(1).last) {
+      return "3"
     }
 
-    if (routesCollection(0).length == 3 && routesCollection(0).last == routesCollection(1).last && routesCollection(1).last == routesCollection(2).last) {
-      return "3"
+    if (routesCollection(0).head == routesCollection(1).head && routesCollection(0).length == routesCollection(1).length) {
+      return "1"
     }
 
     if (routesCollection(0).last == routesCollection(1).last) {
