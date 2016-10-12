@@ -4,7 +4,7 @@ object DriverFactory {
   def buildFromRoutesCollection(routesOfEachDriver: Seq[Seq[Int]]): Drivers = {
     new Drivers(
       routesOfEachDriver
-        .map(routesOfOneDriver => new Driver(Route(routesOfOneDriver)))
+        .map(routesOfOneDriver => new Driver(new Route(routesOfOneDriver)))
     )
   }
 }

@@ -5,10 +5,20 @@ class Solution {
   def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
 
     val drivers = DriverFactory.buildFromRoutesCollection(routesCollection)
+    val clock = new Clock(drivers)
 
     if (drivers.count == 1) {
       return Solution.NEVER
     }
+
+    while (!clock.isTimeUp()) {
+      clock.tick()
+    }
+
+
+
+
+
 
     if (drivers.first.get.totalStops == 3 && drivers.first.get.lastStop == drivers.get(1).get.lastStop) {
       return "3"

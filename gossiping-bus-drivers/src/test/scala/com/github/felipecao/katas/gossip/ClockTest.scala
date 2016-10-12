@@ -20,4 +20,18 @@ class ClockTest extends FlatSpec with Matchers with MockitoSugar {
     verify(d3).clockHasTicked()
 
   }
+
+  "ClockTest#isTimeUp" should "be false until clock has ticked 480 times" in {
+    val clock = new Clock(new Drivers(Seq(mock[Driver])))
+
+    clock.isTimeUp() should be (false)
+
+    for( counter <- 1 to 480){
+      clock.isTimeUp() should be (false)
+      clock.tick()
+    }
+
+    clock.isTimeUp() should be (true)
+
+  }
 }

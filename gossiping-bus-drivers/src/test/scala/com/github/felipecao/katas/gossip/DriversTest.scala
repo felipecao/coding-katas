@@ -6,9 +6,9 @@ class DriversTest extends FlatSpec with Matchers {
 
   "Drivers#get" should "return the proper driver from the collection" in {
     val collection = Seq(
-      new Driver(Route(Seq(1))),
-      new Driver(Route(Seq(1, 2))),
-      new Driver(Route(Seq(1, 3)))
+      new Driver(new Route(Seq(1))),
+      new Driver(new Route(Seq(1, 2))),
+      new Driver(new Route(Seq(1, 3)))
     )
 
     val drivers = new Drivers(collection)
@@ -18,9 +18,9 @@ class DriversTest extends FlatSpec with Matchers {
 
   "Drivers#get" should "return empty for a non-existing index" in {
     val collection = Seq(
-      new Driver(Route(Seq(1))),
-      new Driver(Route(Seq(1, 2))),
-      new Driver(Route(Seq(1, 3)))
+      new Driver(new Route(Seq(1))),
+      new Driver(new Route(Seq(1, 2))),
+      new Driver(new Route(Seq(1, 3)))
     )
 
     val drivers = new Drivers(collection)
