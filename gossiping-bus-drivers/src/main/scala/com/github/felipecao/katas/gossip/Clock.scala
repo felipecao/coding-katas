@@ -7,11 +7,11 @@ class Clock (observers: Drivers) {
   def tick(): Unit = {
 
     observers.allDrivers.foreach( d =>
-      d.clockHasTicked()
+      d.exchangeGossips()
     )
 
     observers.allDrivers.foreach( d =>
-      d.allObserversHaveBeenNotified()
+      d.moveToNextStop()
     )
 
     currentMinute += 1
