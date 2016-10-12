@@ -1,6 +1,6 @@
 package com.github.felipecao.katas.gossip
 
-class Route (val stops: Seq[Int]) {
+class Route (val stops: Seq[Stop]) {
 
   private var currentStopIndex: Int = 0
 
@@ -8,7 +8,7 @@ class Route (val stops: Seq[Int]) {
   def lastStop = stops.last
   def totalStops = stops.length
 
-  def nextStop: Int = {
+  def nextStop: Stop = {
     currentStopIndex = ((currentStopIndex + 1) % stops.size)
     stops(currentStopIndex)
   }
