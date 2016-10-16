@@ -1,37 +1,37 @@
 package com.github.felipecao.katas.gossip
 
+import org.mockito.Mockito._
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{Matchers, FlatSpec}
 
-class DriversTest extends FlatSpec with Matchers {
+class DriversTest extends FlatSpec with Matchers with MockitoSugar {
 
-  "Drivers#get" should "return the proper driver from the collection" in {
-    val collection = Seq(
-      new Driver(new Route(Seq(Stop(1)))),
-      new Driver(new Route(Seq(Stop(1), Stop(2)))),
-      new Driver(new Route(Seq(Stop(1), Stop(3))))
-    )
+  "Drivers#allDriversHaveAllGossips" should "return true if the number of gossips of each driver matches the number of drivers" in {
+    val driver1 = mock[Driver]
+    val driver2 = mock[Driver]
+    val driver3 = mock[Driver]
 
-    val drivers = new Drivers(collection)
+    when(driver1.totalGossips()).thenReturn(3)
+    when(driver2.totalGossips()).thenReturn(3)
+    when(driver3.totalGossips()).thenReturn(3)
 
-    Some(collection(0)) shouldBe (drivers.get(0))
+    val drivers = new Drivers(Seq(driver1, driver2, driver3))
+
+    drivers.everyoneHasAllGossips() shouldBe (true)
   }
 
-  "Drivers#get" should "return empty for a non-existing index" in {
-    val collection = Seq(
-      new Driver(new Route(Seq(Stop(1)))),
-      new Driver(new Route(Seq(Stop(1), Stop(2)))),
-      new Driver(new Route(Seq(Stop(1), Stop(3))))
-    )
+  "Drivers#allDriversHaveAllGossips" should "return false if the number of gossips of each driver does not match the number of drivers" in {
+    val driver1 = mock[Driver]
+    val driver2 = mock[Driver]
+    val driver3 = mock[Driver]
 
-    val drivers = new Drivers(collection)
+    when(driver1.totalGossips()).thenReturn(3)
+    when(driver2.totalGossips()).thenReturn(2)
+    when(driver3.totalGossips()).thenReturn(3)
 
-    Option.empty[Driver] shouldBe (drivers.get(3))
-  }
+    val drivers = new Drivers(Seq(driver1, driver2, driver3))
 
-  "Drivers#first" should "return empty for an empty collection" in {
-    val drivers = new Drivers(Seq())
-
-    Option.empty[Driver] shouldBe (drivers.first)
+    drivers.everyoneHasAllGossips() shouldBe (false)
   }
 
 }

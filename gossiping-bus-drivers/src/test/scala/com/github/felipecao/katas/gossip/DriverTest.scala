@@ -6,49 +6,29 @@ import org.scalatest.{Matchers, FlatSpec}
 
 class DriverTest extends FlatSpec with Matchers with MockitoSugar {
 
-  "Driver#totalStops" should "return the number of stops contained in a driver's route" in {
-    val driver = new Driver(new Route(Seq(Stop(1), Stop(2), Stop(3))))
-
-    driver.totalStops should be (3)
-  }
-
-  "Driver#lastStop" should "return the last stop driver's route" in {
-    val driver = new Driver(new Route(Seq(Stop(1), Stop(2), Stop(3))))
-
-    driver.lastStop should be (Stop(3))
-  }
-
-  "Driver#firstStop" should "return the first stop driver's route" in {
-    val driver = new Driver(new Route(Seq(Stop(1), Stop(2), Stop(3))))
-
-    driver.firstStop should be (Stop(1))
-  }
-
   "Driver#clockHasTicked" should "tell the current stop he's left and tell the next stop he's arrived" in {
     val stop1 = mock[Stop]
     val stop2 = mock[Stop]
     val stop3 = mock[Stop]
     val driver = new Driver(new Route(Seq(stop1, stop2, stop3)))
 
-    driver.currentStop should be (stop1)
-
-    driver.moveToNextStop()
+    driver.timeWindowChangeIsFinished()
     verify(stop1).depart(driver)
     verify(stop2).arrive(driver)
 
-    driver.moveToNextStop()
+    driver.timeWindowChangeIsFinished()
     verify(stop2).depart(driver)
     verify(stop3).arrive(driver)
 
-    driver.moveToNextStop()
+    driver.timeWindowChangeIsFinished()
     verify(stop2).depart(driver)
     verify(stop3).arrive(driver)
 
-    driver.moveToNextStop()
+    driver.timeWindowChangeIsFinished()
     verify(stop3).depart(driver)
-    verify(stop1).arrive(driver)
+    verify(stop1, times(2)).arrive(driver)
 
-    driver.moveToNextStop()
+    driver.timeWindowChangeIsFinished()
     verify(stop1, times(2)).depart(driver)
     verify(stop2, times(2)).arrive(driver)
   }
@@ -81,11 +61,11 @@ class DriverTest extends FlatSpec with Matchers with MockitoSugar {
     when(stop2.drivers()).thenReturn(Seq.empty[Driver])
     when(stop3.drivers()).thenReturn(Seq.empty[Driver])
 
-    driver1.exchangeGossips()
-    driver2.exchangeGossips()
+    driver1.timeWindowChangeHasStarted()
+    driver2.timeWindowChangeHasStarted()
 
-    driver1.moveToNextStop()
-    driver2.moveToNextStop()
+    driver1.timeWindowChangeIsFinished()
+    driver2.timeWindowChangeIsFinished()
 
     verify(stop1, times(2)).drivers()
 

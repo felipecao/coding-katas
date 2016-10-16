@@ -7,15 +7,9 @@ class Drivers (collection: Seq[Driver]) {
     allDrivers.length
   }
 
-  def get(index: Int): Option[Driver] = {
-
-    if(index < 0 || index >= count) {
-      return Option.empty[Driver]
-    }
-
-    Some(allDrivers(index))
+  def everyoneHasAllGossips(): Boolean = {
+    val gossipsFromAllDrivers = allDrivers.map(d => d.totalGossips()).distinct
+    gossipsFromAllDrivers.size == 1 && gossipsFromAllDrivers(0) == allDrivers.length
   }
-
-  def first = get(0)
 
 }

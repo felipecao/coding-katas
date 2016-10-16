@@ -1,20 +1,19 @@
 package com.github.felipecao.katas.gossip
 
-case class Driver (route: Route) {
-  def firstStop = route.firstStop
-  def lastStop = route.lastStop
-  def totalStops = route.totalStops
-  var currentStop = route.firstStop
+class Driver (val route: Route) {
 
   private var gossips = Set(new Gossip)
+  private var currentStop = route.firstStop
 
-  def exchangeGossips(): Unit = {
+  currentStop.arrive(this)
+
+  def timeWindowChangeHasStarted(): Unit = {
     currentStop.drivers().foreach( d =>
       d.exchangeGossip(this)
     )
   }
 
-  def moveToNextStop(): Unit = {
+  def timeWindowChangeIsFinished(): Unit = {
     currentStop.depart(this)
 
     currentStop = route.nextStop
@@ -22,14 +21,24 @@ case class Driver (route: Route) {
   }
 
   def exchangeGossip(driver: Driver): Unit = {
-    gossips = gossips ++ driver.allGossips
-  }
-
-  private def allGossips: Set[Gossip] = {
-    gossips
+    gossips = gossips ++ driver.gossips
   }
 
   def totalGossips(): Int = {
     gossips.size
+  }
+
+  def canEqual(other: Any): Boolean = other.isInstanceOf[Driver]
+
+  override def equals(other: Any): Boolean = other match {
+    case that: Driver =>
+      (that canEqual this) &&
+        route == that.route
+    case _ => false
+  }
+
+  override def hashCode(): Int = {
+    val state = Seq(route)
+    state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
   }
 }

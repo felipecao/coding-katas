@@ -15,12 +15,12 @@ class ClockTest extends FlatSpec with Matchers with MockitoSugar {
 
     clock.tick()
 
-    verify(d1).moveToNextStop()
-    verify(d1).exchangeGossips()
-    verify(d2).moveToNextStop()
-    verify(d2).exchangeGossips()
-    verify(d3).moveToNextStop()
-    verify(d3).exchangeGossips()
+    verify(d1).timeWindowChangeIsFinished()
+    verify(d1).timeWindowChangeHasStarted()
+    verify(d2).timeWindowChangeIsFinished()
+    verify(d2).timeWindowChangeHasStarted()
+    verify(d3).timeWindowChangeIsFinished()
+    verify(d3).timeWindowChangeHasStarted()
   }
 
   "ClockTest#isTimeUp" should "be false until clock has ticked 480 times" in {
@@ -28,7 +28,7 @@ class ClockTest extends FlatSpec with Matchers with MockitoSugar {
 
     clock.isTimeUp() should be (false)
 
-    for( counter <- 1 to 480){
+    for( counter <- 0 to 480){
       clock.isTimeUp() should be (false)
       clock.tick()
     }

@@ -5,8 +5,6 @@ class Route (val stops: Seq[Stop]) {
   private var currentStopIndex: Int = 0
 
   def firstStop = stops.head
-  def lastStop = stops.last
-  def totalStops = stops.length
 
   def nextStop: Stop = {
     currentStopIndex = ((currentStopIndex + 1) % stops.size)

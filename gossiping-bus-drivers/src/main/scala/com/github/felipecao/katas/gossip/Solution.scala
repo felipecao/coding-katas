@@ -2,7 +2,7 @@ package com.github.felipecao.katas.gossip
 
 class Solution {
 
-  def getOutputForRoutesCollection(routesCollection: Seq[Seq[Int]]): String = {
+  def timeToSpreadAllGossips(routesCollection: Seq[Seq[Int]]): String = {
 
     val drivers = DriverFactory.buildFromRoutesCollection(routesCollection)
     val clock = new Clock(drivers)
@@ -11,26 +11,12 @@ class Solution {
       return Solution.NEVER
     }
 
-    while (!clock.isTimeUp()) {
+    while (!clock.isTimeUp() && !drivers.everyoneHasAllGossips()) {
       clock.tick()
     }
 
-
-
-
-
-
-    if (drivers.first.get.totalStops == 3 && drivers.first.get.lastStop == drivers.get(1).get.lastStop) {
-      return "3"
-    }
-
-    if (drivers.first.get.firstStop == drivers.get(1).get.firstStop
-      && drivers.first.get.totalStops == drivers.get(1).get.totalStops) {
-      return "1"
-    }
-
-    if (drivers.first.get.lastStop == drivers.get(1).get.lastStop) {
-      return "2"
+    if (drivers.everyoneHasAllGossips()) {
+      return clock.currentTime.toString
     }
 
     Solution.NEVER

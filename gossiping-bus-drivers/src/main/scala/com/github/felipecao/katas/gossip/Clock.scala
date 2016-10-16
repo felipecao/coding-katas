@@ -2,16 +2,16 @@ package com.github.felipecao.katas.gossip
 
 class Clock (observers: Drivers) {
 
-  private var currentMinute = 1;
+  private var currentMinute = 0
 
   def tick(): Unit = {
 
     observers.allDrivers.foreach( d =>
-      d.exchangeGossips()
+      d.timeWindowChangeHasStarted()
     )
 
     observers.allDrivers.foreach( d =>
-      d.moveToNextStop()
+      d.timeWindowChangeIsFinished()
     )
 
     currentMinute += 1
@@ -19,6 +19,10 @@ class Clock (observers: Drivers) {
 
   def isTimeUp(): Boolean = {
     currentMinute > Clock.MINUTES_IN_A_DAY
+  }
+
+  def currentTime(): Int = {
+    currentMinute
   }
 }
 
