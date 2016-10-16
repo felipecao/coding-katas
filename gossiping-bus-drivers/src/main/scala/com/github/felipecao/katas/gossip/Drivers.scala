@@ -1,7 +1,6 @@
 package com.github.felipecao.katas.gossip
 
-class Drivers (collection: Seq[Driver]) {
-  var allDrivers: Seq[Driver] = collection
+class Drivers (allDrivers: Seq[Driver]) {
 
   val count: Int = {
     allDrivers.length
@@ -9,7 +8,19 @@ class Drivers (collection: Seq[Driver]) {
 
   def everyoneHasAllGossips(): Boolean = {
     val gossipsFromAllDrivers = allDrivers.map(d => d.totalGossips()).distinct
-    gossipsFromAllDrivers.size == 1 && gossipsFromAllDrivers(0) == allDrivers.length
+    gossipsFromAllDrivers.size == 1 && gossipsFromAllDrivers.head == allDrivers.length
+  }
+
+  def notifyAllTimeWindowChangeHasStarted(): Unit = {
+    allDrivers.foreach( d =>
+      d.timeWindowChangeHasStarted()
+    )
+  }
+
+  def notifyAllTimeWindowChangeIsFinished(): Unit = {
+    allDrivers.foreach( d =>
+      d.timeWindowChangeIsFinished()
+    )
   }
 
 }

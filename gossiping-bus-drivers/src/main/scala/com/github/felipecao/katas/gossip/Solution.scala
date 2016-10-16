@@ -4,7 +4,7 @@ class Solution {
 
   def timeToSpreadAllGossips(routesCollection: Seq[Seq[Int]]): String = {
 
-    val drivers = DriverFactory.buildFromRoutesCollection(routesCollection)
+    val drivers = DriverFactory.buildDriversFromRoutesCollection(routesCollection)
     val clock = new Clock(drivers)
 
     if (drivers.count == 1) {

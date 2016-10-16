@@ -5,15 +5,8 @@ class Clock (observers: Drivers) {
   private var currentMinute = 0
 
   def tick(): Unit = {
-
-    observers.allDrivers.foreach( d =>
-      d.timeWindowChangeHasStarted()
-    )
-
-    observers.allDrivers.foreach( d =>
-      d.timeWindowChangeIsFinished()
-    )
-
+    observers.notifyAllTimeWindowChangeHasStarted()
+    observers.notifyAllTimeWindowChangeIsFinished()
     currentMinute += 1
   }
 
