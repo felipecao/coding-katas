@@ -10,7 +10,7 @@ interface Account {
 
     void withdraw(Amount amount)
 
-    int getTotalTransactions()
+    boolean totalTransactionsIs(int totalTransactions)
 
     boolean containsTransaction(Transaction transaction)
 

@@ -43,7 +43,7 @@ class DepositAndWithdrawalAcceptanceTests extends Specification {
         account.balance == initialAmount.plus(amount)
 
         and:
-        1 == account.totalTransactions
+        account.totalTransactionsIs(1)
         account.containsTransaction(new Deposit(account, currentInstant, amount, amount))
 
         where:
@@ -62,7 +62,7 @@ class DepositAndWithdrawalAcceptanceTests extends Specification {
         account.balance == initialAmount.minus(amount)
 
         and:
-        1 == account.totalTransactions
+        account.totalTransactionsIs(1)
         account.containsTransaction(new Withdrawal(account, currentInstant, amount, amount))
 
         where:
@@ -84,7 +84,7 @@ class DepositAndWithdrawalAcceptanceTests extends Specification {
         account.balance == initialAmount.plus(firstAmount).plus(secondAmount)
 
         and:
-        2 == account.totalTransactions
+        account.totalTransactionsIs(2)
         account.containsTransaction(new Deposit(account, currentInstant, firstAmount, initialAmount.plus(firstAmount)))
         account.containsTransaction(new Deposit(account, currentInstant, secondAmount, initialAmount.plus(firstAmount).plus(secondAmount)))
     }
@@ -103,7 +103,7 @@ class DepositAndWithdrawalAcceptanceTests extends Specification {
         account.balance == initialAmount.minus(firstAmount).minus(secondAmount)
 
         and:
-        2 == account.totalTransactions
+        account.totalTransactionsIs(2)
         account.containsTransaction(new Withdrawal(account, currentInstant, firstAmount, initialAmount.minus(firstAmount)))
         account.containsTransaction(new Withdrawal(account, currentInstant, secondAmount, initialAmount.minus(firstAmount).minus(secondAmount)))
     }
@@ -122,7 +122,7 @@ class DepositAndWithdrawalAcceptanceTests extends Specification {
         account.balance == initialAmount.plus(firstAmount).minus(secondAmount)
 
         and:
-        2 == account.totalTransactions
+        account.totalTransactionsIs(2)
         account.containsTransaction(new Deposit(account, currentInstant, firstAmount, initialAmount.plus(firstAmount)))
         account.containsTransaction(new Withdrawal(account, currentInstant, secondAmount, initialAmount.plus(firstAmount).minus(secondAmount)))
     }

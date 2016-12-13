@@ -32,9 +32,8 @@ class AccountImpl implements Account {
         transactions.add(new Withdrawal(this, clock.instant(), amount, balance))
     }
 
-    @Override
-    int getTotalTransactions() {
-        return transactions.total
+    boolean totalTransactionsIs(int totalTransactions) {
+        return transactions.total == totalTransactions
     }
 
     @Override
