@@ -1,56 +1,35 @@
 package com.github.felipecao.katas.banking.domain
 
 import com.github.felipecao.katas.banking.support.Amount
+import groovy.transform.EqualsAndHashCode
 
 import java.time.Instant
 
+@EqualsAndHashCode(includes = ["account", "operation"])
 class AbstractTransaction implements Transaction {
 
     private Account account
-    private Instant date
-    private Amount amount
+    private Operation operation
     private Amount balanceAfterTransaction
 
     protected AbstractTransaction(Account account, Instant date, Amount amount, Amount balanceAfterTransaction) {
         this.account = account
-        this.date = date
-        this.amount = amount
+        this.operation = new Operation(date, amount)
         this.balanceAfterTransaction = balanceAfterTransaction
     }
 
     @Override
-    Instant getDate() {
-        return date
+    void appendDateTo(StringBuilder str) {
+        operation.appendDateTo(str)
     }
 
     @Override
-    Amount getAmount() {
-        return amount
+    void appendAmountTo(StringBuilder str) {
+        operation.appendAmountTo(str)
     }
 
     @Override
-    Amount getBalanceAfterTransaction() {
-        return balanceAfterTransaction
-    }
-
-    boolean equals(o) {
-        if (this.is(o)) return true
-        if (getClass() != o.class) return false
-
-        AbstractTransaction that = (AbstractTransaction) o
-
-        if (account != that.account) return false
-        if (amount != that.amount) return false
-        if (date != that.date) return false
-
-        return true
-    }
-
-    int hashCode() {
-        int result
-        result = (account != null ? account.hashCode() : 0)
-        result = 31 * result + (date != null ? date.hashCode() : 0)
-        result = 31 * result + (amount != null ? amount.hashCode() : 0)
-        return result
+    void appendBalanceAfterTransactionTo(StringBuilder str) {
+        str.append(balanceAfterTransaction)
     }
 }

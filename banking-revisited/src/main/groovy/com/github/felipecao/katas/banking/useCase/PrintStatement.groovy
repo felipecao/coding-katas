@@ -19,7 +19,15 @@ class PrintStatement {
         printHeader()
 
         account.forEachTransaction { Transaction t ->
-            console.println("${t.date} | ${t.amount} | ${t.balanceAfterTransaction}".toString())
+            StringBuilder str = new StringBuilder()
+
+            t.appendDateTo(str)
+            str.append(" | ")
+            t.appendAmountTo(str)
+            str.append(" | ")
+            t.appendBalanceAfterTransactionTo(str)
+
+            console.println(str.toString())
         }
     }
 
