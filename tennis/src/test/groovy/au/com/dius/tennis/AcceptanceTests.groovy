@@ -49,7 +49,6 @@ class AcceptanceTests extends Specification {
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
         3                       | 3                         | "Deuce"
-        4                       | 4                         | "Deuce"
         4                       | 3                         | "Advantage $FIRST_PLAYER"
         3                       | 4                         | "Advantage $SECOND_PLAYER"
         9                       | 8                         | "Advantage $FIRST_PLAYER"
@@ -99,6 +98,23 @@ class AcceptanceTests extends Specification {
 
         expect: "player 1 should continue to be the winner, even though player 2 continued to play"
         "$FIRST_PLAYER wins" == game.score()
+    }
+
+    def "When players exchange points until a Deuce, the score is 'Deuce'"() {
+        given: "15-15"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "30-30"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        expect:
+        "Deuce" == game.score()
     }
 
 }
