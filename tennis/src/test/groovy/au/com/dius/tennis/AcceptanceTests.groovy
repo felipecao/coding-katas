@@ -1,6 +1,7 @@
 package au.com.dius.tennis
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class AcceptanceTests extends Specification {
 
@@ -13,53 +14,29 @@ class AcceptanceTests extends Specification {
         game = new Game(FIRST_PLAYER, SECOND_PLAYER)
     }
 
-    def "When game starts score is 0-0 "() {
+    @Unroll
+    def "When the first player has scored #totalPointsWonByPlayer1 points and the second player has scored #totalPointsWonByPlayer2 the score is #score"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            game.pointWonBy(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            game.pointWonBy(SECOND_PLAYER)
+        }
+
         expect:
-        "0-0" == game.score()
-    }
+        score == game.score()
 
-    def "When the first player scores for the first time, the new score is 15-0"() {
-        when:
-        game.pointWonBy(FIRST_PLAYER)
-
-        then:
-        "15-0" == game.score()
-    }
-
-    def "When the first player scores twice, the new score is 30-0"() {
-        when:
-        game.pointWonBy(FIRST_PLAYER)
-        game.pointWonBy(FIRST_PLAYER)
-
-        then:
-        "30-0" == game.score()
-    }
-
-    def "When the first player scores three times, the new score is 40-0"() {
-        when:
-        game.pointWonBy(FIRST_PLAYER)
-        game.pointWonBy(FIRST_PLAYER)
-        game.pointWonBy(FIRST_PLAYER)
-
-        then:
-        "40-0" == game.score()
-    }
-
-    def "When the second player scores for the first time, the new score is 0-15"() {
-        when:
-        game.pointWonBy(SECOND_PLAYER)
-
-        then:
-        "0-15" == game.score()
-    }
-
-    def "When the second player scores twice, the new score is 0-30"() {
-        when:
-        game.pointWonBy(SECOND_PLAYER)
-        game.pointWonBy(SECOND_PLAYER)
-
-        then:
-        "0-30" == game.score()
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2   | score
+        0                       | 0                         | "0-0"
+        1                       | 0                         | "15-0"
+        2                       | 0                         | "30-0"
+        3                       | 0                         | "40-0"
+        0                       | 1                         | "0-15"
+        0                       | 2                         | "0-30"
     }
 
 }
