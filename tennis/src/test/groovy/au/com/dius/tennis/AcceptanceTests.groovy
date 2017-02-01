@@ -55,7 +55,7 @@ class AcceptanceTests extends Specification {
         3                       | 5                         | "$SECOND_PLAYER wins"
         9                       | 7                         | "$FIRST_PLAYER wins"
         12                      | 7                         | "$FIRST_PLAYER wins"
-        4                       | 7                         | "$FIRST_PLAYER wins"
+        4                       | 7                         | "$FIRST_PLAYER wins" // FIXME BIG problem: so far, I assumed each player would score her points in sequence, and then the other player would do the same, but this is quite unlikely to take place in a real game! We need tests that work closed to a real game!
     }
 
 }
