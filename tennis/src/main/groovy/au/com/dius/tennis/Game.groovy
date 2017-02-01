@@ -23,12 +23,12 @@ class Game {
 
         int pointsDifference = player1Points() - player2Points()
 
-        if (playersHaveBothScoreAtLeast40() && (pointsDifference in [1, -1])) {
-            return "Advantage ${pointsDifference == 1 ? points.keySet().first() : points.keySet().last()}"
+        if (playersHaveBothScoreAtLeast40() && pointsDifference in [1, -1]) {
+            return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
         }
 
         if (playersHaveBothScoreAtLeast40() && pointsDifference in [2, -2]) {
-            return "${pointsDifference == 2 ? points.keySet().first() : points.keySet().last()} wins"
+            return "${pointsDifference == 2 ? player1Name() : player2Name()} wins"
         }
 
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
@@ -36,6 +36,14 @@ class Game {
 
     private boolean playersHaveBothScoreAtLeast40() {
         player1Points() >= 3 && player2Points() >= 3
+    }
+
+    private String player1Name() {
+        points.keySet().first()
+    }
+
+    private String player2Name() {
+        points.keySet().last()
     }
 
     private int player1Points() {
