@@ -3,8 +3,6 @@ package au.com.dius.tennis
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static java.lang.Math.floor
-
 class AcceptanceTests extends Specification {
 
     private Game game
@@ -49,13 +47,10 @@ class AcceptanceTests extends Specification {
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
         3                       | 3                         | "Deuce"
-        4                       | 3                         | "Advantage $FIRST_PLAYER"
         3                       | 4                         | "Advantage $SECOND_PLAYER"
-        9                       | 8                         | "Advantage $FIRST_PLAYER"
         5                       | 3                         | "$FIRST_PLAYER wins"
         3                       | 5                         | "$SECOND_PLAYER wins"
         9                       | 7                         | "$FIRST_PLAYER wins"
-        12                      | 7                         | "$FIRST_PLAYER wins"
     }
 
     def "When players exchange points along the game, the winner is the first one to obtain a two points difference, regardless if the players continue to play"() {
@@ -115,6 +110,26 @@ class AcceptanceTests extends Specification {
 
         expect:
         "Deuce" == game.score()
+    }
+
+    def "When players exchange points until an advantage, the score is 'Advantage player N'"() {
+        given: "15-15"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "30-30"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Advantage player 1"
+        game.pointWonBy(FIRST_PLAYER)
+
+        expect:
+        "Advantage $FIRST_PLAYER" == game.score()
     }
 
 }
