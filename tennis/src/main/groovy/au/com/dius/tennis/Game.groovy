@@ -27,8 +27,8 @@ class Game {
             return "Advantage ${pointsDifference == 1 ? points.keySet().first() : points.keySet().last()}"
         }
 
-        if (player1Points() >= 3 && player2Points() >= 3 && pointsDifference == 2) {
-            return "${points.keySet().first()} wins"
+        if (player1Points() >= 3 && player2Points() >= 3 && pointsDifference in [2, -2]) {
+            return "${pointsDifference == 2 ? points.keySet().first() : points.keySet().last()} wins"
         }
 
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
