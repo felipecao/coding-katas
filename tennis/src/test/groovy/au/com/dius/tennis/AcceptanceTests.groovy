@@ -26,4 +26,13 @@ class AcceptanceTests extends Specification {
         "15-0" == game.score()
     }
 
+    def "When the first player scores twice, the new score is 30-0"() {
+        when:
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(FIRST_PLAYER)
+
+        then:
+        "30-0" == game.score()
+    }
+
 }
