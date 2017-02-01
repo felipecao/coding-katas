@@ -54,6 +54,7 @@ class AcceptanceTests extends Specification {
         5                       | 3                         | "$FIRST_PLAYER wins"
         3                       | 5                         | "$SECOND_PLAYER wins"
         9                       | 7                         | "$FIRST_PLAYER wins"
+        12                      | 7                         | "$FIRST_PLAYER wins"
     }
 
 }
