@@ -17,21 +17,25 @@ class Game {
 
     String score() {
 
-        if (player1Points() == player2Points() && player1Points() >= 3 && player2Points() >= 3) {
+        if (playersHaveBothScoreAtLeast40() && player1Points() == player2Points()) {
             return "Deuce"
         }
 
         int pointsDifference = player1Points() - player2Points()
 
-        if (player1Points() >= 3 && player2Points() >= 3 && (pointsDifference in [1, -1])) {
+        if (playersHaveBothScoreAtLeast40() && (pointsDifference in [1, -1])) {
             return "Advantage ${pointsDifference == 1 ? points.keySet().first() : points.keySet().last()}"
         }
 
-        if (player1Points() >= 3 && player2Points() >= 3 && pointsDifference in [2, -2]) {
+        if (playersHaveBothScoreAtLeast40() && pointsDifference in [2, -2]) {
             return "${pointsDifference == 2 ? points.keySet().first() : points.keySet().last()} wins"
         }
 
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
+    }
+
+    private boolean playersHaveBothScoreAtLeast40() {
+        player1Points() >= 3 && player2Points() >= 3
     }
 
     private int player1Points() {
