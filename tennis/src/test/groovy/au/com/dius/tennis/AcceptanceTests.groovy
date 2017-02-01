@@ -48,6 +48,7 @@ class AcceptanceTests extends Specification {
         2                       | 3                         | "30-40"
         3                       | 3                         | "Deuce"
         4                       | 4                         | "Deuce"
+        4                       | 3                         | "Advantage $FIRST_PLAYER"
     }
 
 }
