@@ -16,7 +16,7 @@ class Game {
     }
 
     String score() {
-        if (player1Points() == 3 && player2Points() == 3) {
+        if (player1Points() == player2Points() && player1Points() >= 3 && player2Points() >= 3) {
             return "Deuce"
         }
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
