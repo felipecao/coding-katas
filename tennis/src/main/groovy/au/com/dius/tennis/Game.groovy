@@ -29,8 +29,8 @@ class Game {
                 return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
             }
 
-            if (pointsDifference in [2, -2]) {
-                return "${pointsDifference == 2 ? player1Name() : player2Name()} wins"
+            if (pointsDifference >= 2 || pointsDifference <= -2) {
+                return "${pointsDifference >= 2 ? player1Name() : player2Name()} wins"
             }
         }
 
