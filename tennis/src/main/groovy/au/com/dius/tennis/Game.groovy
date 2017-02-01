@@ -1,10 +1,12 @@
 package au.com.dius.tennis
 
+import static java.lang.Math.abs
 import static java.lang.Math.floor
 
 class Game {
 
     private Map<String, Integer> points = [:]
+    private String winner = null
 
     Game(String player1Name, String player2Name) {
         points << [("$player1Name".toString()): 0]
@@ -12,10 +14,25 @@ class Game {
     }
 
     void pointWonBy(String playerName) {
+
+        if(winner) {
+            return;
+        }
+
         points[playerName]++
+
+        int pointsDifference = player1Points() - player2Points()
+
+        if ((player1Points() > 3 || player2Points() > 3) && abs(pointsDifference) == 2) {
+            winner = pointsDifference > 0 ? player1Name() : player2Name()
+        }
     }
 
     String score() {
+
+        if (winner) {
+            return "$winner wins"
+        }
 
         if (playersHaveBothScoredAtLeast40()) {
 
@@ -27,10 +44,6 @@ class Game {
 
             if (pointsDifference in [1, -1]) {
                 return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
-            }
-
-            if (pointsDifference >= 2 || pointsDifference <= -2) {
-                return "${pointsDifference >= 2 ? player1Name() : player2Name()} wins"
             }
         }
 
