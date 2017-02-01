@@ -17,18 +17,21 @@ class Game {
 
     String score() {
 
-        if (playersHaveBothScoreAtLeast40() && player1Points() == player2Points()) {
-            return "Deuce"
-        }
+        if (playersHaveBothScoreAtLeast40()) {
 
-        int pointsDifference = player1Points() - player2Points()
+            int pointsDifference = player1Points() - player2Points()
 
-        if (playersHaveBothScoreAtLeast40() && pointsDifference in [1, -1]) {
-            return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
-        }
+            if (pointsDifference == 0) {
+                return "Deuce"
+            }
 
-        if (playersHaveBothScoreAtLeast40() && pointsDifference in [2, -2]) {
-            return "${pointsDifference == 2 ? player1Name() : player2Name()} wins"
+            if (pointsDifference in [1, -1]) {
+                return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
+            }
+
+            if (pointsDifference in [2, -2]) {
+                return "${pointsDifference == 2 ? player1Name() : player2Name()} wins"
+            }
         }
 
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
