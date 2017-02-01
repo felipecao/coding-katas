@@ -11,6 +11,6 @@ class Game {
     }
 
     String score() {
-
+        "0-0"
     }
 }
