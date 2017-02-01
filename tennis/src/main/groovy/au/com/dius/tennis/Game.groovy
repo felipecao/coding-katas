@@ -17,7 +17,7 @@ class Game {
 
     String score() {
 
-        if (playersHaveBothScoreAtLeast40()) {
+        if (playersHaveBothScoredAtLeast40()) {
 
             int pointsDifference = player1Points() - player2Points()
 
@@ -37,7 +37,7 @@ class Game {
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
     }
 
-    private boolean playersHaveBothScoreAtLeast40() {
+    private boolean playersHaveBothScoredAtLeast40() {
         player1Points() >= 3 && player2Points() >= 3
     }
 
