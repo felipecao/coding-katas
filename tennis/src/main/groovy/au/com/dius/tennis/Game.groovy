@@ -2,17 +2,17 @@ package au.com.dius.tennis
 
 class Game {
 
-    private int times = 0
+    private int points = 0
 
     Game(String player1Name, String player2Name) {
 
     }
 
     void pointWonBy(String playerName) {
-        times++
+        points++
     }
 
     String score() {
-        "${times * 15}-0"
+        "${points * 15}-0"
     }
 }
