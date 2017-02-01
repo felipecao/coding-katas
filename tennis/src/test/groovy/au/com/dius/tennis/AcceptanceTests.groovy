@@ -3,6 +3,8 @@ package au.com.dius.tennis
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static java.lang.Math.floor
+
 class AcceptanceTests extends Specification {
 
     private Game game
@@ -55,7 +57,48 @@ class AcceptanceTests extends Specification {
         3                       | 5                         | "$SECOND_PLAYER wins"
         9                       | 7                         | "$FIRST_PLAYER wins"
         12                      | 7                         | "$FIRST_PLAYER wins"
-        4                       | 7                         | "$FIRST_PLAYER wins" // FIXME BIG problem: so far, I assumed each player would score her points in sequence, and then the other player would do the same, but this is quite unlikely to take place in a real game! We need tests that work closed to a real game!
+    }
+
+    def "When players exchange points along the game, the winner is the first one to obtain a two points difference, regardless if the players continue to play"() {
+        given: "15-15"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "30-30"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Advantage player 1"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Advantage player 1"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Advantage player 1"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "player 1 wins"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "player 2 continues to play for a couple of rounds"
+        game.pointWonBy(SECOND_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        expect: "player 1 should continue to be the winner, even though player 2 continued to play"
+        "$FIRST_PLAYER wins" == game.score()
     }
 
 }
