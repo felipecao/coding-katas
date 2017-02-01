@@ -51,6 +51,7 @@ class AcceptanceTests extends Specification {
         4                       | 3                         | "Advantage $FIRST_PLAYER"
         3                       | 4                         | "Advantage $SECOND_PLAYER"
         9                       | 8                         | "Advantage $FIRST_PLAYER"
+        5                       | 3                         | "$FIRST_PLAYER wins"
     }
 
 }
