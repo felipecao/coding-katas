@@ -46,6 +46,7 @@ class AcceptanceTests extends Specification {
         1                       | 3                         | "15-40"
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
+        3                       | 3                         | "Deuce"
     }
 
 }
