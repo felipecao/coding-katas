@@ -15,7 +15,7 @@ class AcceptanceTests extends Specification {
     }
 
     @Unroll
-    def "When the first player has scored #totalPointsWonByPlayer1 points and the second player has scored #totalPointsWonByPlayer2 the score is #score"() {
+    def "When the first player has scored #totalPointsWonByPlayer1 points in sequence and the second player has scored #totalPointsWonByPlayer2 the score in sequence is #score"() {
         given:
         totalPointsWonByPlayer1.times {
             game.pointWonBy(FIRST_PLAYER)
