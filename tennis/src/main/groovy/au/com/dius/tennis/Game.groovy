@@ -16,9 +16,15 @@ class Game {
     }
 
     String score() {
+
         if (player1Points() == player2Points() && player1Points() >= 3 && player2Points() >= 3) {
             return "Deuce"
         }
+
+        if (player1Points() >= 3 && player2Points() >= 3 && (player1Points() - player2Points() == 1)) {
+            return "Advantage ${points.keySet().first()}"
+        }
+
         return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
     }
 
