@@ -20,7 +20,10 @@ class Game {
     }
 
     String score() {
-        "${calculateScoreForPoints(points[players[0]])}-${calculateScoreForPoints(points[players[1]])}"
+        if (points[players[0]] == 3 && points[players[1]] == 3) {
+            return "Deuce"
+        }
+        return "${calculateScoreForPoints(points[players[0]])}-${calculateScoreForPoints(points[players[1]])}"
     }
 
     private int calculateScoreForPoints(int p) {
