@@ -16,10 +16,22 @@ class Game {
     }
 
     String score() {
-        if (points[points.keySet()[0]] == 3 && points[points.keySet()[1]] == 3) {
+        if (player1Points() == 3 && player2Points() == 3) {
             return "Deuce"
         }
-        return "${calculateScoreForPoints(points[points.keySet()[0]])}-${calculateScoreForPoints(points[points.keySet()[1]])}"
+        return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
+    }
+
+    private int player1Points() {
+        pointsForPlayer(0)
+    }
+
+    private int player2Points() {
+        pointsForPlayer(1)
+    }
+
+    private int pointsForPlayer(int index) {
+        points[points.keySet()[index]]
     }
 
     private int calculateScoreForPoints(int p) {
