@@ -6,6 +6,8 @@ import static java.lang.Math.floor
 
 class RegularScoreStrategy {
 
+    public static final String BLANK = ""
+
     private int player1Points
     private int player2Points
 
@@ -20,7 +22,7 @@ class RegularScoreStrategy {
 
     String displayScore() {
         if (!isApplicableToScore()) {
-            return ""
+            return BLANK
         }
         return "${calculateScoreForPoints(player1Points)}-${calculateScoreForPoints(player2Points)}"
     }

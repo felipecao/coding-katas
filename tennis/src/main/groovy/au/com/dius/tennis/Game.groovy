@@ -1,7 +1,9 @@
 package au.com.dius.tennis
 
+import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.strategy.RegularScoreStrategy
+
 import static java.lang.Math.abs
-import static java.lang.Math.floor
 
 class Game {
 
@@ -36,7 +38,7 @@ class Game {
             return "$winner wins"
         }
 
-        if (playersHaveBothScoredAtLeast40()) {
+        if (BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points(), player2Points())) {
 
             int pointsDifference = player1Points() - player2Points()
 
@@ -49,11 +51,7 @@ class Game {
             }
         }
 
-        return "${calculateScoreForPoints(player1Points())}-${calculateScoreForPoints(player2Points())}"
-    }
-
-    private boolean playersHaveBothScoredAtLeast40() {
-        player1Points() >= 3 && player2Points() >= 3
+        return new RegularScoreStrategy(player1Points(), player2Points()).displayScore()
     }
 
     private String player1Name() {
@@ -74,9 +72,5 @@ class Game {
 
     private int pointsForPlayer(int index) {
         points[points.keySet()[index]]
-    }
-
-    private int calculateScoreForPoints(int p) {
-        (p * 15) - (5 * floor(p/3))
     }
 }
