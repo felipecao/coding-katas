@@ -47,7 +47,6 @@ class AcceptanceTests extends Specification {
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
         3                       | 3                         | "Deuce"
-        3                       | 4                         | "Advantage $SECOND_PLAYER"
         5                       | 3                         | "$FIRST_PLAYER wins"
         3                       | 5                         | "$SECOND_PLAYER wins"
         9                       | 7                         | "$FIRST_PLAYER wins"
@@ -112,7 +111,7 @@ class AcceptanceTests extends Specification {
         "Deuce" == game.score()
     }
 
-    def "When players exchange points until an advantage, the score is 'Advantage player N'"() {
+    def "When players exchange points until an advantage to player 1, the score is 'Advantage player 1'"() {
         given: "15-15"
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
@@ -130,6 +129,26 @@ class AcceptanceTests extends Specification {
 
         expect:
         "Advantage $FIRST_PLAYER" == game.score()
+    }
+
+    def "When players exchange points until an advantage to player 2, the score is 'Advantage player 2'"() {
+        given: "15-15"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "30-30"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Deuce"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "Advantage player 1"
+        game.pointWonBy(SECOND_PLAYER)
+
+        expect:
+        "Advantage $SECOND_PLAYER" == game.score()
     }
 
 }
