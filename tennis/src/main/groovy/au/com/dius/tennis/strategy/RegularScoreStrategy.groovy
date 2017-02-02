@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.precondition.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.precondition.BothPlayersPreconditions
 
 import static java.lang.Math.floor
 
@@ -11,7 +11,7 @@ class RegularScoreStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        return !BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points) &&
+        return !BothPlayersPreconditions.isApplicableToPoints(player1Points, player2Points) &&
                 player1Points >= 0 && player2Points >= 0
     }
 

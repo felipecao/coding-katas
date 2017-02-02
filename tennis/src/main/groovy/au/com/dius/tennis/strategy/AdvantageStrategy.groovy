@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.precondition.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.precondition.BothPlayersPreconditions
 
 import static java.lang.Math.abs
 
@@ -13,7 +13,7 @@ class AdvantageStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points) &&
+        BothPlayersPreconditions.isApplicableToPoints(player1Points, player2Points) &&
             abs(pointsDifference) == 1
     }
 

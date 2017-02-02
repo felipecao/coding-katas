@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.precondition.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.precondition.BothPlayersPreconditions
 
 class DeuceStrategy extends AbstractStrategy {
 
@@ -11,7 +11,7 @@ class DeuceStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points) &&
+        BothPlayersPreconditions.isApplicableToPoints(player1Points, player2Points) &&
                 ((player1Points - player2Points) == 0)
     }
 
