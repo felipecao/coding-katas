@@ -4,13 +4,12 @@ class Game {
 
     public static final String INITIAL_SCORE = "0-0"
 
-    private Map<String, Integer> points = [:]
+    private Players players
     private String winner = null
     private String score = INITIAL_SCORE
 
     Game(String player1Name, String player2Name) {
-        points << [("$player1Name".toString()): 0]
-        points << [("$player2Name".toString()): 0]
+        players = new Players(player1Name, player2Name)
     }
 
     void pointWonBy(String playerName) {
@@ -19,9 +18,9 @@ class Game {
             return;
         }
 
-        points[playerName]++
+        players.pointWonByPlayerWithName(playerName)
 
-        ScoreDisplayStrategy strategy = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points)
+        ScoreDisplayStrategy strategy = ScoreDisplayStrategyFactory.buildForNamesAndPoints(players.asMap())
 
         score = strategy.displayScore()
         winner = strategy.winner()
