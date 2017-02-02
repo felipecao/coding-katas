@@ -23,7 +23,7 @@ class Game {
 
         int pointsDifference = player1Points() - player2Points()
 
-        if ((player1Points() > 3 || player2Points() > 3) && abs(pointsDifference) == 2) {
+        if (abs(pointsDifference) == 4 || ((player1Points() > 3 || player2Points() > 3) && abs(pointsDifference) == 2)) {
             winner = pointsDifference > 0 ? player1Name() : player2Name()
         }
     }
