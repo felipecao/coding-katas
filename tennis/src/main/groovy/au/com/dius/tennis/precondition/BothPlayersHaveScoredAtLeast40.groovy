@@ -1,4 +1,4 @@
-package au.com.dius.tennis.preconditions
+package au.com.dius.tennis.precondition
 
 class BothPlayersHaveScoredAtLeast40 {
 

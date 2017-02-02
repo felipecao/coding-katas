@@ -1,9 +1,9 @@
-package au.com.dius.tennis.preconditions
+package au.com.dius.tennis.precondition
 
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40.isApplicableToPoints
+import static au.com.dius.tennis.precondition.BothPlayersHaveScoredAtLeast40.isApplicableToPoints
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
 
 class BothPlayersHaveScoredAtLeast40Spec extends Specification {

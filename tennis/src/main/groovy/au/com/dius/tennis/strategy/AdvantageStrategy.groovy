@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.precondition.BothPlayersHaveScoredAtLeast40
 
 import static java.lang.Math.abs
 
