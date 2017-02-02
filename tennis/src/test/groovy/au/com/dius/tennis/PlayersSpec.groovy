@@ -92,4 +92,28 @@ class PlayersSpec extends Specification {
         3                       | 3                       | true
         greaterThan(3)          | greaterThan(3)          | true
     }
+
+    @Unroll
+    def "areInDeuce returns true when both players have at least 3 points and are tied"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        areInDeuce == players.areInDeuce()
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | areInDeuce
+        lessThan(3)             | lessThan(3)             | false
+        3                       | 3                       | true
+        4                       | 4                       | true
+        5                       | 5                       | true
+        6                       | 6                       | true
+    }
 }

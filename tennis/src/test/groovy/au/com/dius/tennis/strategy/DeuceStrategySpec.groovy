@@ -1,5 +1,7 @@
 package au.com.dius.tennis.strategy
 
+import au.com.dius.tennis.Player
+import au.com.dius.tennis.Players
 import au.com.dius.tennis.ScoreDisplayStrategy
 import au.com.dius.tennis.random.RandomString16CharsLong
 import spock.lang.Specification
@@ -17,10 +19,10 @@ class DeuceStrategySpec extends Specification {
     @Unroll
     def "DeuceStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new DeuceStrategy([
-                (RandomString16CharsLong.get()): player1Points,
-                (RandomString16CharsLong.get()): player2Points
-        ])
+        strategy = new DeuceStrategy(new Players(
+                new Player(RandomString16CharsLong.get(), player1Points),
+                new Player(RandomString16CharsLong.get(), player2Points)
+        ))
 
         expect:
         score == strategy.displayScore()
@@ -38,10 +40,10 @@ class DeuceStrategySpec extends Specification {
     @Unroll
     def "DeuceStrategy is not applicable if players have less than 3 points and are not at a draw"() {
         given:
-        strategy = new DeuceStrategy([
-                (RandomString16CharsLong.get()): player1Points,
-                (RandomString16CharsLong.get()): player2Points
-        ])
+        strategy = new DeuceStrategy(new Players(
+                new Player(RandomString16CharsLong.get(), player1Points),
+                new Player(RandomString16CharsLong.get(), player2Points)
+        ))
 
         expect:
         isApplicable == strategy.isApplicableToScore()

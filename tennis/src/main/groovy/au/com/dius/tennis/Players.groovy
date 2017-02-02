@@ -33,6 +33,10 @@ class Players {
         bothPlayersHaveScoredMoreThanOrEqualsToPoints(3)
     }
 
+    boolean areInDeuce() {
+        bothPlayersHaveMininumScoreForDeuce() && players.first().points == players.last().points
+    }
+
     Map<String, Integer> asMap() {
         [
                 (players.first().name): players.first().points,
