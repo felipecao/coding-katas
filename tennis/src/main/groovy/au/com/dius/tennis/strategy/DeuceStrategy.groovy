@@ -9,7 +9,7 @@ class DeuceStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        BothPlayersPreconditions.bothPlayersHaveScoreAtLeast(player1Points, player2Points, 3) &&
+        BothPlayersPreconditions.bothPlayersHaveMininumScoreForDeuce(player1Points, player2Points) &&
                 ((player1Points - player2Points) == 0)
     }
 

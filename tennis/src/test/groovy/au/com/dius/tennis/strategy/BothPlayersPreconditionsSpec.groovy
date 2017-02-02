@@ -3,18 +3,15 @@ package au.com.dius.tennis.strategy
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static au.com.dius.tennis.strategy.BothPlayersPreconditions.bothPlayersHaveScoreAtLeast
+import static au.com.dius.tennis.strategy.BothPlayersPreconditions.bothPlayersHaveMininumScoreForDeuce
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
 
 class BothPlayersPreconditionsSpec extends Specification {
 
     @Unroll
-    def "bothPlayersHaveScoreAtLeast only applies if both players have scored at least the target amount of points"() {
-        given:
-        Integer targetPoints = 3
-
+    def "bothPlayersHaveMininumScoreForDeuce only applies if both players have scored at least 3 points"() {
         expect:
-        isApplicable == bothPlayersHaveScoreAtLeast(player1Points, player2Points, targetPoints)
+        isApplicable == bothPlayersHaveMininumScoreForDeuce(player1Points, player2Points)
 
         where:
         player1Points  | player2Points  | isApplicable

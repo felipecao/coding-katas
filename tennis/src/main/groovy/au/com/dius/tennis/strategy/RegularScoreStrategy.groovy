@@ -9,7 +9,7 @@ class RegularScoreStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        return !BothPlayersPreconditions.bothPlayersHaveScoreAtLeast(player1Points, player2Points, 3) &&
+        return !BothPlayersPreconditions.bothPlayersHaveMininumScoreForDeuce(player1Points, player2Points) &&
                 player1Points >= 0 && player2Points >= 0
     }
 
