@@ -2,6 +2,9 @@ package au.com.dius.tennis.strategy
 
 abstract class AbstractStrategy implements ScoreCalculationStrategy {
 
+    protected Integer player1Points
+    protected Integer player2Points
+
     public static final String BLANK = ""
 
     abstract boolean isApplicableToScore()
@@ -14,5 +17,10 @@ abstract class AbstractStrategy implements ScoreCalculationStrategy {
         }
 
         return displaySpecificScore()
+    }
+
+    protected void initializePlayersPoints(Map<String, Integer> playersNamesAndPoints) {
+        player1Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[0]]
+        player2Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[1]]
     }
 }

@@ -6,12 +6,8 @@ class DeuceStrategy extends AbstractStrategy {
 
     public static final String DEUCE = "Deuce"
 
-    private int player1Points
-    private int player2Points
-
     DeuceStrategy(Map<String, Integer> playersNamesAndPoints) {
-        player1Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[0]]
-        player2Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[1]]
+        initializePlayersPoints(playersNamesAndPoints)
     }
 
     boolean isApplicableToScore() {

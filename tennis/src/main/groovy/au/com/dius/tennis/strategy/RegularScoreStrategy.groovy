@@ -6,12 +6,8 @@ import static java.lang.Math.floor
 
 class RegularScoreStrategy extends AbstractStrategy {
 
-    private int player1Points
-    private int player2Points
-
     RegularScoreStrategy(Map<String, Integer> playersNamesAndPoints) {
-        player1Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[0]]
-        player2Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[1]]
+        initializePlayersPoints(playersNamesAndPoints)
     }
 
     boolean isApplicableToScore() {
