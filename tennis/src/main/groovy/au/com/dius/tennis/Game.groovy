@@ -1,8 +1,7 @@
 package au.com.dius.tennis
 
+import au.com.dius.tennis.strategy.ScoreDisplayStrategy
 import au.com.dius.tennis.strategy.ScoreDisplayStrategyFactory
-
-import static java.lang.Math.abs
 
 class Game {
 
@@ -24,38 +23,14 @@ class Game {
         }
 
         points[playerName]++
-        score = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
 
-        if (isVictory(player1Points(), player2Points())) {
-            winner = player1Points() - player2Points() > 0 ? player1Name() : player2Name()
-        }
-    }
+        ScoreDisplayStrategy strategy = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points)
 
-    private boolean isVictory(int player1Points, int player2Points) {
-        return (player1Points >= 4 || player2Points >= 4) && abs(player1Points - player2Points) >= 2
+        score = strategy.displayScore()
+        winner = strategy.winner()
     }
 
     String score() {
         return score
-    }
-
-    private String player1Name() {
-        points.keySet().first()
-    }
-
-    private String player2Name() {
-        points.keySet().last()
-    }
-
-    private int player1Points() {
-        pointsForPlayer(0)
-    }
-
-    private int player2Points() {
-        pointsForPlayer(1)
-    }
-
-    private int pointsForPlayer(int index) {
-        points[points.keySet()[index]]
     }
 }
