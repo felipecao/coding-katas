@@ -24,6 +24,7 @@ class ScoreCalculationStrategyFactorySpec extends Specification {
         lessThan(3)    | lessThan(3)    | RegularScoreStrategy
         3              | 3              | DeuceStrategy
         4              | 3              | AdvantageStrategy
+        5              | 3              | VoidStrategy
     }
 
 }
