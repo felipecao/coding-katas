@@ -9,9 +9,9 @@ class RegularScoreStrategy extends AbstractStrategy {
     private int player1Points
     private int player2Points
 
-    RegularScoreStrategy(int player1Points, int player2Points) {
-        this.player1Points = player1Points
-        this.player2Points = player2Points
+    RegularScoreStrategy(Map<String, Integer> playersNamesAndPoints) {
+        player1Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[0]]
+        player2Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[1]]
     }
 
     boolean isApplicableToScore() {

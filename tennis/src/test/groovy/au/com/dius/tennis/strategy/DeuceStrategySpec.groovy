@@ -1,5 +1,6 @@
 package au.com.dius.tennis.strategy
 
+import au.com.dius.tennis.random.RandomString16CharsLong
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -15,7 +16,10 @@ class DeuceStrategySpec extends Specification {
     @Unroll
     def "DeuceStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new DeuceStrategy(player1Points, player2Points)
+        strategy = new DeuceStrategy([
+                (RandomString16CharsLong.get()): player1Points,
+                (RandomString16CharsLong.get()): player2Points
+        ])
 
         expect:
         score == strategy.displayScore()
@@ -33,7 +37,10 @@ class DeuceStrategySpec extends Specification {
     @Unroll
     def "DeuceStrategy is not applicable if players have less than 3 points and are not at a draw"() {
         given:
-        strategy = new DeuceStrategy(player1Points, player2Points)
+        strategy = new DeuceStrategy([
+                (RandomString16CharsLong.get()): player1Points,
+                (RandomString16CharsLong.get()): player2Points
+        ])
 
         expect:
         isApplicable == strategy.isApplicableToScore()

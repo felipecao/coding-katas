@@ -16,7 +16,7 @@ class AdvantageStrategy extends AbstractStrategy {
 
     private int pointsDifference
 
-    AdvantageStrategy(Map playersNamesAndPoints) {
+    AdvantageStrategy(Map<String, Integer> playersNamesAndPoints) {
         player1Name = playersNamesAndPoints.keySet().first()
         player2Name = playersNamesAndPoints.keySet().last()
 

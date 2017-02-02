@@ -45,7 +45,7 @@ class Game {
             int pointsDifference = player1Points() - player2Points()
 
             if (pointsDifference == 0) {
-                return new DeuceStrategy(player1Points(), player2Points()).displayScore()
+                return new DeuceStrategy(points).displayScore()
             }
 
             if (pointsDifference in [1, -1]) {
@@ -53,7 +53,7 @@ class Game {
             }
         }
 
-        return new RegularScoreStrategy(player1Points(), player2Points()).displayScore()
+        return new RegularScoreStrategy(points).displayScore()
     }
 
     private String player1Name() {

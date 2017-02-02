@@ -9,9 +9,9 @@ class DeuceStrategy extends AbstractStrategy {
     private int player1Points
     private int player2Points
 
-    DeuceStrategy(int player1Points, int player2Points) {
-        this.player1Points = player1Points
-        this.player2Points = player2Points
+    DeuceStrategy(Map<String, Integer> playersNamesAndPoints) {
+        player1Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[0]]
+        player2Points = playersNamesAndPoints[playersNamesAndPoints.keySet()[1]]
     }
 
     boolean isApplicableToScore() {
