@@ -20,6 +20,10 @@ class Players {
         findByName(playerName).points == points
     }
 
+    boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
+        players.first().points >= points && players.last().points >= points
+    }
+
     Map<String, Integer> asMap() {
         [
                 (players.first().name): players.first().points,
