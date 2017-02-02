@@ -1,6 +1,7 @@
 package au.com.dius.tennis
 
 import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.strategy.AdvantageStrategy
 import au.com.dius.tennis.strategy.DeuceStrategy
 import au.com.dius.tennis.strategy.RegularScoreStrategy
 
@@ -48,7 +49,10 @@ class Game {
             }
 
             if (pointsDifference in [1, -1]) {
-                return "Advantage ${pointsDifference == 1 ? player1Name() : player2Name()}"
+                return new AdvantageStrategy([
+                        (player1Name()): player1Points(),
+                        (player2Name()): player2Points(),
+                ]).displayScore()
             }
         }
 
