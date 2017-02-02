@@ -1,8 +1,8 @@
 package au.com.dius.tennis.strategy
 
-abstract class AbstractStrategy implements ScoreDisplayStrategy {
+import static au.com.dius.tennis.string.Strings.BLANK
 
-    public static final String BLANK = ""
+abstract class AbstractStrategy implements ScoreDisplayStrategy {
 
     protected Integer player1Points
     protected Integer player2Points

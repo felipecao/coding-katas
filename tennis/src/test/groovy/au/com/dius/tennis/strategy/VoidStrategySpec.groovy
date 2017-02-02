@@ -1,6 +1,7 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.random.RandomString16CharsLong
+import static au.com.dius.tennis.string.Strings.BLANK
 import spock.lang.Specification
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
@@ -18,7 +19,7 @@ class VoidStrategySpec extends Specification {
 
     def "VoidStrategy should always display a blank string as score"() {
         expect:
-        AbstractStrategy.BLANK == strategy.displayScore()
+        BLANK == strategy.displayScore()
     }
 
     def "VoidStrategy is always applicable, no matter what score"() {
