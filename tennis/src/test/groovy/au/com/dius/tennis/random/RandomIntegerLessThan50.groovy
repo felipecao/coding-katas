@@ -9,4 +9,8 @@ class RandomIntegerLessThan50 {
     static int greaterThan(int minimumThreshold) {
         RandomUtils.nextInt(minimumThreshold, UPPER_THRESHOLD)
     }
+
+    static int lessThan(int maximumThreshold) {
+        RandomUtils.nextInt(0, maximumThreshold)
+    }
 }
