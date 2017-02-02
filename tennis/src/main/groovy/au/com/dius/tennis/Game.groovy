@@ -6,8 +6,11 @@ import static java.lang.Math.abs
 
 class Game {
 
+    public static final String INITIAL_SCORE = "0-0"
+
     private Map<String, Integer> points = [:]
     private String winner = null
+    private String score = INITIAL_SCORE
 
     Game(String player1Name, String player2Name) {
         points << [("$player1Name".toString()): 0]
@@ -24,7 +27,11 @@ class Game {
 
         if (isVictory(player1Points(), player2Points())) {
             winner = player1Points() - player2Points() > 0 ? player1Name() : player2Name()
+            score = "$winner wins"
+            return;
         }
+
+        score = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
     }
 
     private boolean isVictory(int player1Points, int player2Points) {
@@ -32,12 +39,7 @@ class Game {
     }
 
     String score() {
-
-        if (winner) {
-            return "$winner wins"
-        }
-
-        return ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
+        return score
     }
 
     private String player1Name() {
