@@ -5,7 +5,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.string.Strings.BLANK
+import static au.com.dius.tennis.lang.Strings.BLANK
 
 class RegularScoreStrategySpec extends Specification {
 

@@ -6,7 +6,7 @@ import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.string.Strings.BLANK
+import static au.com.dius.tennis.lang.Strings.BLANK
 import static au.com.dius.tennis.strategy.DeuceStrategy.DEUCE
 
 class DeuceStrategySpec extends Specification {

@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import static au.com.dius.tennis.string.Strings.BLANK
+import static au.com.dius.tennis.lang.Strings.BLANK
 import static java.lang.Math.abs
 
 class VictoryStrategy extends AbstractStrategy {

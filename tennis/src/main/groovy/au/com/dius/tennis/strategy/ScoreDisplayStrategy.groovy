@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.string.Strings
+import au.com.dius.tennis.lang.Strings
 
 trait ScoreDisplayStrategy {
 

@@ -1,7 +1,7 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.random.RandomString16CharsLong
-import static au.com.dius.tennis.string.Strings.BLANK
+import static au.com.dius.tennis.lang.Strings.BLANK
 import spock.lang.Specification
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
