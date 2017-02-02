@@ -47,9 +47,8 @@ class AcceptanceTests extends Specification {
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
         3                       | 3                         | "Deuce"
-        5                       | 3                         | "$FIRST_PLAYER wins"
-        3                       | 5                         | "$SECOND_PLAYER wins"
-        9                       | 7                         | "$FIRST_PLAYER wins"
+        4                       | 0                         | "$FIRST_PLAYER wins"
+        0                       | 4                         | "$SECOND_PLAYER wins"
     }
 
     def "When players exchange points along the game, the winner is the first one to obtain a two points difference, regardless if the players continue to play"() {
