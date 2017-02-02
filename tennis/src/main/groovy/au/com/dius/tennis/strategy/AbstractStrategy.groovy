@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-abstract class AbstractStrategy implements Strategy {
+abstract class AbstractStrategy implements ScoreCalculationStrategy {
 
     public static final String BLANK = ""
 

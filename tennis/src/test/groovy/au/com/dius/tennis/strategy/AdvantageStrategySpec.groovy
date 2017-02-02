@@ -11,7 +11,7 @@ import static au.com.dius.tennis.strategy.AdvantageStrategy.ADVANTAGE
 
 class AdvantageStrategySpec extends Specification {
 
-    private Strategy strategy
+    private ScoreCalculationStrategy strategy
 
     @Unroll
     def "AdvantageStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {

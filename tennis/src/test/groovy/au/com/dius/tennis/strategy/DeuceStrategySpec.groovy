@@ -10,7 +10,7 @@ import static au.com.dius.tennis.strategy.DeuceStrategy.DEUCE
 
 class DeuceStrategySpec extends Specification {
 
-    private Strategy strategy
+    private ScoreCalculationStrategy strategy
 
     @Unroll
     def "DeuceStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
