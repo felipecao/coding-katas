@@ -2,8 +2,8 @@ package au.com.dius.tennis.strategy
 
 class BothPlayersPreconditions {
 
-    static boolean isApplicableToPoints(int player1Points, int player2Points) {
-        player1Points >= 3 && player2Points >= 3
+    static boolean bothPlayersHaveScoreAtLeast(Integer player1Points, Integer player2Points, Integer atLeastPoints) {
+        player1Points >= atLeastPoints && player2Points >= atLeastPoints
     }
 
 }
