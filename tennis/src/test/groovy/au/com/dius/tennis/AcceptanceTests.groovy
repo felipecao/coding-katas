@@ -150,4 +150,22 @@ class AcceptanceTests extends Specification {
         "Advantage $SECOND_PLAYER" == game.score()
     }
 
+    def "Player 2 loses by only scoring 15"() {
+        given: "15-15"
+        game.pointWonBy(FIRST_PLAYER)
+        game.pointWonBy(SECOND_PLAYER)
+
+        and: "30-15"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "40-15"
+        game.pointWonBy(FIRST_PLAYER)
+
+        and: "Player 1 wins"
+        game.pointWonBy(FIRST_PLAYER)
+
+        expect:
+        "$FIRST_PLAYER wins" == game.score()
+    }
+
 }
