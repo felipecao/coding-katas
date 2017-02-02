@@ -6,6 +6,7 @@ import spock.lang.Unroll
 import static au.com.dius.tennis.PlayersNames.FIRST_PLAYER
 import static au.com.dius.tennis.PlayersNames.SECOND_PLAYER
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
+import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 
 class PlayersSpec extends Specification {
     private Players players
@@ -68,5 +69,27 @@ class PlayersSpec extends Specification {
         1                       | 1                       | greaterThan(2) | false
         1                       | 1                       | 1              | true
         2                       | 2                       | 1              | true
+    }
+
+    @Unroll
+    def "bothPlayersHaveMininumScoreForDeuce returns true when both players have at least 3 points"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        isApplicable == players.bothPlayersHaveMininumScoreForDeuce()
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | isApplicable
+        lessThan(3)             | lessThan(3)             | false
+        3                       | 3                       | true
+        greaterThan(3)          | greaterThan(3)          | true
     }
 }

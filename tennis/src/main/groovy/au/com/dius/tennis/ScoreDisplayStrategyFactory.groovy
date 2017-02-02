@@ -19,7 +19,7 @@ class ScoreDisplayStrategyFactory {
                 new VictoryStrategy(null),
                 new AdvantageStrategy(null),
                 new DeuceStrategy(null),
-                new RegularScoreStrategy(null),
+                new RegularScoreStrategy(players),
                 new VoidStrategy(players)
         ].find {it.applicableToScore}
     }

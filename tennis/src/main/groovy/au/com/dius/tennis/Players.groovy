@@ -8,6 +8,11 @@ class Players {
         players << new Player(player2Name)
     }
 
+    protected Players(Player player1, Player player2) {
+        players << player1
+        players << player2
+    }
+
     private Player findByName(String playerName) {
         players.find {it.name == playerName}
     }
@@ -24,10 +29,18 @@ class Players {
         players.first().points >= points && players.last().points >= points
     }
 
+    boolean bothPlayersHaveMininumScoreForDeuce() {
+        bothPlayersHaveScoredMoreThanOrEqualsToPoints(3)
+    }
+
     Map<String, Integer> asMap() {
         [
                 (players.first().name): players.first().points,
                 (players.last().name): players.last().points
         ]
+    }
+
+    String withPlayersPoints(Closure c) {
+        c(players.first().points, players.last().points)
     }
 }

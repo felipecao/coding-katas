@@ -1,5 +1,7 @@
 package au.com.dius.tennis.strategy
 
+import au.com.dius.tennis.Player
+import au.com.dius.tennis.Players
 import au.com.dius.tennis.ScoreDisplayStrategy
 import au.com.dius.tennis.random.RandomString16CharsLong
 import spock.lang.Specification
@@ -15,10 +17,10 @@ class RegularScoreStrategySpec extends Specification {
     @Unroll
     def "RegularScoreStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new RegularScoreStrategy([
-                (RandomString16CharsLong.get()): player1Points,
-                (RandomString16CharsLong.get()): player2Points
-        ])
+        strategy = new RegularScoreStrategy(new Players(
+                new Player(RandomString16CharsLong.get(), player1Points),
+                new Player(RandomString16CharsLong.get(), player2Points)
+        ))
 
         expect:
         score == strategy.displayScore()
@@ -46,10 +48,10 @@ class RegularScoreStrategySpec extends Specification {
     @Unroll
     def "RegularScoreStrategy is not applicable if any player has scored over 3 points"() {
         given:
-        strategy = new RegularScoreStrategy([
-                (RandomString16CharsLong.get()): player1Points,
-                (RandomString16CharsLong.get()): player2Points
-        ])
+        strategy = new RegularScoreStrategy(new Players(
+                new Player(RandomString16CharsLong.get(), player1Points),
+                new Player(RandomString16CharsLong.get(), player2Points)
+        ))
 
         expect:
         isApplicable == strategy.isApplicableToScore()

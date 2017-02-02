@@ -8,6 +8,11 @@ class Player {
         this.name = name
     }
 
+    protected Player(String name, Integer points) {
+        this.name = name
+        this.points = points
+    }
+
     Integer getPoints() {
         return points
     }
