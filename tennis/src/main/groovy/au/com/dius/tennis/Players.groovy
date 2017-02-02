@@ -19,4 +19,11 @@ class Players {
     boolean playerWithNameHasPoints(String playerName, Integer points) {
         findByName(playerName).points == points
     }
+
+    Map<String, Integer> asMap() {
+        [
+                (players.first().name): players.first().points,
+                (players.last().name): players.last().points
+        ]
+    }
 }

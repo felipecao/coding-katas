@@ -15,16 +15,35 @@ class PlayersSpec extends Specification {
 
     def "a player starts with 0 points and every time it scores, it has more points"() {
         given:
-        totalScores.times {
+        totalPointsWonByPlayer1.times {
             players.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         expect:
-        players.playerWithNameHasPoints(FIRST_PLAYER, totalScores)
+        players.playerWithNameHasPoints(FIRST_PLAYER, totalPointsWonByPlayer1)
 
         where:
-        totalScores |_
-        0 |_
-        greaterThan(0) |_
+        totalPointsWonByPlayer1 |_
+        0                       |_
+        greaterThan(0)          |_
+    }
+
+    def "asMap returns a key-value representation of players names and points"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        [FIRST_PLAYER: totalPointsWonByPlayer1, SECOND_PLAYER: totalPointsWonByPlayer2]
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2
+        greaterThan(0)          | greaterThan(0)
     }
 }
