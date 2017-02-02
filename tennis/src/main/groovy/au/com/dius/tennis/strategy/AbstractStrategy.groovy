@@ -1,5 +1,7 @@
 package au.com.dius.tennis.strategy
 
+import au.com.dius.tennis.ScoreDisplayStrategy
+
 import static org.apache.commons.lang3.StringUtils.EMPTY
 
 abstract class AbstractStrategy implements ScoreDisplayStrategy {

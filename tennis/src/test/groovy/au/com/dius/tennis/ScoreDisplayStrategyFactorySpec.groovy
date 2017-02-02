@@ -1,6 +1,7 @@
-package au.com.dius.tennis.strategy
+package au.com.dius.tennis
 
 import au.com.dius.tennis.random.RandomString16CharsLong
+import au.com.dius.tennis.strategy.*
 import spock.lang.Specification
 import spock.lang.Unroll
 

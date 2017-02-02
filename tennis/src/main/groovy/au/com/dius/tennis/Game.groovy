@@ -1,8 +1,5 @@
 package au.com.dius.tennis
 
-import au.com.dius.tennis.strategy.ScoreDisplayStrategy
-import au.com.dius.tennis.strategy.ScoreDisplayStrategyFactory
-
 class Game {
 
     public static final String INITIAL_SCORE = "0-0"

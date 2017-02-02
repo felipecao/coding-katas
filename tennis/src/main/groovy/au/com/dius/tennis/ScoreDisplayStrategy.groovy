@@ -1,4 +1,4 @@
-package au.com.dius.tennis.strategy
+package au.com.dius.tennis
 
 import static org.apache.commons.lang3.StringUtils.EMPTY
 
