@@ -1,6 +1,9 @@
 package au.com.dius.tennis.strategy
 
-interface ScoreDisplayStrategy {
-    boolean isApplicableToScore()
-    String displayScore()
+trait ScoreDisplayStrategy {
+    abstract boolean isApplicableToScore()
+    abstract String displayScore()
+    String winner() {
+        null
+    }
 }

@@ -28,6 +28,7 @@ class VictoryStrategySpec extends Specification {
         player1Points | player2Points | score
         lessThan(4)   | lessThan(4)   | BLANK
         4             | 3             | BLANK
+        5             | 5             | BLANK
         5             | 3             | "$FIRST_PLAYER $VICTORY"
         3             | 5             | "$SECOND_PLAYER $VICTORY"
         7             | 5             | "$FIRST_PLAYER $VICTORY"
@@ -48,9 +49,31 @@ class VictoryStrategySpec extends Specification {
         player1Points | player2Points | isApplicable
         lessThan(4)   | lessThan(4)   | false
         4             | 3             | false
+        5             | 5             | false
         5             | 3             | true
         3             | 5             | true
         7             | 5             | true
+    }
+
+    @Unroll
+    def "#winner should be the winner when player 1 scores #player1Points and player 2 scores #player2Points"() {
+        given:
+        strategy = new VictoryStrategy([
+                ("$FIRST_PLAYER".toString()): player1Points,
+                ("$SECOND_PLAYER".toString()): player2Points
+        ])
+
+        expect:
+        winner == strategy.winner()
+
+        where:
+        player1Points | player2Points | winner
+        lessThan(4)   | lessThan(4)   | BLANK
+        4             | 3             | BLANK
+        5             | 5             | BLANK
+        5             | 3             | FIRST_PLAYER
+        3             | 5             | SECOND_PLAYER
+        7             | 5             | FIRST_PLAYER
     }
 
 }

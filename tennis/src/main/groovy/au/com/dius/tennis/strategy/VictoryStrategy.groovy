@@ -17,4 +17,12 @@ class VictoryStrategy extends AbstractStrategy {
     String displaySpecificScore() {
         "${player1Points - player2Points > 0 ? player1Name : player2Name} $VICTORY"
     }
+
+    @Override
+    String winner() {
+        if (!isApplicableToScore()) {
+            return BLANK
+        }
+        player1Points - player2Points > 0 ? player1Name : player2Name
+    }
 }
