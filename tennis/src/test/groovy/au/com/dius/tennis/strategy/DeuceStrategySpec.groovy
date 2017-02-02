@@ -6,7 +6,7 @@ import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.lang.Strings.BLANK
+import static org.apache.commons.lang3.StringUtils.EMPTY
 import static au.com.dius.tennis.strategy.DeuceStrategy.DEUCE
 
 class DeuceStrategySpec extends Specification {
@@ -26,10 +26,10 @@ class DeuceStrategySpec extends Specification {
 
         where:
         player1Points  | player2Points  | score
-        lessThan(3)    | lessThan(3)    | BLANK
+        lessThan(3)    | lessThan(3)    | EMPTY
         3              | 3              | DEUCE
-        greaterThan(3) | 3              | BLANK
-        3              | greaterThan(3) | BLANK
+        greaterThan(3) | 3              | EMPTY
+        3              | greaterThan(3) | EMPTY
         4              | 4              | DEUCE
         5              | 5              | DEUCE
     }

@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import static au.com.dius.tennis.lang.Strings.BLANK
+import static org.apache.commons.lang3.StringUtils.EMPTY
 import static java.lang.Math.abs
 
 class VictoryStrategy extends AbstractStrategy {
@@ -22,7 +22,7 @@ class VictoryStrategy extends AbstractStrategy {
     @Override
     String winner() {
         if (!isApplicableToScore()) {
-            return BLANK
+            return EMPTY
         }
         player1Points - player2Points > 0 ? player1Name : player2Name
     }

@@ -5,7 +5,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.lang.Strings.BLANK
+import static org.apache.commons.lang3.StringUtils.EMPTY
 
 class RegularScoreStrategySpec extends Specification {
 
@@ -39,7 +39,7 @@ class RegularScoreStrategySpec extends Specification {
         1              | 3              | "15-40"
         3              | 2              | "40-30"
         2              | 3              | "30-40"
-        greaterThan(3) | greaterThan(3) | BLANK
+        greaterThan(3) | greaterThan(3) | EMPTY
     }
 
     @Unroll

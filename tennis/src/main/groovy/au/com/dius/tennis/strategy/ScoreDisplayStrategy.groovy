@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.lang.Strings
+import static org.apache.commons.lang3.StringUtils.EMPTY
 
 trait ScoreDisplayStrategy {
 
@@ -8,6 +8,6 @@ trait ScoreDisplayStrategy {
     abstract String displayScore()
 
     String winner() {
-        Strings.BLANK
+        EMPTY
     }
 }

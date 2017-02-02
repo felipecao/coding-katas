@@ -6,7 +6,7 @@ import spock.lang.Unroll
 import static au.com.dius.tennis.PlayersNames.FIRST_PLAYER
 import static au.com.dius.tennis.PlayersNames.SECOND_PLAYER
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
-import static au.com.dius.tennis.lang.Strings.BLANK
+import static org.apache.commons.lang3.StringUtils.EMPTY
 import static au.com.dius.tennis.strategy.VictoryStrategy.VICTORY
 
 class VictoryStrategySpec extends Specification {
@@ -26,9 +26,9 @@ class VictoryStrategySpec extends Specification {
 
         where:
         player1Points | player2Points | score
-        lessThan(4)   | lessThan(4)   | BLANK
-        4             | 3             | BLANK
-        5             | 5             | BLANK
+        lessThan(4)   | lessThan(4)   | EMPTY
+        4             | 3             | EMPTY
+        5             | 5             | EMPTY
         5             | 3             | "$FIRST_PLAYER $VICTORY"
         3             | 5             | "$SECOND_PLAYER $VICTORY"
         7             | 5             | "$FIRST_PLAYER $VICTORY"
@@ -68,9 +68,9 @@ class VictoryStrategySpec extends Specification {
 
         where:
         player1Points | player2Points | winner
-        lessThan(4)   | lessThan(4)   | BLANK
-        4             | 3             | BLANK
-        5             | 5             | BLANK
+        lessThan(4)   | lessThan(4)   | EMPTY
+        4             | 3             | EMPTY
+        5             | 5             | EMPTY
         5             | 3             | FIRST_PLAYER
         3             | 5             | SECOND_PLAYER
         7             | 5             | FIRST_PLAYER

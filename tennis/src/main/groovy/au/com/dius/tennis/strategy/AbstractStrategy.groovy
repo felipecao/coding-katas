@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import static au.com.dius.tennis.lang.Strings.BLANK
+import static org.apache.commons.lang3.StringUtils.EMPTY
 
 abstract class AbstractStrategy implements ScoreDisplayStrategy {
 
@@ -18,7 +18,7 @@ abstract class AbstractStrategy implements ScoreDisplayStrategy {
 
     String displayScore() {
         if (!isApplicableToScore()) {
-            return BLANK
+            return EMPTY
         }
 
         return displaySpecificScore()
