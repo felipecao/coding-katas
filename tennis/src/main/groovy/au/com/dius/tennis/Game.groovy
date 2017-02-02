@@ -24,14 +24,11 @@ class Game {
         }
 
         points[playerName]++
+        score = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
 
         if (isVictory(player1Points(), player2Points())) {
             winner = player1Points() - player2Points() > 0 ? player1Name() : player2Name()
-            score = "$winner wins"
-            return;
         }
-
-        score = ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
     }
 
     private boolean isVictory(int player1Points, int player2Points) {

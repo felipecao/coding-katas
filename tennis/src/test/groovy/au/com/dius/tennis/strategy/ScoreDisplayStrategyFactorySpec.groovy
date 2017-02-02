@@ -25,6 +25,7 @@ class ScoreDisplayStrategyFactorySpec extends Specification {
         3              | 3              | DeuceStrategy
         4              | 3              | AdvantageStrategy
         5              | 3              | VictoryStrategy
+        4              | 0              | VictoryStrategy
         -1             | -1             | VoidStrategy
     }
 
