@@ -1,6 +1,7 @@
 package au.com.dius.tennis
 
 import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
+import au.com.dius.tennis.strategy.DeuceStrategy
 import au.com.dius.tennis.strategy.RegularScoreStrategy
 
 import static java.lang.Math.abs
@@ -43,7 +44,7 @@ class Game {
             int pointsDifference = player1Points() - player2Points()
 
             if (pointsDifference == 0) {
-                return "Deuce"
+                return new DeuceStrategy(player1Points(), player2Points()).displayScore()
             }
 
             if (pointsDifference in [1, -1]) {
