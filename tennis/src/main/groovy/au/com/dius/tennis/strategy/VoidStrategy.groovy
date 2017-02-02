@@ -1,11 +1,15 @@
 package au.com.dius.tennis.strategy
 
+import au.com.dius.tennis.Players
+
 import static org.apache.commons.lang3.StringUtils.EMPTY
 
 class VoidStrategy extends AbstractStrategy {
 
     VoidStrategy(Map<String, Integer> playersNamesAndPoints) {
-        initializePlayersNamesAndPoints(playersNamesAndPoints)
+    }
+
+    VoidStrategy(Players players) {
     }
 
     boolean isApplicableToScore() {

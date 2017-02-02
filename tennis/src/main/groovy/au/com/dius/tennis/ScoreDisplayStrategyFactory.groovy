@@ -1,11 +1,6 @@
 package au.com.dius.tennis
 
-import au.com.dius.tennis.ScoreDisplayStrategy
-import au.com.dius.tennis.strategy.AdvantageStrategy
-import au.com.dius.tennis.strategy.DeuceStrategy
-import au.com.dius.tennis.strategy.RegularScoreStrategy
-import au.com.dius.tennis.strategy.VictoryStrategy
-import au.com.dius.tennis.strategy.VoidStrategy
+import au.com.dius.tennis.strategy.*
 
 class ScoreDisplayStrategyFactory {
 
@@ -16,6 +11,16 @@ class ScoreDisplayStrategyFactory {
                 new DeuceStrategy(namesAndPoints),
                 new RegularScoreStrategy(namesAndPoints),
                 new VoidStrategy(namesAndPoints)
+        ].find {it.applicableToScore}
+    }
+
+    static ScoreDisplayStrategy buildForPlayers(Players players) {
+        [
+                new VictoryStrategy(null),
+                new AdvantageStrategy(null),
+                new DeuceStrategy(null),
+                new RegularScoreStrategy(null),
+                new VoidStrategy(players)
         ].find {it.applicableToScore}
     }
 }
