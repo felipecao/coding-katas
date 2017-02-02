@@ -1,7 +1,5 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.precondition.BothPlayersPreconditions
-
 import static java.lang.Math.floor
 
 class RegularScoreStrategy extends AbstractStrategy {

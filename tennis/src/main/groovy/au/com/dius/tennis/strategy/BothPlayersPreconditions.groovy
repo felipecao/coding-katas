@@ -1,4 +1,4 @@
-package au.com.dius.tennis.precondition
+package au.com.dius.tennis.strategy
 
 class BothPlayersPreconditions {
 

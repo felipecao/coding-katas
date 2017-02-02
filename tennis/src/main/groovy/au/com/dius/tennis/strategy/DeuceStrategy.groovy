@@ -1,7 +1,5 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.precondition.BothPlayersPreconditions
-
 class DeuceStrategy extends AbstractStrategy {
 
     public static final String DEUCE = "Deuce"
