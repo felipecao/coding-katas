@@ -11,7 +11,8 @@ class RegularScoreStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        return !BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points)
+        return !BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points) &&
+                player1Points >= 0 && player2Points >= 0
     }
 
     String displaySpecificScore() {
