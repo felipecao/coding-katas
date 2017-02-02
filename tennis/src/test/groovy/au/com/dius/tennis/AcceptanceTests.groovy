@@ -5,6 +5,7 @@ import spock.lang.Unroll
 
 class AcceptanceTests extends Specification {
 
+    public static final String DEUCE = "Deuce"
     private Game game
 
     private static final String FIRST_PLAYER = "player 1"
@@ -46,9 +47,9 @@ class AcceptanceTests extends Specification {
         1                       | 3                         | "15-40"
         3                       | 2                         | "40-30"
         2                       | 3                         | "30-40"
-        3                       | 3                         | "Deuce"
-        4                       | 0                         | "$FIRST_PLAYER wins"
-        0                       | 4                         | "$SECOND_PLAYER wins"
+        3                       | 3                         | DEUCE
+        4                       | 0                         | playerWins(FIRST_PLAYER)
+        0                       | 4                         | playerWins(SECOND_PLAYER)
     }
 
     def "When players exchange points along the game, the winner is the first one to obtain a two points difference, regardless if the players continue to play"() {
@@ -60,20 +61,23 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
         and: "Advantage player 1"
         game.pointWonBy(FIRST_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(SECOND_PLAYER)
 
         and: "Advantage player 1"
         game.pointWonBy(FIRST_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(SECOND_PLAYER)
 
         and: "Advantage player 1"
@@ -90,7 +94,7 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(SECOND_PLAYER)
 
         expect: "player 1 should continue to be the winner, even though player 2 continued to play"
-        "$FIRST_PLAYER wins" == game.score()
+        playerWins(FIRST_PLAYER) == game.score()
     }
 
     def "When players exchange points until a Deuce, the score is 'Deuce'"() {
@@ -102,12 +106,13 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
         expect:
-        "Deuce" == game.score()
+        DEUCE == game.score()
     }
 
     def "When players exchange points until an advantage to player 1, the score is 'Advantage player 1'"() {
@@ -119,7 +124,8 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
@@ -127,7 +133,7 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
 
         expect:
-        "Advantage $FIRST_PLAYER" == game.score()
+        playerHasAdvantage(FIRST_PLAYER) == game.score()
     }
 
     def "When players exchange points until an advantage to player 2, the score is 'Advantage player 2'"() {
@@ -139,7 +145,8 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
-        and: "Deuce"
+        and:
+        DEUCE
         game.pointWonBy(FIRST_PLAYER)
         game.pointWonBy(SECOND_PLAYER)
 
@@ -147,7 +154,7 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(SECOND_PLAYER)
 
         expect:
-        "Advantage $SECOND_PLAYER" == game.score()
+        playerHasAdvantage(SECOND_PLAYER) == game.score()
     }
 
     def "Player 2 loses by only scoring 15"() {
@@ -165,7 +172,7 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(FIRST_PLAYER)
 
         expect:
-        "$FIRST_PLAYER wins" == game.score()
+        playerWins(FIRST_PLAYER) == game.score()
     }
 
     def "Player 1 loses by only scoring 15"() {
@@ -183,7 +190,15 @@ class AcceptanceTests extends Specification {
         game.pointWonBy(SECOND_PLAYER)
 
         expect:
-        "$SECOND_PLAYER wins" == game.score()
+        playerWins(SECOND_PLAYER) == game.score()
+    }
+
+    private String playerWins(String playerName) {
+        "$playerName wins"
+    }
+
+    private String playerHasAdvantage(String playerName) {
+        "Advantage $playerName"
     }
 
 }
