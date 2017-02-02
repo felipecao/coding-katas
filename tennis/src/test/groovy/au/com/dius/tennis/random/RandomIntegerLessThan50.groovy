@@ -7,7 +7,7 @@ class RandomIntegerLessThan50 {
     private static final int UPPER_THRESHOLD = 50
 
     static int greaterThan(int minimumThreshold) {
-        RandomUtils.nextInt(minimumThreshold, UPPER_THRESHOLD)
+        RandomUtils.nextInt(minimumThreshold + 1, UPPER_THRESHOLD)
     }
 
     static int lessThan(int maximumThreshold) {
