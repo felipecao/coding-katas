@@ -21,11 +21,13 @@ class Game {
 
         points[playerName]++
 
-        int pointsDifference = player1Points() - player2Points()
-
-        if (abs(pointsDifference) == 4 || ((player1Points() > 3 || player2Points() > 3) && abs(pointsDifference) == 2)) {
-            winner = pointsDifference > 0 ? player1Name() : player2Name()
+        if (isVictory(player1Points(), player2Points())) {
+            winner = player1Points() - player2Points() > 0 ? player1Name() : player2Name()
         }
+    }
+
+    private boolean isVictory(int player1Points, int player2Points) {
+        return (player1Points >= 4 || player2Points >= 4) && abs(player1Points - player2Points) >= 2
     }
 
     String score() {
