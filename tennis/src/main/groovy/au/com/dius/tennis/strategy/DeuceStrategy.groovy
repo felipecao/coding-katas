@@ -7,7 +7,7 @@ class DeuceStrategy extends AbstractStrategy {
     public static final String DEUCE = "Deuce"
 
     DeuceStrategy(Map<String, Integer> playersNamesAndPoints) {
-        initializePlayersPoints(playersNamesAndPoints)
+        initializePlayersNamesAndPoints(playersNamesAndPoints)
     }
 
     boolean isApplicableToScore() {

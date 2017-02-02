@@ -7,7 +7,7 @@ import static java.lang.Math.floor
 class RegularScoreStrategy extends AbstractStrategy {
 
     RegularScoreStrategy(Map<String, Integer> playersNamesAndPoints) {
-        initializePlayersPoints(playersNamesAndPoints)
+        initializePlayersNamesAndPoints(playersNamesAndPoints)
     }
 
     boolean isApplicableToScore() {

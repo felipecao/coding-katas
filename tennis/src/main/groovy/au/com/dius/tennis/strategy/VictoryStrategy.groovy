@@ -6,18 +6,8 @@ class VictoryStrategy extends AbstractStrategy {
 
     public static final String VICTORY = "wins"
 
-    private String player1Name
-    private String player2Name
-    private int pointsDifference
-
     VictoryStrategy(Map<String, Integer> playersNamesAndPoints) {
-
-        initializePlayersPoints(playersNamesAndPoints)
-
-        player1Name = playersNamesAndPoints.keySet().first()
-        player2Name = playersNamesAndPoints.keySet().last()
-
-        pointsDifference = player1Points - player2Points
+        initializePlayersNamesAndPoints(playersNamesAndPoints)
     }
 
     boolean isApplicableToScore() {
