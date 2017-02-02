@@ -4,9 +4,7 @@ import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
 
 import static java.lang.Math.floor
 
-class RegularScoreStrategy {
-
-    public static final String BLANK = ""
+class RegularScoreStrategy extends AbstractStrategy {
 
     private int player1Points
     private int player2Points
@@ -20,10 +18,7 @@ class RegularScoreStrategy {
         return !BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points, player2Points)
     }
 
-    String displayScore() {
-        if (!isApplicableToScore()) {
-            return BLANK
-        }
+    String displaySpecificScore() {
         return "${calculateScoreForPoints(player1Points)}-${calculateScoreForPoints(player2Points)}"
     }
 

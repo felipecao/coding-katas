@@ -2,7 +2,7 @@ package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
 
-class DeuceStrategy {
+class DeuceStrategy extends AbstractStrategy {
 
     public static final String DEUCE = "Deuce"
 
@@ -19,11 +19,7 @@ class DeuceStrategy {
                 ((player1Points - player2Points) == 0)
     }
 
-    String displayScore() {
-        if (!isApplicableToScore()) {
-            return RegularScoreStrategy.BLANK
-        }
-
+    String displaySpecificScore() {
         return DEUCE
     }
 }

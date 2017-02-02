@@ -4,11 +4,11 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.strategy.RegularScoreStrategy.BLANK
+import static au.com.dius.tennis.strategy.AbstractStrategy.BLANK
 
 class RegularScoreStrategySpec extends Specification {
 
-    private RegularScoreStrategy strategy
+    private Strategy strategy
 
     @Unroll
     def "RegularScoreStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {

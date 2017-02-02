@@ -3,13 +3,13 @@ package au.com.dius.tennis
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static au.com.dius.tennis.PlayersNames.FIRST_PLAYER
+import static au.com.dius.tennis.PlayersNames.SECOND_PLAYER
+
 class AcceptanceTests extends Specification {
 
     public static final String DEUCE = "Deuce"
     private Game game
-
-    private static final String FIRST_PLAYER = "player 1"
-    private static final String SECOND_PLAYER = "player 2"
 
     def setup() {
         game = new Game(FIRST_PLAYER, SECOND_PLAYER)

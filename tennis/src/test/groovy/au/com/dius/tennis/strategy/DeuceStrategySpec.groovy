@@ -5,12 +5,12 @@ import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
-import static au.com.dius.tennis.strategy.RegularScoreStrategy.BLANK
+import static au.com.dius.tennis.strategy.AbstractStrategy.BLANK
 import static au.com.dius.tennis.strategy.DeuceStrategy.DEUCE
 
 class DeuceStrategySpec extends Specification {
 
-    private DeuceStrategy strategy
+    private Strategy strategy
 
     @Unroll
     def "DeuceStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
