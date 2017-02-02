@@ -49,10 +49,7 @@ class Game {
             }
 
             if (pointsDifference in [1, -1]) {
-                return new AdvantageStrategy([
-                        (player1Name()): player1Points(),
-                        (player2Name()): player2Points(),
-                ]).displayScore()
+                return new AdvantageStrategy(points).displayScore()
             }
         }
 
