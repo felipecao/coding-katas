@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-abstract class AbstractStrategy implements ScoreCalculationStrategy {
+abstract class AbstractStrategy implements ScoreDisplayStrategy {
 
     protected Integer player1Points
     protected Integer player2Points

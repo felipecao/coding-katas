@@ -1,6 +1,6 @@
 package au.com.dius.tennis
 
-import au.com.dius.tennis.strategy.ScoreCalculationStrategyFactory
+import au.com.dius.tennis.strategy.ScoreDisplayStrategyFactory
 
 import static java.lang.Math.abs
 
@@ -37,7 +37,7 @@ class Game {
             return "$winner wins"
         }
 
-        return ScoreCalculationStrategyFactory.buildForNamesAndPoints(points).displayScore()
+        return ScoreDisplayStrategyFactory.buildForNamesAndPoints(points).displayScore()
     }
 
     private String player1Name() {

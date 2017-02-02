@@ -6,7 +6,7 @@ import spock.lang.Unroll
 
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 
-class ScoreCalculationStrategyFactorySpec extends Specification {
+class ScoreDisplayStrategyFactorySpec extends Specification {
 
     @Unroll
     def "buildForNamesAndPoints should return an instance of #instance when player 1 scores #player1Points and player 2 scores #player2Points"() {
@@ -17,7 +17,7 @@ class ScoreCalculationStrategyFactorySpec extends Specification {
         ]
 
         expect:
-        ScoreCalculationStrategyFactory.buildForNamesAndPoints(playersNamesAndPoints).class.isAssignableFrom(instance)
+        ScoreDisplayStrategyFactory.buildForNamesAndPoints(playersNamesAndPoints).class.isAssignableFrom(instance)
 
         where:
         player1Points  | player2Points  | instance

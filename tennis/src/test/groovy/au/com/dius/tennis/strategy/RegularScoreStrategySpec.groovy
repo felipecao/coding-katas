@@ -9,7 +9,7 @@ import static au.com.dius.tennis.strategy.AbstractStrategy.BLANK
 
 class RegularScoreStrategySpec extends Specification {
 
-    private ScoreCalculationStrategy strategy
+    private ScoreDisplayStrategy strategy
 
     @Unroll
     def "RegularScoreStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {

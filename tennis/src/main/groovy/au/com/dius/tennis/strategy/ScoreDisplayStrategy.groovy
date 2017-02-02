@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-interface ScoreCalculationStrategy {
+interface ScoreDisplayStrategy {
     boolean isApplicableToScore()
     String displayScore()
 }

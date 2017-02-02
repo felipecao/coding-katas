@@ -7,7 +7,7 @@ import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
 
 class VoidStrategySpec extends Specification {
 
-    private ScoreCalculationStrategy strategy
+    private ScoreDisplayStrategy strategy
 
     def setup() {
         strategy = new VoidStrategy([

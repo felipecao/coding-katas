@@ -1,8 +1,8 @@
 package au.com.dius.tennis.strategy
 
-class ScoreCalculationStrategyFactory {
+class ScoreDisplayStrategyFactory {
 
-    static ScoreCalculationStrategy buildForNamesAndPoints(Map<String, Integer> namesAndPoints) {
+    static ScoreDisplayStrategy buildForNamesAndPoints(Map<String, Integer> namesAndPoints) {
         [
                 new RegularScoreStrategy(namesAndPoints),
                 new DeuceStrategy(namesAndPoints),
