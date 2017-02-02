@@ -1,9 +1,6 @@
 package au.com.dius.tennis
 
-import au.com.dius.tennis.preconditions.BothPlayersHaveScoredAtLeast40
-import au.com.dius.tennis.strategy.AdvantageStrategy
-import au.com.dius.tennis.strategy.DeuceStrategy
-import au.com.dius.tennis.strategy.RegularScoreStrategy
+import au.com.dius.tennis.strategy.ScoreCalculationStrategyFactory
 
 import static java.lang.Math.abs
 
@@ -40,20 +37,7 @@ class Game {
             return "$winner wins"
         }
 
-        if (BothPlayersHaveScoredAtLeast40.isApplicableToPoints(player1Points(), player2Points())) {
-
-            int pointsDifference = player1Points() - player2Points()
-
-            if (pointsDifference == 0) {
-                return new DeuceStrategy(points).displayScore()
-            }
-
-            if (pointsDifference in [1, -1]) {
-                return new AdvantageStrategy(points).displayScore()
-            }
-        }
-
-        return new RegularScoreStrategy(points).displayScore()
+        return ScoreCalculationStrategyFactory.buildForNamesAndPoints(points).displayScore()
     }
 
     private String player1Name() {
