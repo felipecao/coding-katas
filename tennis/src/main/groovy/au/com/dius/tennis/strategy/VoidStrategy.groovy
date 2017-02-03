@@ -6,9 +6,6 @@ import static org.apache.commons.lang3.StringUtils.EMPTY
 
 class VoidStrategy extends AbstractStrategy {
 
-    VoidStrategy(Map<String, Integer> playersNamesAndPoints) {
-    }
-
     VoidStrategy(Players players) {
     }
 

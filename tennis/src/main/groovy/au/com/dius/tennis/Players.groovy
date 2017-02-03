@@ -51,13 +51,6 @@ class Players {
         abs(players.first().points - players.last().points) >= points
     }
 
-    Map<String, Integer> asMap() {
-        [
-                (players.first().name): players.first().points,
-                (players.last().name): players.last().points
-        ]
-    }
-
     String withPlayersPoints(Closure c) {
         c(players.first().points, players.last().points)
     }
