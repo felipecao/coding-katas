@@ -3,11 +3,13 @@ package au.com.dius.tennis
 import static java.lang.Math.abs
 
 class Players {
+
+    private static final int MINIMUM_POINTS_FOR_DEUCE = 3
+
     private List<Player> players = []
 
     Players(String player1Name, String player2Name) {
-        players << new Player(player1Name)
-        players << new Player(player2Name)
+        this(new Player(player1Name), new Player(player2Name))
     }
 
     protected Players(Player player1, Player player2) {
@@ -28,34 +30,42 @@ class Players {
     }
 
     boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
-        players.first().points >= points && players.last().points >= points
+        player1().points >= points && player2().points >= points
+    }
+
+    private Player player1() {
+        players.first()
+    }
+
+    private Player player2() {
+        players.last()
     }
 
     boolean anyPlayerHasScoredMoreThanOrEqualsToPoints(Integer points) {
-        players.first().points >= points || players.last().points >= points
+        player1().points >= points || player2().points >= points
     }
 
     boolean bothPlayersHaveMininumScoreForDeuce() {
-        bothPlayersHaveScoredMoreThanOrEqualsToPoints(3)
+        bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
     }
 
     boolean areInDeuce() {
-        bothPlayersHaveMininumScoreForDeuce() && players.first().points == players.last().points
+        bothPlayersHaveMininumScoreForDeuce() && player1().points == player2().points
     }
 
     boolean differenceInPointsIs(Integer points) {
-        points == abs(players.first().points - players.last().points)
+        points == abs(player1().points - player2().points)
     }
 
     boolean differenceInPointsIsGreaterThanOrEqualsTo(Integer points) {
-        abs(players.first().points - players.last().points) >= points
+        abs(player1().points - player2().points) >= points
     }
 
     String withPlayersPoints(Closure c) {
-        c(players.first().points, players.last().points)
+        c(player1().points, player2().points)
     }
 
     String withAdvantagePlayerName(Closure c) {
-        c(players.first().points - players.last().points > 0 ? players.first().name : players.last().name)
+        c(player1().points - player2().points > 0 ? player1().name : player2().name)
     }
 }
