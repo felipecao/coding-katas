@@ -1,5 +1,7 @@
 package au.com.dius.tennis
 
+import static java.lang.Math.abs
+
 class Players {
     private List<Player> players = []
 
@@ -37,6 +39,10 @@ class Players {
         bothPlayersHaveMininumScoreForDeuce() && players.first().points == players.last().points
     }
 
+    boolean differenceInPointsIs(Integer points) {
+        points == abs(players.first().points - players.last().points)
+    }
+
     Map<String, Integer> asMap() {
         [
                 (players.first().name): players.first().points,
@@ -46,5 +52,9 @@ class Players {
 
     String withPlayersPoints(Closure c) {
         c(players.first().points, players.last().points)
+    }
+
+    String withAdvantagePlayerName(Closure c) {
+        c(players.first().points - players.last().points == 1 ? players.first().name : players.last().name)
     }
 }

@@ -25,9 +25,9 @@ class PlayersSpec extends Specification {
         players.playerWithNameHasPoints(FIRST_PLAYER, totalPointsWonByPlayer1)
 
         where:
-        totalPointsWonByPlayer1 |_
-        0                       |_
-        greaterThan(0)          |_
+        totalPointsWonByPlayer1 | _
+        0                       | _
+        greaterThan(0)          | _
     }
 
     def "asMap returns a key-value representation of players names and points"() {
@@ -115,5 +115,29 @@ class PlayersSpec extends Specification {
         4                       | 4                       | true
         5                       | 5                       | true
         6                       | 6                       | true
+    }
+
+    @Unroll
+    def "differenceInPointsIs returns true when players have the difference provided as input"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        diffMatches == players.differenceInPointsIs(diff)
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | diff | diffMatches
+        0                       | 0                       | 1    | false
+        0                       | 0                       | 0    | true
+        1                       | 0                       | 1    | true
+        0                       | 1                       | 1    | true
+        0                       | 1                       | -1   | false
     }
 }
