@@ -12,7 +12,7 @@ class AdvantageStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        return score.bothHaveMininumScoreForDeuce() &&
+        return score.bothPlayersHaveAtLeast3Points() &&
                 score.differenceInPointsIs(POINTS_DIFFERENCE_FOR_ADVANTAGE)
     }
 

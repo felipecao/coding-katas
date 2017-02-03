@@ -51,7 +51,7 @@ class ScoreSpec extends Specification {
     }
 
     @Unroll
-    def "haveBothScoredMoreThanOrEqualsToPoints returns true when both players comply with the method name"() {
+    def "bothPlayersHaveScoredMoreThanOrEqualsToPoints returns true when both players comply with the method name"() {
         given:
         totalPointsWonByPlayer1.times {
             score.pointWonByPlayerWithName(FIRST_PLAYER)
@@ -63,7 +63,7 @@ class ScoreSpec extends Specification {
         }
 
         expect:
-        bothPlayersHaveScored == score.haveBothScoredMoreThanOrEqualsToPoints(pointsToVerify)
+        bothPlayersHaveScored == score.bothPlayersHaveScoredMoreThanOrEqualsToPoints(pointsToVerify)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | pointsToVerify | bothPlayersHaveScored
@@ -73,7 +73,7 @@ class ScoreSpec extends Specification {
     }
 
     @Unroll
-    def "bothPlayersHaveMininumScoreForDeuce returns true when both players have at least 3 points"() {
+    def "bothPlayersHaveAtLeast3Points returns true when both players have at least 3 points"() {
         given:
         totalPointsWonByPlayer1.times {
             score.pointWonByPlayerWithName(FIRST_PLAYER)
@@ -85,8 +85,7 @@ class ScoreSpec extends Specification {
         }
 
         expect:
-        isApplicable == score.bothHaveMininumScoreForDeuce()
-        !isApplicable == score.dontHaveMininumScoreForDeuce()
+        isApplicable == score.bothPlayersHaveAtLeast3Points()
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | isApplicable
@@ -96,7 +95,7 @@ class ScoreSpec extends Specification {
     }
 
     @Unroll
-    def "areInDeuce returns true when both players have at least 3 points and are tied"() {
+    def "playersAreInDeuce returns true when both players have at least 3 points and are tied"() {
         given:
         totalPointsWonByPlayer1.times {
             score.pointWonByPlayerWithName(FIRST_PLAYER)
@@ -108,7 +107,7 @@ class ScoreSpec extends Specification {
         }
 
         expect:
-        areInDeuce == score.areInDeuce()
+        areInDeuce == score.playersAreInDeuce()
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | areInDeuce

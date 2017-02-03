@@ -29,7 +29,7 @@ class Score {
         findByName(playerName).points == points
     }
 
-    boolean haveBothScoredMoreThanOrEqualsToPoints(Integer points) {
+    boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
         player1().points >= points && player2().points >= points
     }
 
@@ -45,16 +45,12 @@ class Score {
         player1().points >= points || player2().points >= points
     }
 
-    boolean bothHaveMininumScoreForDeuce() {
-        haveBothScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
+    boolean bothPlayersHaveAtLeast3Points() {
+        bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
     }
 
-    boolean dontHaveMininumScoreForDeuce() {
-        !bothHaveMininumScoreForDeuce()
-    }
-
-    boolean areInDeuce() {
-        bothHaveMininumScoreForDeuce() && player1().points == player2().points
+    boolean playersAreInDeuce() {
+        bothPlayersHaveAtLeast3Points() && player1().points == player2().points
     }
 
     boolean differenceInPointsIs(Integer points) {

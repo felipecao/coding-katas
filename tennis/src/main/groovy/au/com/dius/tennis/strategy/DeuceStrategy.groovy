@@ -11,7 +11,7 @@ class DeuceStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        score.areInDeuce()
+        score.playersAreInDeuce()
     }
 
     String displaySpecificScore() {
