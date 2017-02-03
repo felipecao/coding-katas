@@ -17,20 +17,16 @@ class Score {
         players << player2
     }
 
-    private Player findByName(String playerName) {
-        players.find {it.name == playerName}
-    }
-
     void pointWonByPlayerWithName(String playerName) {
         findByName(playerName).score()
     }
 
-    boolean playerWithNameHasPoints(String playerName, Integer points) {
-        findByName(playerName).points == points
+    private Player findByName(String playerName) {
+        players.find {it.name == playerName}
     }
 
-    boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
-        player1().points >= points && player2().points >= points
+    boolean playerWithNameHasPoints(String playerName, Integer points) {
+        findByName(playerName).points == points
     }
 
     private Player player1() {
@@ -45,12 +41,16 @@ class Score {
         player1().points >= points || player2().points >= points
     }
 
+    boolean playersAreInDeuce() {
+        bothPlayersHaveAtLeast3Points() && player1().points == player2().points
+    }
+
     boolean bothPlayersHaveAtLeast3Points() {
         bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
     }
 
-    boolean playersAreInDeuce() {
-        bothPlayersHaveAtLeast3Points() && player1().points == player2().points
+    boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
+        player1().points >= points && player2().points >= points
     }
 
     boolean differenceInPointsIs(Integer points) {
@@ -65,7 +65,7 @@ class Score {
         c(player1().points, player2().points)
     }
 
-    String withNameOfPlayerCurrentlyWinning(Closure c) {
+    String withNameOfCurrentlyWinningPlayer(Closure c) {
         c(player1().points - player2().points > 0 ? player1().name : player2().name)
     }
 }

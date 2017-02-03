@@ -6,9 +6,9 @@ import static org.apache.commons.lang3.StringUtils.EMPTY
 
 class VictoryStrategy extends AbstractStrategy {
 
-    public static final String VICTORY = "wins"
-    public static final Integer MINIMUM_POINTS_FOR_VICTORY = 4
-    public static final Integer POINTS_DIFFERENCE_FOR_VICTORY = 2
+    protected static final String VICTORY = "wins"
+    private static final Integer MINIMUM_POINTS_FOR_VICTORY = 4
+    private static final Integer POINTS_DIFFERENCE_FOR_VICTORY = 2
 
     VictoryStrategy(Score s) {
         this.score = s
@@ -20,7 +20,7 @@ class VictoryStrategy extends AbstractStrategy {
     }
 
     String displaySpecificScore() {
-        return score.withNameOfPlayerCurrentlyWinning { String winner ->
+        return score.withNameOfCurrentlyWinningPlayer { String winner ->
             "$winner $VICTORY"
         }
     }
@@ -31,7 +31,7 @@ class VictoryStrategy extends AbstractStrategy {
             return EMPTY
         }
 
-        return score.withNameOfPlayerCurrentlyWinning { String winner ->
+        return score.withNameOfCurrentlyWinningPlayer { String winner ->
             winner
         }
     }

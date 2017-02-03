@@ -2,7 +2,7 @@ package au.com.dius.tennis
 
 class Game {
 
-    public static final String INITIAL_SCORE = "0-0"
+    private static final String INITIAL_SCORE = "0-0"
 
     private Score score
     private String winner = null

@@ -6,13 +6,15 @@ import static java.lang.Math.floor
 
 class RegularScoreStrategy extends AbstractStrategy {
 
+    private static final int MINIMUM_SCORE = 0
+
     RegularScoreStrategy(Score s) {
         this.score = s
     }
 
     boolean isApplicableToScore() {
         return !score.bothPlayersHaveAtLeast3Points() &&
-                score.bothPlayersHaveScoredMoreThanOrEqualsToPoints(0)
+                score.bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_SCORE)
     }
 
     String displaySpecificScore() {

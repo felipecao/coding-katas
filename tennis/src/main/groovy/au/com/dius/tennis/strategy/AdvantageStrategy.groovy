@@ -4,7 +4,7 @@ import au.com.dius.tennis.Score
 
 class AdvantageStrategy extends AbstractStrategy {
 
-    public static final String ADVANTAGE = "Advantage"
+    protected static final String ADVANTAGE = "Advantage"
     private static final Integer POINTS_DIFFERENCE_FOR_ADVANTAGE = 1
 
     AdvantageStrategy(Score s) {
@@ -17,7 +17,7 @@ class AdvantageStrategy extends AbstractStrategy {
     }
 
     String displaySpecificScore() {
-        return score.withNameOfPlayerCurrentlyWinning { String playerName ->
+        return score.withNameOfCurrentlyWinningPlayer { String playerName ->
             "$ADVANTAGE $playerName"
         }
     }
