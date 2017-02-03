@@ -16,7 +16,7 @@ class ScoreDisplayStrategyFactory {
 
     static ScoreDisplayStrategy buildForPlayers(Players players) {
         [
-                new VictoryStrategy(null),
+                new VictoryStrategy(players),
                 new AdvantageStrategy(players),
                 new DeuceStrategy(players),
                 new RegularScoreStrategy(players),

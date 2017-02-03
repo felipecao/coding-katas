@@ -31,6 +31,10 @@ class Players {
         players.first().points >= points && players.last().points >= points
     }
 
+    boolean anyPlayerHasScoredMoreThanOrEqualsToPoints(Integer points) {
+        players.first().points >= points || players.last().points >= points
+    }
+
     boolean bothPlayersHaveMininumScoreForDeuce() {
         bothPlayersHaveScoredMoreThanOrEqualsToPoints(3)
     }
@@ -41,6 +45,10 @@ class Players {
 
     boolean differenceInPointsIs(Integer points) {
         points == abs(players.first().points - players.last().points)
+    }
+
+    boolean differenceInPointsIsGreaterThanOrEqualsTo(Integer points) {
+        abs(players.first().points - players.last().points) >= points
     }
 
     Map<String, Integer> asMap() {
@@ -55,6 +63,6 @@ class Players {
     }
 
     String withAdvantagePlayerName(Closure c) {
-        c(players.first().points - players.last().points == 1 ? players.first().name : players.last().name)
+        c(players.first().points - players.last().points > 0 ? players.first().name : players.last().name)
     }
 }

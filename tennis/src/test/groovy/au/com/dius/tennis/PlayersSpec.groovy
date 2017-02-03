@@ -140,4 +140,54 @@ class PlayersSpec extends Specification {
         0                       | 1                       | 1    | true
         0                       | 1                       | -1   | false
     }
+
+    @Unroll
+    def "anyPlayerHasScoredMoreThanOrEqualsToPoints returns true when any players has scored at least the points provided as input"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        anyoneHasScored == players.anyPlayerHasScoredMoreThanOrEqualsToPoints(threshold)
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | threshold | anyoneHasScored
+        0                       | 0                       | 1         | false
+        0                       | 0                       | 0         | true
+        1                       | 0                       | 1         | true
+        0                       | 1                       | 1         | true
+        2                       | 1                       | 1         | true
+        1                       | 2                       | 1         | true
+    }
+
+    @Unroll
+    def "differenceInPointsIsGreaterThanOrEqualsTo returns #isApplicable when player 1 has scored #totalPointsWonByPlayer1 and player 2 has scored #totalPointsWonByPlayer2"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            players.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            players.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        isApplicable == players.differenceInPointsIsGreaterThanOrEqualsTo(diff)
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | diff | isApplicable
+        0                       | 0                       | 1    | false
+        0                       | 0                       | 0    | true
+        1                       | 0                       | 1    | true
+        0                       | 1                       | 1    | true
+        2                       | 0                       | 2    | true
+    }
+
 }
