@@ -46,7 +46,7 @@ Now `Game` had become much shorter and easier to read. I hope you guys agree wit
 During the development of this solution, I've tried to stick to the tips and recommendations of some of my favourite books.
 
 First, I did my best to stick to the incredibly valuable lessons presented by Uncle Bob in his amazing [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?s=books&ie=UTF8&qid=1486086388&sr=1-1&keywords=clean+code)
- book, and tried to create tests, classes, methods, attributes, variables, everything with intention revealing names. From the same author, I've tried to make my as [S.O.L.I.D.](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)
+ book, and tried to create tests, classes, methods, attributes, variables, everything with intention revealing names. From the same author, I've tried to make my code as [S.O.L.I.D.](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)
  as possible. I haven't counted it, but I know for sure my code is not 100% compatible with such rules, for different reasons (I'll talk more about such reasons in the [LIMITATIONS](#limitations-and-room-for-improvements) section).
 
 I've also strived to make good use of encapsulation, and I thank Corey Haynes for his incredible book [Understanding the 4 rules of simple design](https://leanpub.com/4rulesofsimpledesign).
