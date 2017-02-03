@@ -4,13 +4,13 @@ import au.com.dius.tennis.strategy.*
 
 class ScoreDisplayStrategyFactory {
 
-    static ScoreDisplayStrategy buildForPlayers(Players players) {
+    static ScoreDisplayStrategy buildForPlayers(Score score) {
         [
-                new VictoryStrategy(players),
-                new AdvantageStrategy(players),
-                new DeuceStrategy(players),
-                new RegularScoreStrategy(players),
-                new VoidStrategy(players)
+                new VictoryStrategy(score),
+                new AdvantageStrategy(score),
+                new DeuceStrategy(score),
+                new RegularScoreStrategy(score),
+                new VoidStrategy(score)
         ].find {it.applicableToScore}
     }
 }

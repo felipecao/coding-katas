@@ -1,7 +1,7 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Player
-import au.com.dius.tennis.Players
+import au.com.dius.tennis.Score
 import au.com.dius.tennis.ScoreDisplayStrategy
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -19,7 +19,7 @@ class VictoryStrategySpec extends Specification {
     @Unroll
     def "VictoryStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new VictoryStrategy(new Players(
+        strategy = new VictoryStrategy(new Score(
                 new Player(FIRST_PLAYER, player1Points),
                 new Player(SECOND_PLAYER, player2Points)
         ))
@@ -40,7 +40,7 @@ class VictoryStrategySpec extends Specification {
     @Unroll
     def "VictoryStrategy is not applicable if players have less than 4 points or have a difference smaller than 2 points"() {
         given:
-        strategy = new VictoryStrategy(new Players(
+        strategy = new VictoryStrategy(new Score(
                 new Player(FIRST_PLAYER, player1Points),
                 new Player(SECOND_PLAYER, player2Points)
         ))
@@ -61,7 +61,7 @@ class VictoryStrategySpec extends Specification {
     @Unroll
     def "'#winner' should be the winner when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new VictoryStrategy(new Players(
+        strategy = new VictoryStrategy(new Score(
                 new Player(FIRST_PLAYER, player1Points),
                 new Player(SECOND_PLAYER, player2Points)
         ))

@@ -1,9 +1,8 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Player
-import au.com.dius.tennis.Players
+import au.com.dius.tennis.Score
 import au.com.dius.tennis.ScoreDisplayStrategy
-import au.com.dius.tennis.random.RandomString16CharsLong
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -20,7 +19,7 @@ class AdvantageStrategySpec extends Specification {
     @Unroll
     def "AdvantageStrategy should display '#score' when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        strategy = new AdvantageStrategy(new Players(
+        strategy = new AdvantageStrategy(new Score(
                 new Player(FIRST_PLAYER, player1Points),
                 new Player(SECOND_PLAYER, player2Points)
         ))
@@ -45,7 +44,7 @@ class AdvantageStrategySpec extends Specification {
     @Unroll
     def "AdvantageStrategy is not applicable if players have less than 3 points or have a difference larger than 1 point"() {
         given:
-        strategy = new AdvantageStrategy(new Players(
+        strategy = new AdvantageStrategy(new Score(
                 new Player(FIRST_PLAYER, player1Points),
                 new Player(SECOND_PLAYER, player2Points)
         ))

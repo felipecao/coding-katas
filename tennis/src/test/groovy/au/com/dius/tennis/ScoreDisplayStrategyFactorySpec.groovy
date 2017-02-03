@@ -12,13 +12,13 @@ class ScoreDisplayStrategyFactorySpec extends Specification {
     @Unroll
     def "buildForNamesAndPoints should return an instance of #instance when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
-        Players players = new Players(
+        Score score = new Score(
                 new Player(RandomString16CharsLong.get(), player1Points),
                 new Player(RandomString16CharsLong.get(), player2Points)
         )
 
         expect:
-        ScoreDisplayStrategyFactory.buildForPlayers(players).class.isAssignableFrom(instance)
+        ScoreDisplayStrategyFactory.buildForPlayers(score).class.isAssignableFrom(instance)
 
         where:
         player1Points  | player2Points  | instance

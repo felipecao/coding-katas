@@ -1,6 +1,6 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.Players
+import au.com.dius.tennis.Score
 import au.com.dius.tennis.ScoreDisplayStrategy
 import au.com.dius.tennis.random.RandomString16CharsLong
 import spock.lang.Specification
@@ -12,7 +12,7 @@ class VoidStrategySpec extends Specification {
     private ScoreDisplayStrategy strategy
 
     def setup() {
-        strategy = new VoidStrategy(new Players(RandomString16CharsLong.get(), RandomString16CharsLong.get()))
+        strategy = new VoidStrategy(new Score(RandomString16CharsLong.get(), RandomString16CharsLong.get()))
     }
 
     def "VoidStrategy should always display a blank string as score"() {

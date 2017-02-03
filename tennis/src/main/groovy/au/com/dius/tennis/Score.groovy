@@ -2,17 +2,17 @@ package au.com.dius.tennis
 
 import static java.lang.Math.abs
 
-class Players {
+class Score {
 
     private static final Integer MINIMUM_POINTS_FOR_DEUCE = 3
 
     private List<Player> players = []
 
-    Players(String player1Name, String player2Name) {
+    Score(String player1Name, String player2Name) {
         this(new Player(player1Name), new Player(player2Name))
     }
 
-    protected Players(Player player1, Player player2) {
+    protected Score(Player player1, Player player2) {
         players << player1
         players << player2
     }

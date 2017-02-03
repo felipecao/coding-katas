@@ -8,21 +8,22 @@ import static au.com.dius.tennis.PlayersNames.SECOND_PLAYER
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.greaterThan
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 
-class PlayersSpec extends Specification {
-    private Players players
+class ScoreSpec extends Specification {
+
+    private Score score
 
     def setup() {
-        players = new Players(FIRST_PLAYER, SECOND_PLAYER)
+        score = new Score(FIRST_PLAYER, SECOND_PLAYER)
     }
 
     def "a player starts with 0 points and every time it scores, it has more points"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         expect:
-        players.playerWithNameHasPoints(FIRST_PLAYER, totalPointsWonByPlayer1)
+        score.playerWithNameHasPoints(FIRST_PLAYER, totalPointsWonByPlayer1)
 
         where:
         totalPointsWonByPlayer1 | _
@@ -33,12 +34,12 @@ class PlayersSpec extends Specification {
     def "asMap returns a key-value representation of players names and points"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
@@ -53,16 +54,16 @@ class PlayersSpec extends Specification {
     def "haveBothScoredMoreThanOrEqualsToPoints returns true when both players comply with the method name"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        bothPlayersHaveScored == players.haveBothScoredMoreThanOrEqualsToPoints(pointsToVerify)
+        bothPlayersHaveScored == score.haveBothScoredMoreThanOrEqualsToPoints(pointsToVerify)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | pointsToVerify | bothPlayersHaveScored
@@ -75,17 +76,17 @@ class PlayersSpec extends Specification {
     def "bothPlayersHaveMininumScoreForDeuce returns true when both players have at least 3 points"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        isApplicable == players.bothHaveMininumScoreForDeuce()
-        !isApplicable == players.dontHaveMininumScoreForDeuce()
+        isApplicable == score.bothHaveMininumScoreForDeuce()
+        !isApplicable == score.dontHaveMininumScoreForDeuce()
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | isApplicable
@@ -98,16 +99,16 @@ class PlayersSpec extends Specification {
     def "areInDeuce returns true when both players have at least 3 points and are tied"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        areInDeuce == players.areInDeuce()
+        areInDeuce == score.areInDeuce()
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | areInDeuce
@@ -122,16 +123,16 @@ class PlayersSpec extends Specification {
     def "differenceInPointsIs returns true when players have the difference provided as input"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        diffMatches == players.differenceInPointsIs(diff)
+        diffMatches == score.differenceInPointsIs(diff)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | diff | diffMatches
@@ -146,16 +147,16 @@ class PlayersSpec extends Specification {
     def "anyPlayerHasScoredMoreThanOrEqualsToPoints returns true when any players has scored at least the points provided as input"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        anyoneHasScored == players.anyPlayerHasScoredMoreThanOrEqualsToPoints(threshold)
+        anyoneHasScored == score.anyPlayerHasScoredMoreThanOrEqualsToPoints(threshold)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | threshold | anyoneHasScored
@@ -171,16 +172,16 @@ class PlayersSpec extends Specification {
     def "differenceInPointsIsGreaterThanOrEqualsTo returns #isApplicable when player 1 has scored #totalPointsWonByPlayer1 and player 2 has scored #totalPointsWonByPlayer2"() {
         given:
         totalPointsWonByPlayer1.times {
-            players.pointWonByPlayerWithName(FIRST_PLAYER)
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
         }
 
         and:
         totalPointsWonByPlayer2.times {
-            players.pointWonByPlayerWithName(SECOND_PLAYER)
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
         }
 
         expect:
-        isApplicable == players.differenceInPointsIsGreaterThanOrEqualsTo(diff)
+        isApplicable == score.differenceInPointsIsGreaterThanOrEqualsTo(diff)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | diff | isApplicable

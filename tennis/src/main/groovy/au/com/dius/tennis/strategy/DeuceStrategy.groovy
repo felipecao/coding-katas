@@ -1,17 +1,17 @@
 package au.com.dius.tennis.strategy
 
-import au.com.dius.tennis.Players
+import au.com.dius.tennis.Score
 
 class DeuceStrategy extends AbstractStrategy {
 
     public static final String DEUCE = "Deuce"
 
-    DeuceStrategy(Players p) {
-        this.players = p
+    DeuceStrategy(Score s) {
+        this.score = s
     }
 
     boolean isApplicableToScore() {
-        players.areInDeuce()
+        score.areInDeuce()
     }
 
     String displaySpecificScore() {
