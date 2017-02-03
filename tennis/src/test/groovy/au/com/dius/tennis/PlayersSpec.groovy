@@ -50,7 +50,7 @@ class PlayersSpec extends Specification {
     }
 
     @Unroll
-    def "bothPlayersHaveScoreMoreThanOrEqualsToPoints returns true when both players comply with the method name"() {
+    def "haveBothScoredMoreThanOrEqualsToPoints returns true when both players comply with the method name"() {
         given:
         totalPointsWonByPlayer1.times {
             players.pointWonByPlayerWithName(FIRST_PLAYER)
@@ -62,7 +62,7 @@ class PlayersSpec extends Specification {
         }
 
         expect:
-        bothPlayersHaveScored == players.bothPlayersHaveScoredMoreThanOrEqualsToPoints(pointsToVerify)
+        bothPlayersHaveScored == players.haveBothScoredMoreThanOrEqualsToPoints(pointsToVerify)
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | pointsToVerify | bothPlayersHaveScored
@@ -84,7 +84,8 @@ class PlayersSpec extends Specification {
         }
 
         expect:
-        isApplicable == players.bothPlayersHaveMininumScoreForDeuce()
+        isApplicable == players.bothHaveMininumScoreForDeuce()
+        !isApplicable == players.dontHaveMininumScoreForDeuce()
 
         where:
         totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | isApplicable

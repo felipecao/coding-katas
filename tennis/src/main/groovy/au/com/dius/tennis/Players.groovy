@@ -4,7 +4,7 @@ import static java.lang.Math.abs
 
 class Players {
 
-    private static final int MINIMUM_POINTS_FOR_DEUCE = 3
+    private static final Integer MINIMUM_POINTS_FOR_DEUCE = 3
 
     private List<Player> players = []
 
@@ -29,7 +29,7 @@ class Players {
         findByName(playerName).points == points
     }
 
-    boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
+    boolean haveBothScoredMoreThanOrEqualsToPoints(Integer points) {
         player1().points >= points && player2().points >= points
     }
 
@@ -45,12 +45,16 @@ class Players {
         player1().points >= points || player2().points >= points
     }
 
-    boolean bothPlayersHaveMininumScoreForDeuce() {
-        bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
+    boolean bothHaveMininumScoreForDeuce() {
+        haveBothScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
+    }
+
+    boolean dontHaveMininumScoreForDeuce() {
+        !bothHaveMininumScoreForDeuce()
     }
 
     boolean areInDeuce() {
-        bothPlayersHaveMininumScoreForDeuce() && player1().points == player2().points
+        bothHaveMininumScoreForDeuce() && player1().points == player2().points
     }
 
     boolean differenceInPointsIs(Integer points) {
@@ -65,7 +69,7 @@ class Players {
         c(player1().points, player2().points)
     }
 
-    String withAdvantagePlayerName(Closure c) {
+    String withNameOfPlayerCurrentlyWinning(Closure c) {
         c(player1().points - player2().points > 0 ? player1().name : player2().name)
     }
 }

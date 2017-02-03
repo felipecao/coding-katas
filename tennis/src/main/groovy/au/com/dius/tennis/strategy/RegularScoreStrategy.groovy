@@ -11,8 +11,8 @@ class RegularScoreStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        return !players.bothPlayersHaveMininumScoreForDeuce() &&
-                players.bothPlayersHaveScoredMoreThanOrEqualsToPoints(0)
+        return players.dontHaveMininumScoreForDeuce() &&
+                players.haveBothScoredMoreThanOrEqualsToPoints(0)
     }
 
     String displaySpecificScore() {

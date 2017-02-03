@@ -2,23 +2,22 @@ package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Players
 
-import static java.lang.Math.abs
-
 class AdvantageStrategy extends AbstractStrategy {
 
     public static final String ADVANTAGE = "Advantage"
+    private static final Integer POINTS_DIFFERENCE_FOR_ADVANTAGE = 1
 
     AdvantageStrategy(Players p) {
         this.players = p
     }
 
     boolean isApplicableToScore() {
-        return players.bothPlayersHaveMininumScoreForDeuce() &&
-                players.differenceInPointsIs(1)
+        return players.bothHaveMininumScoreForDeuce() &&
+                players.differenceInPointsIs(POINTS_DIFFERENCE_FOR_ADVANTAGE)
     }
 
     String displaySpecificScore() {
-        return players.withAdvantagePlayerName { String playerName ->
+        return players.withNameOfPlayerCurrentlyWinning { String playerName ->
             "$ADVANTAGE $playerName"
         }
     }

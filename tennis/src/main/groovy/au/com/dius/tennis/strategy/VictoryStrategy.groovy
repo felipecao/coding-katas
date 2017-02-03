@@ -7,18 +7,20 @@ import static org.apache.commons.lang3.StringUtils.EMPTY
 class VictoryStrategy extends AbstractStrategy {
 
     public static final String VICTORY = "wins"
+    public static final Integer MINIMUM_POINTS_FOR_VICTORY = 4
+    public static final Integer POINTS_DIFFERENCE_FOR_VICTORY = 2
 
     VictoryStrategy(Players p) {
         this.players = p
     }
 
     boolean isApplicableToScore() {
-        return players.anyPlayerHasScoredMoreThanOrEqualsToPoints(4) &&
-                players.differenceInPointsIsGreaterThanOrEqualsTo(2)
+        return players.anyPlayerHasScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_VICTORY) &&
+                players.differenceInPointsIsGreaterThanOrEqualsTo(POINTS_DIFFERENCE_FOR_VICTORY)
     }
 
     String displaySpecificScore() {
-        return players.withAdvantagePlayerName { String winner ->
+        return players.withNameOfPlayerCurrentlyWinning { String winner ->
             "$winner $VICTORY"
         }
     }
@@ -29,7 +31,7 @@ class VictoryStrategy extends AbstractStrategy {
             return EMPTY
         }
 
-        return players.withAdvantagePlayerName { String winner ->
+        return players.withNameOfPlayerCurrentlyWinning { String winner ->
             winner
         }
     }
