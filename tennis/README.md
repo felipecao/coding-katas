@@ -47,7 +47,7 @@ During the development of this solution, I've tried to stick to the tips and rec
 
 First, I did my best to stick to the incredibly valuable lessons presented by Uncle Bob in his amazing [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?s=books&ie=UTF8&qid=1486086388&sr=1-1&keywords=clean+code)
  book, and tried to create tests, classes, methods, attributes, variables, everything with intention revealing names. From the same author, I've tried to make my as [S.O.L.I.D.](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod)
- as possible. I haven't counted it, but I know for sure my code is not 100% compatible with such rules, for different reasons (I'll talk more about such reasons in the [LIMITATIONS](#LIMITATIONS AND ROOM FOR IMPROVEMENTS) section).
+ as possible. I haven't counted it, but I know for sure my code is not 100% compatible with such rules, for different reasons (I'll talk more about such reasons in the [LIMITATIONS](#limitations-and-room-for-improvements) section).
 
 I've also strived to make good use of encapsulation, and I thank Corey Haynes for his incredible book [Understanding the 4 rules of simple design](https://leanpub.com/4rulesofsimpledesign).
   The lessons I took from this book are the reason why `Score` class has so many methods to make assertions about players points instead of having `Game` or some other class talking to `Player` class.
@@ -74,7 +74,7 @@ As you go through code, you may as well find out I got all their lessons wrong a
 
 ## LIMITATIONS AND ROOM FOR IMPROVEMENTS
 
-* **OO**: Even though I've tried hard to deliver the best OO implementation I could possibly do, I know there are limitations. For instance, as previously said in [REFERENCES](#REFERENCES) section,
+* **OO**: Even though I've tried hard to deliver the best OO implementation I could possibly do, I know there are limitations. For instance, as previously said in [REFERENCES](#references) section,
   there are a lot of encapsulation violations between `Game` and `Player`, and many pieces of code where the "Tell, Don't Ask" principle could be further enforced. You might be asking yourself
   "well, if you already knew about it, then why didn't you do something about it?". And the answer is: basically because I'd have to invest a lot of time to improve this and I wasn't sure this was your main
   concern with this challenge. I assumed you guys would be more interested in how would test the solution, how would I break things up into different responsibilities and how well could I convey my thoughts on
