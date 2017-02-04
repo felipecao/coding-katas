@@ -45,6 +45,10 @@ class Score {
         bothPlayersHaveAtLeast3Points() && player1().points == player2().points
     }
 
+    boolean playersHaveSameNumberOfPoints() {
+        player1().points == player2().points
+    }
+
     boolean bothPlayersHaveAtLeast3Points() {
         bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
     }

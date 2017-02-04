@@ -191,4 +191,27 @@ class ScoreSpec extends Specification {
         2                       | 0                       | 2    | true
     }
 
+    @Unroll
+    def "playersHaveSameNumberOfPoints returns #haveSamePoints when player 1 has scored #totalPointsWonByPlayer1 and player 2 has scored #totalPointsWonByPlayer2"() {
+        given:
+        totalPointsWonByPlayer1.times {
+            score.pointWonByPlayerWithName(FIRST_PLAYER)
+        }
+
+        and:
+        totalPointsWonByPlayer2.times {
+            score.pointWonByPlayerWithName(SECOND_PLAYER)
+        }
+
+        expect:
+        haveSamePoints == score.playersHaveSameNumberOfPoints()
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | haveSamePoints
+        0                       | 0                       | true
+        1                       | 0                       | false
+        0                       | 1                       | false
+        1                       | 1                       | true
+    }
+
 }
