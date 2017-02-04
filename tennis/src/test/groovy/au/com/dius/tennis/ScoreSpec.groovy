@@ -190,4 +190,22 @@ class ScoreSpec extends Specification {
         1                       | 1                       | true
     }
 
+    @Unroll
+    def "playersDontHaveNegativeScore returns true if both players have 0 or more points"() {
+        given:
+        score = new Score(
+                new Player(FIRST_PLAYER, totalPointsWonByPlayer1),
+                new Player(SECOND_PLAYER, totalPointsWonByPlayer2)
+        )
+
+        expect:
+        noNegativeScore == score.playersDontHaveNegativeScore()
+
+        where:
+        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | noNegativeScore
+        0                       | 0                       | true
+        greaterThan(0)          | greaterThan(0)          | true
+        -1                      | -1                      | false
+    }
+
 }

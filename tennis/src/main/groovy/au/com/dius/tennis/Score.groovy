@@ -49,6 +49,10 @@ class Score {
         bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
     }
 
+    boolean playersDontHaveNegativeScore() {
+        bothPlayersHaveScoredMoreThanOrEqualsToPoints(0)
+    }
+
     boolean bothPlayersHaveScoredMoreThanOrEqualsToPoints(Integer points) {
         player1().points >= points && player2().points >= points
     }
