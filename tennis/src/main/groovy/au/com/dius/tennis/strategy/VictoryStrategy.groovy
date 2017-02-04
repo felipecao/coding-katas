@@ -1,7 +1,7 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Score
-import au.com.dius.tennis.VictoryRules
+import au.com.dius.tennis.rules.VictoryRules
 
 class VictoryStrategy extends AbstractStrategy {
 

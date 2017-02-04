@@ -1,5 +1,9 @@
-package au.com.dius.tennis
+package au.com.dius.tennis.rules
 
+import au.com.dius.tennis.Player
+import au.com.dius.tennis.PlayersNames
+import au.com.dius.tennis.Score
+import au.com.dius.tennis.rules.VictoryRules
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -14,7 +18,7 @@ class VictoryRulesTest extends Specification {
         given:
         Score score = new Score(
                 new Player(FIRST_PLAYER, player1Points),
-                new Player(SECOND_PLAYER, player2Points)
+                new Player(PlayersNames.SECOND_PLAYER, player2Points)
         )
 
         expect:

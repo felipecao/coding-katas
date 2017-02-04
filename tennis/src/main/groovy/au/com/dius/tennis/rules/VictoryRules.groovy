@@ -1,4 +1,6 @@
-package au.com.dius.tennis
+package au.com.dius.tennis.rules
+
+import au.com.dius.tennis.Score
 
 class VictoryRules {
 
