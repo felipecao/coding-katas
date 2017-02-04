@@ -16,14 +16,14 @@ class VictoryStrategy extends AbstractStrategy {
     }
 
     String displaySpecificScore() {
-        return score.withNameOfCurrentlyWinningPlayer { String winner ->
+        score.withNameOfCurrentlyWinningPlayer { String winner ->
             "$winner $VICTORY"
         }
     }
 
     @Override
     String winner() {
-        return score.withNameOfCurrentlyWinningPlayer { String winner ->
+        score.withNameOfCurrentlyWinningPlayer { String winner ->
             winner
         }
     }
