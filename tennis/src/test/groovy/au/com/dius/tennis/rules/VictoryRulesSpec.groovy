@@ -11,7 +11,7 @@ import static au.com.dius.tennis.PlayersNames.FIRST_PLAYER
 import static au.com.dius.tennis.PlayersNames.SECOND_PLAYER
 import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 
-class VictoryRulesTest extends Specification {
+class VictoryRulesSpec extends Specification {
 
     @Unroll
     def "isVictory returns true when one of the players has scored at least 4 points and has an advantage of two points to the other player"() {
