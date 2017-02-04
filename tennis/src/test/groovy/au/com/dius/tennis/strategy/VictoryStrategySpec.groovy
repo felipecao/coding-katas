@@ -71,9 +71,6 @@ class VictoryStrategySpec extends Specification {
 
         where:
         player1Points | player2Points | winner
-        lessThan(4)   | lessThan(4)   | EMPTY
-        4             | 3             | EMPTY
-        5             | 5             | EMPTY
         5             | 3             | FIRST_PLAYER
         3             | 5             | SECOND_PLAYER
         7             | 5             | FIRST_PLAYER

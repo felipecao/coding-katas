@@ -2,8 +2,6 @@ package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Score
 
-import static org.apache.commons.lang3.StringUtils.EMPTY
-
 class VictoryStrategy extends AbstractStrategy {
 
     protected static final String VICTORY = "wins"
@@ -27,10 +25,6 @@ class VictoryStrategy extends AbstractStrategy {
 
     @Override
     String winner() {
-        if (!isApplicableToScore()) {
-            return EMPTY
-        }
-
         return score.withNameOfCurrentlyWinningPlayer { String winner ->
             winner
         }
