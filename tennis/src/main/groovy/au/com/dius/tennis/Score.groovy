@@ -4,8 +4,6 @@ import static java.lang.Math.abs
 
 class Score {
 
-    private static final Integer MINIMUM_POINTS_FOR_DEUCE = 3
-
     private List<Player> players = []
 
     Score(String player1Name, String player2Name) {
@@ -46,7 +44,7 @@ class Score {
     }
 
     boolean bothPlayersHaveAtLeast3Points() {
-        bothPlayersHaveScoredMoreThanOrEqualsToPoints(MINIMUM_POINTS_FOR_DEUCE)
+        bothPlayersHaveScoredMoreThanOrEqualsToPoints(3)
     }
 
     boolean playersDontHaveNegativeScore() {
