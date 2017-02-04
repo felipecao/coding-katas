@@ -41,10 +41,6 @@ class Score {
         player1().points >= points || player2().points >= points
     }
 
-    boolean playersAreInDeuce() {
-        bothPlayersHaveAtLeast3Points() && player1().points == player2().points
-    }
-
     boolean playersHaveSameNumberOfPoints() {
         player1().points == player2().points
     }

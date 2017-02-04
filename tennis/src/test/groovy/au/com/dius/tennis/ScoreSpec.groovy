@@ -95,30 +95,6 @@ class ScoreSpec extends Specification {
     }
 
     @Unroll
-    def "playersAreInDeuce returns true when both players have at least 3 points and are tied"() {
-        given:
-        totalPointsWonByPlayer1.times {
-            score.pointWonByPlayerWithName(FIRST_PLAYER)
-        }
-
-        and:
-        totalPointsWonByPlayer2.times {
-            score.pointWonByPlayerWithName(SECOND_PLAYER)
-        }
-
-        expect:
-        areInDeuce == score.playersAreInDeuce()
-
-        where:
-        totalPointsWonByPlayer1 | totalPointsWonByPlayer2 | areInDeuce
-        lessThan(3)             | lessThan(3)             | false
-        3                       | 3                       | true
-        4                       | 4                       | true
-        5                       | 5                       | true
-        6                       | 6                       | true
-    }
-
-    @Unroll
     def "differenceInPointsIs returns true when players have the difference provided as input"() {
         given:
         totalPointsWonByPlayer1.times {

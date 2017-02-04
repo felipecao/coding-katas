@@ -1,6 +1,7 @@
 package au.com.dius.tennis.strategy
 
 import au.com.dius.tennis.Score
+import au.com.dius.tennis.rules.DeuceRules
 
 class DeuceStrategy extends AbstractStrategy {
 
@@ -11,7 +12,7 @@ class DeuceStrategy extends AbstractStrategy {
     }
 
     boolean isApplicableToScore() {
-        score.playersAreInDeuce()
+        DeuceRules.isDeuce(score)
     }
 
     String displaySpecificScore() {
