@@ -50,8 +50,9 @@ First, I did my best to stick to the incredibly valuable lessons presented by Un
  as possible. I haven't counted it, but I know for sure my code is not 100% compatible with such rules, for different reasons (I'll talk more about such reasons in the [LIMITATIONS](#limitations-and-room-for-improvements) section).
 
 I've also strived to make good use of encapsulation, and I thank Corey Haynes for his incredible book [Understanding the 4 rules of simple design](https://leanpub.com/4rulesofsimpledesign).
-  The lessons I took from this book are the reason why `Score` class has so many methods to make assertions about players points instead of having `Game` or some other class talking to `Player` class.
-  My idea here was to encapsulate all things related to score and points behind `Score` class, but there are some violations of this guideline, especially regarding the internals of `Score` class and
+  I've taken the liberty of borrowing from him the idea of a `-Rules` class and apply it in this exercise, to decouple and centralize the rules that define when a particular event (e.g.: Advantage, Deuce, ...)
+  has taken place. The lessons I took from this book are also the reason why `Score` class has so many methods to make assertions about players points instead of having `Game` or some other class talking to `Player`
+  class. My idea here was to encapsulate all things related to score and points behind `Score` class, but there are some violations of this guideline, especially regarding the internals of `Score` class and
   its interactions with `Player`.
 
 Joshua Bloch and his excellent [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683/ref=sr_1_1?s=books&ie=UTF8&qid=1486087176&sr=1-1&keywords=effective+java) were also
@@ -81,11 +82,8 @@ As you go through code, you may as well find that I got all their lessons wrong 
   concern with this challenge. I assumed you guys would be more interested in how I would test the solution, how would I break things up into different responsibilities and how well could I convey my thoughts on
   that via whatever media. I hope I've managed to accomplish this part reasonably well.
 
-* **Separation of concerns**: there a few intermixed responsibilities in my code. For instance, `ScoreDisplayStrategy` deals with 2 kinds of displays: displaying the score of a game and also displaying who won
-  that game, meaning if I'd like to change the way I figure out who's the winner, I'd have to change the same classes involved in figuring out the current score, and that's not good, as a class should have a
-  single reason to change, as per [Single Responsiblity Principle](http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod). A possible approach to fix this would be splitting these responsibilities into 3 classes:
-  (i) keep the currently existing `VictoryStrategy`; (ii) add a class to display the winner according to the score; (iii) move the logic related to figuring out who's the winner to a third class (let's call it
-  `VictoryRules` for instance) and have both `VictoryStrategy` and the class from point (ii) using the same `VictoryRules`. Besides, `Player` holds both the person's name and points, whereas ideally points should belong somewhere in between the `Game` or perhaps the `Score`. Anyway, there's some room for further improvement over
+* **Separation of concerns**: there a few intermixed responsibilities in my code. For instance, `Player` holds both the person's name and points, but I'm not 100% sure the points belong here, since, in my eyes,
+  they're tied to 3 concepts: `Game`, `Score` and the `Player` itself, since the points are what a `Player` scores in the `Game`. I believe there's some room for improvement here.
    here as well.
 
 * **Tests**: as may have seen in my tests, there's a lot of duplication, especially when it comes to points, scores, etc. There are many many places where tests inputs are almost 100% duplicated. I could have
@@ -102,8 +100,8 @@ Basically because I wanted to make sure my ideas would be properly communicated 
 
 ## ASSUMPTIONS
 
-* It's not necessary to provide a way to "play" the game. The challenge is about implementing `Game` as described in the challenge, there's no need to provide a way for the user to interact with it via a
-  command-line interface of any kind user interface.
+* It's not necessary to provide a way to "play" the game. The challenge is about implementing the `Game` methods described in the challenge, there's no need to provide a way for the user to interact with it via a
+  command-line interface of any kind of user interface.
 * Tests and conveying my ideas were the highest priorities
 * 100% object-oriented code was a nice-to-have, even desirable, but not mandatory
 
