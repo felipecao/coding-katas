@@ -36,10 +36,23 @@ And so I've started by creating different concrete classes to take care of displ
 The second step was decoupling `Game` from the instantiation of such strategies. Therefore I created `ScoreDisplayStrategyFactory`, which would hold all possible variations of
   `ScoreDisplayStrategy` and would use polymorphism to decide which concrete class to use for displaying the current score.
 
-But up to this point `Game` was still holding information about players names and points. Hence, the next (and final) step would be moving such a responsibility to a separate
-  class, which I called `Score`.
+But up to this point `Game` was still holding information about players names and points. Hence, the next (and, supposedly, final) step would be moving such a responsibility to a separate
+  class, which I called `Score`. At this point `Game` had become much shorter and easier to read.
 
-At this point `Game` had become much shorter and easier to read. I hope you guys agree with me :)
+After looking at the code, I noticed that it could be a bit hard for a reader of the `ScoreDisplayStrategy` to understand the rules that govern each situation of the `Game`. For
+  instance, it seemed a bit odd to me that if a reader wanted to know the rules that define whether someone won the game, or how would a Deuce take place, that person would need
+  to look into the implementations of a method called `isApplicableToScore` inside class which purpose are to define a strategy to display a `Score`. Hence, I decided to further
+  improve the code and move such rules into classes with the `-Rules` suffix. This way, if one wanted to know about the rules of the game, all it took was looking into the classes
+  available in the `rules` package.
+
+And that was the actual final step, which presents you the code as currently is.
+
+*Remark*: One thing I find important to highlight is that, in a real world scenario, when approaching a problem with well-defined rules as this one, the implementation could be a bit different.
+  For instance, I've worked on a company where most people would find the code available on commit hash `44a956e12b5acaa5aff9eb6689d74fe783d94d10` a perfect solution, and would consider the
+  final looks of the code a bit too complex for such a small problem. Sometimes different teams have different understandings on how much is good enough. As for this coding challenge, I don't
+  really know what DiUS consider to be good enough, this code, in my eyes, is my only chance to show you guys about my maturity as a professional and share some of the things I've learned along
+  the years. I wouldn't necessarily always use strategies, factories, rules and all of that all the time for the smallest of the tasks, I would first discuss with my team and gather their opinions
+  before proposing a solution a given problem. So, I ask you to please take into consideration that I don't yet have a team to help deciding on how much is good enough :)
 
 ## REFERENCES
 
