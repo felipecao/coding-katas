@@ -7,7 +7,7 @@ import static java.lang.Math.floor
 
 class RegularScoreStrategy extends AbstractStrategy {
 
-    RegularScoreStrategy(Score s) {
+    RegularScoreStrategy(final Score s) {
         this.score = s
     }
 

@@ -7,7 +7,7 @@ class DeuceStrategy extends AbstractStrategy {
 
     protected static final String DEUCE = "Deuce"
 
-    DeuceStrategy(Score s) {
+    DeuceStrategy(final Score s) {
         this.score = s
     }
 

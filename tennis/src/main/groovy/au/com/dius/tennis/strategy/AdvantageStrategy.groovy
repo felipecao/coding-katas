@@ -7,7 +7,7 @@ class AdvantageStrategy extends AbstractStrategy {
 
     protected static final String ADVANTAGE = "Advantage"
 
-    AdvantageStrategy(Score s) {
+    AdvantageStrategy(final Score s) {
         this.score = s
     }
 

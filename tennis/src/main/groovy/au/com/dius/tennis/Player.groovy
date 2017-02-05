@@ -4,7 +4,7 @@ class Player {
 
     private static final Integer INITIAL_POINTS = 0
 
-    private String name
+    private final String name
     private Integer points = INITIAL_POINTS
 
     Player(String name) {

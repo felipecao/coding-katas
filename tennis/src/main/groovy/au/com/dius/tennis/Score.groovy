@@ -4,7 +4,7 @@ import static java.lang.Math.abs
 
 class Score {
 
-    private List<Player> players = []
+    private final List<Player> players = []
 
     Score(String player1Name, String player2Name) {
         this(new Player(player1Name), new Player(player2Name))

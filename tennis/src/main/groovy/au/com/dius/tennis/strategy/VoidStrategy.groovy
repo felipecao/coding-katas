@@ -6,7 +6,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY
 
 class VoidStrategy extends AbstractStrategy {
 
-    VoidStrategy(Score s) {
+    VoidStrategy(final Score s) {
     }
 
     boolean isApplicableToScore() {
