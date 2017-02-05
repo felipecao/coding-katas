@@ -20,7 +20,7 @@ class Game {
 
         score.pointWonByPlayerWithName(playerName)
 
-        ScoreDisplayStrategy strategy = ScoreDisplayStrategyFactory.buildForPlayers(score)
+        ScoreDisplayStrategy strategy = ScoreDisplayStrategyFactory.buildStrategyForScore(score)
 
         scoreToDisplay = strategy.displayScore()
         winner = strategy.winner()

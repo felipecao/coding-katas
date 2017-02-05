@@ -10,7 +10,7 @@ import static au.com.dius.tennis.random.RandomIntegerLessThan50.lessThan
 class ScoreDisplayStrategyFactorySpec extends Specification {
 
     @Unroll
-    def "buildForNamesAndPoints should return an instance of #instance when player 1 scores #player1Points and player 2 scores #player2Points"() {
+    def "buildStrategyForScore should return an instance of #instance when player 1 scores #player1Points and player 2 scores #player2Points"() {
         given:
         Score score = new Score(
                 new Player(RandomString16CharsLong.get(), player1Points),
@@ -18,7 +18,7 @@ class ScoreDisplayStrategyFactorySpec extends Specification {
         )
 
         expect:
-        ScoreDisplayStrategyFactory.buildForPlayers(score).class.isAssignableFrom(instance)
+        ScoreDisplayStrategyFactory.buildStrategyForScore(score).class.isAssignableFrom(instance)
 
         where:
         player1Points  | player2Points  | instance

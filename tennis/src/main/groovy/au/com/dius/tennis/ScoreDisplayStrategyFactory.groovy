@@ -4,7 +4,7 @@ import au.com.dius.tennis.strategy.*
 
 class ScoreDisplayStrategyFactory {
 
-    static ScoreDisplayStrategy buildForPlayers(Score score) {
+    static ScoreDisplayStrategy buildStrategyForScore(Score score) {
         [
                 new VictoryStrategy(score),
                 new AdvantageStrategy(score),
