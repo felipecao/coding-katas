@@ -7,7 +7,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY
 
 abstract class AbstractStrategy implements ScoreDisplayStrategy {
 
-    protected final Score score
+    protected Score score
 
     abstract boolean isApplicableToScore()
 
